@@ -33,7 +33,7 @@ void GSAbout::Init()
 	m_ListBtn.push_back(button);
 
 	//Background
-	sf::Texture* texture = DATA->getTexture("Background layers/Background");
+	sf::Texture* texture = DATA->getTexture("Bg/background_glacial_mountains");
 	m_Background.setTexture(*texture);
 	m_Background.setOrigin((sf::Vector2f)texture->getSize() / 2.f);
 	m_Background.setPosition(screenWidth / 2, screenHeight - texture->getSize().y / 2);
@@ -70,7 +70,7 @@ void GSAbout::Update(float deltaTime)
 
 void GSAbout::Render(sf::RenderWindow* window)
 {
-	window->draw(m_Background);
+	//window->draw(m_Background);
 	for ( auto btn : m_ListBtn ) {
 		btn->Render(window);
 	}

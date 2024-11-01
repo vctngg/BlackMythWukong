@@ -9,4 +9,6 @@ public:
 	void Render(sf::RenderWindow* window);
 private:
 	std::list<Layer*> m_Background;
+	float y_pos;
+	sf::Vector2f m_scaling;
 };

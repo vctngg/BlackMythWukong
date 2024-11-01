@@ -9,12 +9,9 @@ public:
 	void Update(float deltaTime);
 	void Render(sf::RenderWindow* window);
 	void Reset();
-	bool GetFacing();
 
 private:
 	IPlayer* m_Player;
 	Animation* m_Animation;
-
 	float m_currentTime;
-	MovementCheck m_MovementCheck;
 };

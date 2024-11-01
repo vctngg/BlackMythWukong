@@ -8,14 +8,11 @@ public:
 	~Player();
 	void changeNextState(IPState::STATE nextState);
 
-	void Init();
+	void Init(CollisionManager& collisionManager);
 	void Update(float deltaTime);
 	void Render(sf::RenderWindow* window);
-
+	//void SetFacing();
 	HitBox* getHitBox();
-	bool IsMoving();
-	void FacingCheck();//update facing & store
-	void GetFacing();//update facing between states
 
 private:
 	void performStateChange();
@@ -33,7 +30,5 @@ private:
 	IPState* m_attack3State;
 	IPState* m_idleState;
 
-	MovementCheck m_MovementCheck;
-	bool m_facingleft, m_facingright;
 
 };

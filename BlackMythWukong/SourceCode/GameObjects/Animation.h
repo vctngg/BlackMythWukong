@@ -32,4 +32,5 @@ protected:
 	sf::IntRect m_rect;
 
 	bool m_modeStopAtEndFrame;
+	bool m_endframe;
 };

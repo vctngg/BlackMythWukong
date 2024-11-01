@@ -1,5 +1,6 @@
 #include "MovementCheck.h"
 
+
 bool MovementCheck::IsMoving()
 {
 	if ( sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) )
@@ -28,11 +29,6 @@ void MovementCheck::FacingCheck()
 	}
 }
 
-void MovementCheck::FacingSet(bool right, bool left)
-{
-	m_leftfacing = left;
-	m_rightfacing = right;
-}
 
 bool MovementCheck::FacingLeft()
 {

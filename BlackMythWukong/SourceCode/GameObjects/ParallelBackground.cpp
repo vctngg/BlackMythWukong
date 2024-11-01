@@ -2,48 +2,43 @@
 
 void ParallexBackground::Init()
 {
+	y_pos = 0;
+	m_scaling = sf::Vector2f(2.4f, 2.4f);
+
 	Layer* layer;
-	std::string path = "Background layers/";
+	std::string path = "Bg/";
+	//Layer 1
+	layer = new Layer();
+	layer->Init(path + "sky", 40, y_pos, m_scaling);
+	m_Background.push_back(layer);
 	//Layer 2
 	layer = new Layer();
-	layer->Init(path + "Layer_0009_2", 50,-210);
+	layer->Init(path + "cloud_lonely", 45, y_pos, m_scaling);
 	m_Background.push_back(layer);
 	//Layer 3
 	layer = new Layer();
-	layer->Init(path + "Layer_0008_3", 60, -210);
-	m_Background.push_back(layer);
-	//Layer 4
-	layer = new Layer();
-	layer->Init(path + "Layer_0007_Lights", 100, -210);
-	m_Background.push_back(layer);
-	//Layer 5
-	layer = new Layer();
-	layer->Init(path + "Layer_0006_4", 110, -210);
-	m_Background.push_back(layer);
-	//Layer 6
-	layer = new Layer();
-	layer->Init(path + "Layer_0005_5", 120, -210);
+	layer->Init(path + "clouds_bg", 60, y_pos, m_scaling);
 	m_Background.push_back(layer);
 	//Layer 7
 	layer = new Layer();
-	layer->Init(path + "Layer_0004_Lights", 140, -210);
+	layer->Init(path + "glacial_mountains", 50, y_pos, m_scaling);
 	m_Background.push_back(layer);
-	//Layer 8
+	//Layer 6
 	layer = new Layer();
-	layer->Init(path + "Layer_0003_6", 170, -210);
+	layer->Init(path + "clouds_mg_3", 100, y_pos+10, m_scaling);
 	m_Background.push_back(layer);
-	//Layer 9
+	//Layer 5
 	layer = new Layer();
-	layer->Init(path + "Layer_0002_7", 200, -210);
+	layer->Init(path + "clouds_mg_2", 110, y_pos+10, m_scaling);
 	m_Background.push_back(layer);
-	//Layer 10
+	//Layer 4
 	layer = new Layer();
-	layer->Init(path + "Layer_0001_8", 200, -210);
+	layer->Init(path + "clouds_mg_1", 120, y_pos+10, m_scaling);
 	m_Background.push_back(layer);
-	//Layer 1
-	layer = new Layer();
-	layer->Init(path + "Layer_0000_9", 200, -210);
-	m_Background.push_back(layer);
+
+
+	
+	
 }
 
 void ParallexBackground::Update(float deltaTime)

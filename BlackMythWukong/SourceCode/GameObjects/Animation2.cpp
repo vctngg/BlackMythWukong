@@ -4,7 +4,6 @@ Animation2::Animation2(sf::Texture& texture, sf::Vector2i frameNum, float frameT
 {
 	m_frameTotals = frameTotals;
 	m_currentFrameCount = 0;
-	this->setScale(-1, 1);
 }
 
 void Animation2::Update(float deltaTime)

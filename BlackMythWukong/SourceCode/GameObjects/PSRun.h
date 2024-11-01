@@ -13,5 +13,4 @@ public:
 private:
 	IPlayer* m_Player;
 	Animation* m_Animation;
-	MovementCheck m_MovementCheck;
 };

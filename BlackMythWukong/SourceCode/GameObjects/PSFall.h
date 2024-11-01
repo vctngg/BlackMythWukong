@@ -13,7 +13,5 @@ public:
 private:
 	IPlayer* m_Player;
 	Animation* m_Animation;
-
 	float m_currentTime;
-	MovementCheck m_MovementCheck;
 };

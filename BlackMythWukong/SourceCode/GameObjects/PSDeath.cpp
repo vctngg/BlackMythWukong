@@ -14,15 +14,15 @@ void PSDeath::Init()
 
 void PSDeath::Update(float deltaTime)
 {
-	m_MovementCheck.FacingCheck();
+	m_Player->FacingCheck();
 	m_currentTime += deltaTime;
 	if ( m_currentTime >= m_timeRemain ) {
 		GSM->ChangeState(StateTypes::END);
 		//DATA->getMusic("Uprising")->stop();
 	}
 	m_Animation->Update(deltaTime);
-	m_Animation->setPosition(m_Player->getHitBox()->getPosition());
-	m_Animation->flip(m_MovementCheck.FacingLeft());
+	m_Animation->setPosition(m_Player->getHitBox()->getPosition().x, m_Player->getHitBox()->getPosition().y + 6);
+	m_Animation->flip(m_Player->FacingLeft());
 }
 
 void PSDeath::Render(sf::RenderWindow* window)

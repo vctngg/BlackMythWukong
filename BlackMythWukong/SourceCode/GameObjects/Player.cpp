@@ -26,7 +26,7 @@ void Player::changeNextState(IPState::STATE nextState)
 {
 	m_nextState = nextState;
 }
-void Player::Init()
+void Player::Init(CollisionManager& collisionManager)
 {
 	m_runState->Init();
 	m_jumpState->Init();
@@ -38,15 +38,15 @@ void Player::Init()
 	m_idleState->Init();
 
 	m_HitBox = new HitBox(sf::Vector2i(15, 30));
-	m_HitBox->setPosition(400, groundY);
+	m_HitBox->setPosition(400, groundY-m_HitBox->getSize().y/2);
 	m_HitBox->Init(sf::Vector2f(200, 500));
 	m_HitBox->SetTag(PLAYER);
+	collisionManager.addObj(m_HitBox);
 }
 
 void Player::Update(float deltaTime)
 {
 	performStateChange();
-	this->FacingCheck();
 	m_currentState->Update(deltaTime);
 
 }
@@ -54,28 +54,15 @@ void Player::Update(float deltaTime)
 void Player::Render(sf::RenderWindow* window)
 {
 	m_currentState->Render(window);
-	//window->draw(*m_HitBox);
+	window->draw(*m_HitBox);
 }
+
 
 HitBox* Player::getHitBox()
 {
 	return m_HitBox;
 }
-bool Player::IsMoving()
-{
-	return m_MovementCheck.IsMoving();
-}
-void Player::FacingCheck()
-{
-	m_MovementCheck.FacingCheck();
-	m_facingright = m_MovementCheck.FacingRight();
-	m_facingleft = m_MovementCheck.FacingLeft();
 
-}
-void Player::GetFacing()
-{
-	m_MovementCheck.FacingSet(m_facingright, m_facingleft);
-}
 void Player::performStateChange()
 {
 	if ( m_nextState != IPState::SNULL ) {

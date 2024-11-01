@@ -139,13 +139,23 @@
     <ClCompile Include="SourceCode\GameManager\WindowConnector.cpp" />
     <ClCompile Include="SourceCode\GameObjects\Animation.cpp" />
     <ClCompile Include="SourceCode\GameObjects\Animation2.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\Boss.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\BossWeapon.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\BSAttack.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\BSHurt.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\BSIdle.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\BSRun.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\BSWaiting.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\Bullet.cpp" />
     <ClCompile Include="SourceCode\GameObjects\CollisionManager.cpp" />
     <ClCompile Include="SourceCode\GameObjects\GameButton.cpp" />
     <ClCompile Include="SourceCode\GameObjects\HitBox.cpp" />
     <ClCompile Include="SourceCode\GameObjects\Layer.cpp" />
     <ClCompile Include="SourceCode\GameObjects\MovementCheck.cpp" />
     <ClCompile Include="SourceCode\GameObjects\ParallelBackground.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\PBullet.cpp" />
     <ClCompile Include="SourceCode\GameObjects\Player.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\PlayerWeapon.cpp" />
     <ClCompile Include="SourceCode\GameObjects\PSAttack1.cpp" />
     <ClCompile Include="SourceCode\GameObjects\PSAttack2.cpp" />
     <ClCompile Include="SourceCode\GameObjects\PSAttack3.cpp" />
@@ -155,6 +165,7 @@
     <ClCompile Include="SourceCode\GameObjects\PSJump.cpp" />
     <ClCompile Include="SourceCode\GameObjects\PSRun.cpp" />
     <ClCompile Include="SourceCode\GameObjects\ScoreManager.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\UI.cpp" />
     <ClCompile Include="SourceCode\GameStateManager\GameStateBase.cpp" />
     <ClCompile Include="SourceCode\GameStateManager\GameStateMachine.cpp" />
     <ClCompile Include="SourceCode\GameStateManager\GSAbout.cpp" />
@@ -166,6 +177,7 @@
     <ClCompile Include="SourceCode\GameStateManager\GSSetting.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SourceCode\Application.h" />
     <ClInclude Include="SourceCode\GameConfig.h" />
     <ClInclude Include="SourceCode\GameManager\ResourceManager.h" />
@@ -173,15 +185,27 @@
     <ClInclude Include="SourceCode\GameManager\WindowConnector.h" />
     <ClInclude Include="SourceCode\GameObjects\Animation.h" />
     <ClInclude Include="SourceCode\GameObjects\Animation2.h" />
+    <ClInclude Include="SourceCode\GameObjects\Boss.h" />
+    <ClInclude Include="SourceCode\GameObjects\BossWeapon.h" />
+    <ClInclude Include="SourceCode\GameObjects\BSAttack.h" />
+    <ClInclude Include="SourceCode\GameObjects\BSHurt.h" />
+    <ClInclude Include="SourceCode\GameObjects\BSIdle.h" />
+    <ClInclude Include="SourceCode\GameObjects\BSRun.h" />
+    <ClInclude Include="SourceCode\GameObjects\BSWaiting.h" />
+    <ClInclude Include="SourceCode\GameObjects\Bullet.h" />
     <ClInclude Include="SourceCode\GameObjects\CollisionManager.h" />
     <ClInclude Include="SourceCode\GameObjects\GameButton.h" />
     <ClInclude Include="SourceCode\GameObjects\HitBox.h" />
+    <ClInclude Include="SourceCode\GameObjects\IBoss.h" />
+    <ClInclude Include="SourceCode\GameObjects\IBState.h" />
     <ClInclude Include="SourceCode\GameObjects\IPlayer.h" />
     <ClInclude Include="SourceCode\GameObjects\IPState.h" />
     <ClInclude Include="SourceCode\GameObjects\Layer.h" />
     <ClInclude Include="SourceCode\GameObjects\MovementCheck.h" />
     <ClInclude Include="SourceCode\GameObjects\ParallelBackground.h" />
+    <ClInclude Include="SourceCode\GameObjects\PBullet.h" />
     <ClInclude Include="SourceCode\GameObjects\Player.h" />
+    <ClInclude Include="SourceCode\GameObjects\PlayerWeapon.h" />
     <ClInclude Include="SourceCode\GameObjects\PSAttack1.h" />
     <ClInclude Include="SourceCode\GameObjects\PSAttack2.h" />
     <ClInclude Include="SourceCode\GameObjects\PSAttack3.h" />
@@ -191,6 +215,7 @@
     <ClInclude Include="SourceCode\GameObjects\PSJump.h" />
     <ClInclude Include="SourceCode\GameObjects\PSRun.h" />
     <ClInclude Include="SourceCode\GameObjects\ScoreManager.h" />
+    <ClInclude Include="SourceCode\GameObjects\UI.h" />
     <ClInclude Include="SourceCode\GameStateManager\GameStateBase.h" />
     <ClInclude Include="SourceCode\GameStateManager\GameStateMachine.h" />
     <ClInclude Include="SourceCode\GameStateManager\GSAbout.h" />
@@ -200,6 +225,9 @@
     <ClInclude Include="SourceCode\GameStateManager\GSMenu.h" />
     <ClInclude Include="SourceCode\GameStateManager\GSPlay.h" />
     <ClInclude Include="SourceCode\GameStateManager\GSSetting.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

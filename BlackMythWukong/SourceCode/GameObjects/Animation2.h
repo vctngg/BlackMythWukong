@@ -12,6 +12,7 @@ public:
 	int getCurrentFrameCount() {
 		return m_currentFrameCount;
 	};
+	
 private:
 	int m_frameTotals;
 	int m_currentFrameCount;

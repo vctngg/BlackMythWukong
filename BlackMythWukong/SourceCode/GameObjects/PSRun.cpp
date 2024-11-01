@@ -13,11 +13,20 @@ void PSRun::Init()
 void PSRun::Update(float deltaTime)
 {
 	m_Animation->Update(deltaTime);
-	m_MovementCheck.FacingCheck();
-	if ( m_MovementCheck.FacingLeft() )
+	m_Player->FacingCheck();
+	if ( m_Player->FacingLeft() )
 	{
 		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::Space) ) {
 			m_Player->changeNextState(JUMP);
+		}
+		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::J) ) {
+			m_Player->changeNextState(ATTACK1);
+		}
+		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::K) ) {
+			m_Player->changeNextState(ATTACK2);
+		}
+		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::L) ) {
+			m_Player->changeNextState(ATTACK3);
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::A) ) {
 			m_Player->getHitBox()->move(-m_Player->getHitBox()->getVelocity().x * deltaTime, 0);
@@ -25,34 +34,45 @@ void PSRun::Update(float deltaTime)
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::D) ) {
 			m_Player->getHitBox()->move(m_Player->getHitBox()->getVelocity().x * deltaTime, 0);
 		}
-		else if ( !(m_MovementCheck.IsMoving()) ) {
+		else if ( !(m_Player->IsMoving()) ) {
 			m_Player->changeNextState(IDLE);
 		}
+		
 
 		if ( !m_Player->getHitBox()->isAlive() ) m_Player->changeNextState(IPState::DEATH);
 
-		m_Animation->setPosition(m_Player->getHitBox()->getPosition());
+		m_Animation->setPosition(m_Player->getHitBox()->getPosition().x, m_Player->getHitBox()->getPosition().y + 6);
 	}
 	else
 	{
 		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::Space) ) {
 			m_Player->changeNextState(JUMP);
 		}
+		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::J) ) {
+			m_Player->changeNextState(ATTACK1);
+		}
+		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::K) ) {
+			m_Player->changeNextState(ATTACK2);
+		}
+		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::L) ) {
+			m_Player->changeNextState(ATTACK3);
+		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::A) ) {
 			m_Player->getHitBox()->move(-m_Player->getHitBox()->getVelocity().x * deltaTime, 0);
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::D) ) {
 			m_Player->getHitBox()->move(m_Player->getHitBox()->getVelocity().x * deltaTime, 0);
 		}
-		else if ( !(m_MovementCheck.IsMoving()) ) {
+		else if ( !(m_Player->IsMoving()) ) {
 			m_Player->changeNextState(IDLE);
 		}
+		
 
 		if ( !m_Player->getHitBox()->isAlive() ) m_Player->changeNextState(IPState::DEATH);
 
-		m_Animation->setPosition(m_Player->getHitBox()->getPosition());
+		m_Animation->setPosition(m_Player->getHitBox()->getPosition().x, m_Player->getHitBox()->getPosition().y + 6);
 	}
-	m_Animation->flip(m_MovementCheck.FacingLeft());
+	m_Animation->flip(m_Player->FacingLeft());
 }
 
 void PSRun::Render(sf::RenderWindow* window)

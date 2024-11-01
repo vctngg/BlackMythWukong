@@ -16,5 +16,4 @@ private:
 	Animation* m_Animation;
 	float m_currentTime;
 	float m_timeRemain;
-	MovementCheck m_MovementCheck;
 };

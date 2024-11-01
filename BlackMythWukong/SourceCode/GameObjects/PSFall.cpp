@@ -13,17 +13,18 @@ void PSFall::Init()
 void PSFall::Update(float deltaTime)
 {
 	m_Animation->Update(deltaTime);
-	m_MovementCheck.FacingCheck();
+	m_Player->FacingCheck();
 	m_currentTime += deltaTime;
 	float v = 30 * m_currentTime;
 	m_Player->getHitBox()->move(0, v);
-	if ( m_Player->getHitBox()->getPosition().y >= groundY ) {
+	if ( m_Player->getHitBox()->getPosition().y > groundY - m_Player->getHitBox()->getSize().y/2 ) {
+		m_Player->getHitBox()->setPosition(m_Player->getHitBox()->getPosition().x, groundY - m_Player->getHitBox()->getSize().y / 2);
 		if ( !m_Player->getHitBox()->isAlive() ) m_Player->changeNextState(IPState::DEATH);
-		else m_Player->changeNextState(RUN);
+		else m_Player->changeNextState(IDLE);
 		m_currentTime = 0.f;
 	}
 
-	if ( m_MovementCheck.FacingLeft() )
+	if ( m_Player->FacingLeft() )
 	{
 		if ( m_Player->getHitBox()->isAlive() ) {
 			if ( sf::Keyboard::isKeyPressed(sf::Keyboard::A) ) {
@@ -33,7 +34,7 @@ void PSFall::Update(float deltaTime)
 				m_Player->getHitBox()->move(m_Player->getHitBox()->getVelocity().x * deltaTime, 0);
 			}
 		}
-		m_Animation->setPosition(m_Player->getHitBox()->getPosition());
+		m_Animation->setPosition(m_Player->getHitBox()->getPosition().x, m_Player->getHitBox()->getPosition().y + 6);
 	}
 	else
 	{
@@ -45,9 +46,9 @@ void PSFall::Update(float deltaTime)
 				m_Player->getHitBox()->move(m_Player->getHitBox()->getVelocity().x * deltaTime, 0);
 			}
 		}
-		m_Animation->setPosition(m_Player->getHitBox()->getPosition());
+		m_Animation->setPosition(m_Player->getHitBox()->getPosition().x, m_Player->getHitBox()->getPosition().y + 6);
 	}
-	m_Animation->flip(m_MovementCheck.FacingLeft());
+	m_Animation->flip(m_Player->FacingLeft());
 }
 
 void PSFall::Render(sf::RenderWindow* window)
