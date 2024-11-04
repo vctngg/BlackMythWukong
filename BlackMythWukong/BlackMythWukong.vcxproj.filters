@@ -150,6 +150,24 @@
     <ClCompile Include="SourceCode\GameObjects\PlayerWeapon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\HPManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\CooldownManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\SkillManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\Skill.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\LevelManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\BSFlee.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SourceCode\Application.h">
@@ -294,6 +312,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SourceCode\GameObjects\PBullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\HPManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\CooldownManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\SkillManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\Skill.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\LevelManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\BSFlee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

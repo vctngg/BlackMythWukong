@@ -21,7 +21,7 @@ void PlayerWeapon::Init(CollisionManager& collisionManager)
 
 	for ( int i = 0; i < m_Num; i++ ) {
 		PBullet* bullet = new PBullet();
-		bullet->Init();
+		bullet->Init();	
 		bullet->getHitBox()->setAlive(false);
 		m_ListBullet.push_back(bullet);
 		collisionManager.addObj(bullet->getHitBox());

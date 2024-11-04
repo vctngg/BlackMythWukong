@@ -18,6 +18,7 @@ public:
 	float ReturnDistanceFromPlayer();
 	void GetPlayerPosition(HitBox* player_hitbox);
 	sf::Vector2f ReturnPlayerPosition();
+
 	BossWeapon* getWeapon();
 
 private:
@@ -34,6 +35,8 @@ private:
 	IBState* m_attackState;
 	IBState* m_runState;
 	IBState* m_waitingState;
+	IBState* m_fleeState;
+
 
 	CollisionManager m_collisionManager;
 };

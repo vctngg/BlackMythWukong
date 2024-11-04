@@ -37,4 +37,5 @@ protected:
 	bool m_soundIsPlaying;
 
 	bool m_left;
+	bool m_leftOnFire;
 };

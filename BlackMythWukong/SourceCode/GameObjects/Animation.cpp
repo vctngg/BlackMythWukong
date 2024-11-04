@@ -51,6 +51,7 @@ void Animation::Update(float deltaTime)
 void Animation::Reset()
 {
 	m_currentFrame.x = 0;
+	m_currentFrame.y = 0;
 	m_currentTime = 0.f;
 }
 

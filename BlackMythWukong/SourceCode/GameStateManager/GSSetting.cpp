@@ -25,7 +25,7 @@ void GSSetting::Init()
 	GameButton* button;
 	//close Button
 	button = new GameButton();
-	button->Init("close_2");
+	button->Init("btn_close");
 	button->setOrigin(button->getSize() / 2.f);
 	button->setSize(sf::Vector2f(50, 50));
 	button->setPosition(screenWidth - screenWidth / 20, screenHeight / 8);
@@ -33,7 +33,7 @@ void GSSetting::Init()
 	m_ListBtn.push_back(button);
 	//turn on music
 	button = new GameButton();
-	button->Init("misic");
+	button->Init("btn_sound-sheet0");
 	button->setOrigin(button->getSize() / 2.f);
 	button->setSize(sf::Vector2f(100, 100));
 	button->setPosition(screenWidth / 2 + screenWidth / 4, screenHeight - screenHeight / 8);
@@ -42,7 +42,7 @@ void GSSetting::Init()
 
 	//turn off music
 	button = new GameButton();
-	button->Init("music_off");
+	button->Init("btn_sound-sheet1");
 	button->setOrigin(button->getSize() / 2.f);
 	button->setSize(sf::Vector2f(100, 100));
 	button->setPosition(screenWidth / 2 - screenWidth / 4, screenHeight - screenHeight / 8);
@@ -50,7 +50,7 @@ void GSSetting::Init()
 	m_ListBtn.push_back(button);
 
 	//Background
-	sf::Texture* texture = DATA->getTexture("Background layers/Background");
+	sf::Texture* texture = DATA->getTexture("Background/Forest/Background");
 	m_Background.setTexture(*texture);
 	m_Background.setOrigin((sf::Vector2f)texture->getSize() / 2.f);
 	m_Background.setPosition(screenWidth / 2, screenHeight - texture->getSize().y / 2);

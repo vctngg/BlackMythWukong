@@ -25,7 +25,7 @@ void GSAbout::Init()
 	GameButton* button;
 	//close Button
 	button = new GameButton();
-	button->Init("close_2");
+	button->Init("btn_close");
 	button->setOrigin(button->getSize() / 2.f);
 	button->setSize(sf::Vector2f(50, 50));
 	button->setPosition(screenWidth - screenWidth / 20, screenHeight / 8);
@@ -33,7 +33,7 @@ void GSAbout::Init()
 	m_ListBtn.push_back(button);
 
 	//Background
-	sf::Texture* texture = DATA->getTexture("Bg/background_glacial_mountains");
+	sf::Texture* texture = DATA->getTexture("Background/Forest/Background");
 	m_Background.setTexture(*texture);
 	m_Background.setOrigin((sf::Vector2f)texture->getSize() / 2.f);
 	m_Background.setPosition(screenWidth / 2, screenHeight - texture->getSize().y / 2);

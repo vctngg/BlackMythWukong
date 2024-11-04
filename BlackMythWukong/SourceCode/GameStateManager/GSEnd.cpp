@@ -25,7 +25,7 @@ void GSEnd::Init()
 	GameButton* button;
 	//menu Button
 	button = new GameButton();
-	button->Init("menu");
+	button->Init("btn_close");
 	button->setOrigin(button->getSize() / 2.f);
 	button->setSize(sf::Vector2f(50, 50));
 	button->setPosition(screenWidth / 2 + screenWidth / 12, screenHeight - screenHeight / 8);
@@ -39,7 +39,7 @@ void GSEnd::Init()
 
 	//replay Button
 	button = new GameButton();
-	button->Init("restart");
+	button->Init("btn_restart");
 	button->setOrigin(button->getSize() / 2.f);
 	button->setSize(sf::Vector2f(50, 50));
 	button->setPosition(screenWidth / 2 - screenWidth / 12, screenHeight - screenHeight / 8);
@@ -52,7 +52,7 @@ void GSEnd::Init()
 	m_ListBtn.push_back(button);
 
 	//Background
-	sf::Texture* texture = DATA->getTexture("Background layers/Background");
+	sf::Texture* texture = DATA->getTexture("Background/Forest/Background");
 	m_Background.setTexture(*texture);
 	m_Background.setOrigin((sf::Vector2f)texture->getSize() / 2.f);
 	m_Background.setPosition(screenWidth / 2, screenHeight - texture->getSize().y / 2);

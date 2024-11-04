@@ -12,12 +12,25 @@ void BSIdle::Init()
 
 void BSIdle::Update(float deltaTime)
 {
+	m_currentTime += deltaTime;
 	m_Animation->Update(deltaTime);
-	if ( m_Boss->ReturnDistanceFromPlayer() > 20 && m_Boss->ReturnDistanceFromPlayer() < screenWidth ) {
-		m_Boss->changeNextState(RUN);
+	if (m_Boss->getHitBox()->isAlive() )
+	{
+		if ( m_Boss->ReturnDistanceFromPlayer() > 20 && m_Boss->ReturnDistanceFromPlayer() < screenWidth ) {
+			m_Boss->changeNextState(RUN);
+		}
+		else if ( m_Boss->ReturnDistanceFromPlayer() < 20 ) {
+			if ( m_currentTime > 1 )
+			{
+				m_Boss->changeNextState(ATTACK);
+			}
+		}
+		if ( !m_Boss->getHitBox()->isVulnerable() ) {
+			m_Boss->changeNextState(HURT);
+		}
 	}
-	else if ( m_Boss->ReturnDistanceFromPlayer() < 20  ) {
-		m_Boss->changeNextState(ATTACK);
+	else {
+		m_Boss->changeNextState(FLEE);
 	}
 
 	m_Animation->setPosition(m_Boss->getHitBox()->getPosition().x, m_Boss->getHitBox()->getPosition().y-16);

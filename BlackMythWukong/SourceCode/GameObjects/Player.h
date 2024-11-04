@@ -11,8 +11,8 @@ public:
 	void Init(CollisionManager& collisionManager);
 	void Update(float deltaTime);
 	void Render(sf::RenderWindow* window);
-	//void SetFacing();
 	HitBox* getHitBox();
+	PlayerWeapon* getWeapon();
 
 private:
 	void performStateChange();
@@ -30,5 +30,8 @@ private:
 	IPState* m_attack3State;
 	IPState* m_idleState;
 
+	PlayerWeapon* m_PlayerWeapon;
+
+	CollisionManager m_collisionManager;
 
 };

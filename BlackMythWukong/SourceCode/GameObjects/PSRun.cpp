@@ -20,15 +20,24 @@ void PSRun::Update(float deltaTime)
 			m_Player->changeNextState(JUMP);
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::J) ) {
-			m_Player->changeNextState(ATTACK1);
+			if (m_Player->m_LevelManager.AccessSkillManager().IsUnlocked(PLAYER_ATTACK_1) )
+			{
+				m_Player->changeNextState(ATTACK1);
+			}
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::K) ) {
-			m_Player->changeNextState(ATTACK2);
+			if ( m_Player->m_LevelManager.AccessSkillManager().IsUnlocked(PLAYER_ATTACK_2) )
+			{
+				m_Player->changeNextState(ATTACK2);
+			}
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::L) ) {
-			m_Player->changeNextState(ATTACK3);
+			if ( m_Player->m_LevelManager.AccessSkillManager().IsUnlocked(PLAYER_ATTACK_3) )
+			{
+				m_Player->changeNextState(ATTACK3);
+			}
 		}
-		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::A) ) {
+		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::A) ) {
 			m_Player->getHitBox()->move(-m_Player->getHitBox()->getVelocity().x * deltaTime, 0);
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::D) ) {
@@ -49,15 +58,24 @@ void PSRun::Update(float deltaTime)
 			m_Player->changeNextState(JUMP);
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::J) ) {
-			m_Player->changeNextState(ATTACK1);
+			if ( m_Player->m_LevelManager.AccessSkillManager().IsUnlocked(PLAYER_ATTACK_1) )
+			{
+				m_Player->changeNextState(ATTACK1);
+			}
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::K) ) {
-			m_Player->changeNextState(ATTACK2);
+			if ( m_Player->m_LevelManager.AccessSkillManager().IsUnlocked(PLAYER_ATTACK_2) )
+			{
+				m_Player->changeNextState(ATTACK2);
+			}
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::L) ) {
-			m_Player->changeNextState(ATTACK3);
+			if ( m_Player->m_LevelManager.AccessSkillManager().IsUnlocked(PLAYER_ATTACK_3) )
+			{
+				m_Player->changeNextState(ATTACK3);
+			}
 		}
-		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::A) ) {
+		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::A) ) {
 			m_Player->getHitBox()->move(-m_Player->getHitBox()->getVelocity().x * deltaTime, 0);
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::D) ) {

@@ -20,6 +20,8 @@ Player::Player()
 	m_attack3State = new PSAttack3(this);
 	m_idleState = new PSIdle(this);
 	m_currentState = m_idleState;
+
+	m_PlayerWeapon = new PlayerWeapon();
 }
 
 void Player::changeNextState(IPState::STATE nextState)
@@ -41,19 +43,24 @@ void Player::Init(CollisionManager& collisionManager)
 	m_HitBox->setPosition(400, groundY-m_HitBox->getSize().y/2);
 	m_HitBox->Init(sf::Vector2f(200, 500));
 	m_HitBox->SetTag(PLAYER);
+
 	collisionManager.addObj(m_HitBox);
+	m_PlayerWeapon->Init(collisionManager);
+	m_LevelManager.Init();
 }
 
 void Player::Update(float deltaTime)
 {
 	performStateChange();
+	m_PlayerWeapon->Update(deltaTime);
 	m_currentState->Update(deltaTime);
-
+	m_LevelManager.Update(deltaTime);
 }
 
 void Player::Render(sf::RenderWindow* window)
 {
 	m_currentState->Render(window);
+	m_PlayerWeapon->Render(window);
 	window->draw(*m_HitBox);
 }
 
@@ -61,6 +68,11 @@ void Player::Render(sf::RenderWindow* window)
 HitBox* Player::getHitBox()
 {
 	return m_HitBox;
+}
+
+PlayerWeapon* Player::getWeapon()
+{
+	return m_PlayerWeapon;
 }
 
 void Player::performStateChange()
@@ -112,23 +124,26 @@ Player::~Player()
 	if ( m_fallState != nullptr ) {
 		delete m_fallState;
 	}
+	if ( m_PlayerWeapon != nullptr ) {
+		delete m_PlayerWeapon;
+	}
 	if ( m_deathState != nullptr ) {
 		delete m_deathState;
-
-		if ( m_attack1State != nullptr ) {
-			delete m_attack1State;
-		}
-		if ( m_attack2State != nullptr ) {
-			delete m_attack2State;
-		}
-		if ( m_attack3State != nullptr ) {
-			delete m_attack3State;
-		}
-		if ( m_idleState != nullptr ) {
-			delete m_idleState;
-		}
-		m_currentState = nullptr;
 	}
+	if ( m_attack1State != nullptr ) {
+		delete m_attack1State;
+	}
+	if ( m_attack2State != nullptr ) {
+		delete m_attack2State;
+	}
+	if ( m_attack3State != nullptr ) {
+		delete m_attack3State;
+	}
+	if ( m_idleState != nullptr ) {
+		delete m_idleState;
+	}
+	m_currentState = nullptr;
+	
 }
 
 	

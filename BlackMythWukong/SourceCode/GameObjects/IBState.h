@@ -14,6 +14,7 @@ public:
 		ATTACK,
 		RUN,
 		WAITING,
+		FLEE,
 	};
 	virtual void Init() = 0;
 	virtual void Update(float deltaTime) = 0;

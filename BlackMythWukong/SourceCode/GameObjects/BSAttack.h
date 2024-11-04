@@ -9,6 +9,7 @@ public:
 	void Update(float deltaTime);
 	void Render(sf::RenderWindow* window);
 	void Reset();
+	void SetDir();
 
 private:
 	IBoss* m_Boss;
@@ -16,5 +17,6 @@ private:
 
 	float m_currentTime;
 	float m_ChangeTime;
+	bool m_left = new bool[1];
 
 };

@@ -12,9 +12,11 @@ void BSWaiting::Init()
 
 void BSWaiting::Update(float deltaTime)
 {
+	m_Boss->getHitBox()->setAlive(false);
 	m_Animation->Update(deltaTime);
 	if ( sf::Keyboard::isKeyPressed(sf::Keyboard::E) ) {
 		m_Boss->changeNextState(IDLE);
+		m_Boss->getHitBox()->setAlive(true);
 	}
 
 	m_Animation->setPosition(m_Boss->getHitBox()->getPosition().x, m_Boss->getHitBox()->getPosition().y - 16);

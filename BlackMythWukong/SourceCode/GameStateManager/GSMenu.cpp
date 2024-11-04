@@ -37,7 +37,7 @@ void GSMenu::Init()
 
 	//PlayButton
 	button = new GameButton();
-	button->Init("play");
+	button->Init("btn_resume");
 	button->setOnClick([]() {GSM->ChangeState(StateTypes::PLAY); });
 	button->setPosition(screenWidth / 2, screenHeight / 2 + screenHeight / 10);
 	button->setSize(sf::Vector2f(150, 150));
@@ -46,7 +46,7 @@ void GSMenu::Init()
 
 	//Exit Button
 	button = new GameButton();
-	button->Init("close");
+	button->Init("btn_close");
 	button->setOrigin(button->getSize() / 2.f);
 	button->setPosition(screenWidth / 2 + screenWidth / 4, screenHeight - screenHeight / 8);
 	button->setOnClick([]() {WConnect->getWindow()->close(); });
@@ -54,7 +54,7 @@ void GSMenu::Init()
 
 	//Setting Button
 	button = new GameButton();
-	button->Init("settings");
+	button->Init("btn_menu");
 	button->setOrigin(button->getSize() / 2.f);
 	button->setPosition(screenWidth / 2 - screenWidth / 4, screenHeight - screenHeight / 8);
 	button->setOnClick([]() {GSM->ChangeState(StateTypes::SETTING); });
@@ -62,7 +62,7 @@ void GSMenu::Init()
 
 	//about Button
 	button = new GameButton();
-	button->Init("about");
+	button->Init("btn_info");
 	button->setOrigin(button->getSize() / 2.f);
 	button->setPosition(screenWidth / 2 + screenWidth / 12, screenHeight - screenHeight / 8);
 	button->setOnClick([]() {GSM->ChangeState(StateTypes::ABOUT); });
@@ -70,7 +70,7 @@ void GSMenu::Init()
 
 	//HighScore Button
 	button = new GameButton();
-	button->Init("prize");
+	button->Init("btn_highscore");
 	button->setOrigin(button->getSize() / 2.f);
 	button->setPosition(screenWidth / 2 - screenWidth / 12, screenHeight - screenHeight / 8);
 	button->setOnClick([]() {GSM->ChangeState(StateTypes::HIGHSCORE); });

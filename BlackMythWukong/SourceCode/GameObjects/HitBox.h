@@ -1,26 +1,32 @@
 #pragma once
 #include "../GameManager/ResourceManager.h"
-enum TAG
+#include "HPManager.h"
+enum TAG 
 {
 	PLAYER,
 	CREEP,
 	BOSS,
 	BOSS_Bullet,
+	PLAYER_Bullet,
 };
-class HitBox :public sf::RectangleShape {
+
+class HitBox :public sf::RectangleShape, public HPManager {
 public:
 	HitBox(sf::Vector2i size);
 	~HitBox();
 	void Init(sf::Vector2f velocity);
-
 	sf::Vector2f getVelocity();
 	void setVelocity(sf::Vector2f velocity);
+	void Update(float deltaTime);
 	TAG getTag() {
 		return m_Tag;
 	};
-	void SetTag(TAG tag) {
+	void SetTag(TAG tag) { 
+		setVulnerable(true);
 		m_Tag = tag;
+		SetStats();
 	}
+	void SetStats();
 
 	bool isAlive() {
 		return m_isAlive;
@@ -28,8 +34,16 @@ public:
 	void setAlive(bool alive) {
 		m_isAlive = alive;
 	}
+	bool isVulnerable() {
+		return m_isVulnerable;
+	}
+	void setVulnerable(bool vulnerable) {
+		m_isVulnerable = vulnerable;
+	}
 private:
 	sf::Vector2f m_Velocity;
 	bool m_isAlive;
+	bool m_isVulnerable;
+	float m_vulnerability_timer = 0;
 	TAG m_Tag;
 };

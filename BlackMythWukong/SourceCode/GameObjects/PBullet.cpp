@@ -21,16 +21,16 @@ PBullet::~PBullet()
 
 void PBullet::Init()
 {
-	m_HitBox = new HitBox(sf::Vector2i(10, 10));
-	m_HitBox->Init(sf::Vector2f(240 * 2, 0));
+	m_HitBox = new HitBox(sf::Vector2i(20, 20));
+	m_HitBox->Init(sf::Vector2f(240 , 0));
 	setStartPoint(sf::Vector2f(screenWidth + 100, groundY));
 	m_HitBox->setPosition(screenWidth, groundY);
 
-	m_runAni = new Animation2(*DATA->getTexture("Erlang/RUN"), sf::Vector2i(8, 1), 0.1f, 8);
-	m_deathAni = new Animation2(*DATA->getTexture("Erlang/ATTACK"), sf::Vector2i(5, 1), 0.1f, 5);
+	m_runAni = new Animation2(*DATA->getTexture("wukong/wukong_dash"), sf::Vector2i(2, 1), 0.1f, 2);
+	m_deathAni = new Animation2(*DATA->getTexture("wukong/wukong_dash_end"), sf::Vector2i(3, 1), 0.1f, 3);
 	m_deathAni->setModeEndFrame(true);
 	m_currentAni = m_runAni;
-	m_HitBox->SetTag(BOSS_Bullet);
+	m_HitBox->SetTag(PLAYER_Bullet);
 }
 
 void PBullet::Update(float deltaTime)
@@ -40,7 +40,7 @@ void PBullet::Update(float deltaTime)
 		if ( !m_left )
 		{
 			m_HitBox->move(m_HitBox->getVelocity() * deltaTime);
-			if ( m_HitBox->getPosition().x > m_startPoint.x + 40 ) {
+			if ( m_HitBox->getPosition().x > m_startPoint.x + 100 ) {
 				m_HitBox->setPosition(m_startPoint);
 				m_stop = true;
 				m_HitBox->setAlive(false);//kill bullet
@@ -49,7 +49,7 @@ void PBullet::Update(float deltaTime)
 		else
 		{
 			m_HitBox->move(-m_HitBox->getVelocity() * deltaTime);
-			if ( m_HitBox->getPosition().x < m_startPoint.x - 40 ) {
+			if ( m_HitBox->getPosition().x < m_startPoint.x - 100 ) {
 				m_HitBox->setPosition(m_startPoint);
 				m_stop = true;
 				m_HitBox->setAlive(false);//kill bullet
@@ -57,6 +57,7 @@ void PBullet::Update(float deltaTime)
 		}
 		m_currentAni->Update(deltaTime);
 		m_currentAni->setPosition(getHitBox()->getPosition());
+		m_currentAni->flip(m_left);
 	}
 	else
 	{
@@ -69,6 +70,7 @@ void PBullet::Update(float deltaTime)
 		if ( ani->getCurrentFrameCount() != ani->getFrameTotals() - 1 ) {
 			m_currentAni->Update(deltaTime);
 			m_currentAni->setPosition(getHitBox()->getPosition());
+			m_currentAni->flip(m_left);
 		}
 		else m_stop = true;
 

@@ -3,6 +3,7 @@
 void UI::Init(sf::Texture& texture, sf::Vector2i frame_num, sf::Vector2f pos, int frame_count)
 {
 	m_frameCount = frame_count;
+	m_currentFrameCount = 0;
 	m_frameNum = frame_num;
 	this->setTexture(texture);
 	m_currentFrame = sf::Vector2i(0, 0);
@@ -31,20 +32,31 @@ void UI::ApplyRect()
 }
 void UI::Update(float deltaTime)
 {
-	m_currentTime += deltaTime;
-	if ( m_currentFrame.x == m_frameNum.x ) {
-		m_currentFrame.x = 0;
-		m_currentFrame.y++;
-		if ( m_currentFrame.y == m_frameNum.y ) {
-			m_currentFrame.y = 0;
+	if ( m_doAnimate ) {
+		Animate(deltaTime);
+	}
+	else
+	{
+		m_currentTime += deltaTime;
+		if ( m_currentFrame.x == m_frameNum.x ) {
+			m_currentFrame.x = 0;
+			m_currentFrame.y++;
 		}
+		if ( (m_frameCount - m_currentFrame.y * m_frameNum.x - (m_currentFrame.x + 1)) < 0 ) {
+			//Reset();// if frame index exceeds frame number -> reset
+			int x_index = m_currentFrame.x - 1;
+			if ( x_index == -1 ) {
+				x_index = m_frameNum.x - 1;
+			}
+			m_currentFrame = sf::Vector2i(x_index, m_frameNum.y - 1);// reset to last frame
+
+		}
+
+		CalculateRectUV();
+		ApplyRect();
 	}
-	else if ( (m_frameCount - m_currentFrame.y * m_frameNum.x - (m_currentFrame.x + 1)) < 0 ) {
-		Reset();
-	}
-	CalculateRectUV();
-	ApplyRect();
 }
+
 
 
 void UI::flip(bool do_flip)
@@ -59,7 +71,53 @@ void UI::flip(bool do_flip)
 	}
 }
 
+sf::Vector2i UI::GetCurrentFrame()
+{
+	return m_currentFrame;
+}
+
+void UI::Animate(float deltaTime) {
+	m_currentTime += deltaTime;
+	if ( m_currentTime >= m_frameTime ) {
+		m_currentFrame.x++;
+		m_currentFrameCount++;
+		if ( (m_currentFrame.x == m_frameNum.x) || ((m_currentFrame.y * m_frameNum.x + m_currentFrame.x) == m_frameCount) ) {
+			m_currentFrame.x = 0;
+			m_currentFrame.y++;
+		}
+		if ( m_currentFrame.y == m_frameNum.y ) {
+			m_currentFrame.y = 0;
+			m_currentFrameCount = 0;
+			m_currentFrame.x = 0;
+		}
+		CalculateRectUV();
+		ApplyRect();
+		m_currentTime -= m_frameTime;
+	}
+}
+
+void UI::SetAnimate(float frame_time)
+{
+	m_doAnimate = true;
+	m_frameTime = frame_time;
+}
+
+void UI::ChangeFrame(int frame_number)
+{
+	if ( frame_number != (m_currentFrame.x + 1 + m_frameNum.x * m_currentFrame.y) ) // only changes when frame indexes are different
+	{
+		int y = 0;
+		int x = frame_number;
+		while ( x > m_frameNum.x ) {
+			x -= m_frameNum.x;
+			y++;
+		}
+		m_currentFrame = sf::Vector2i(x - 1, y);
+	}
+}
+
 void UI::Reset()
 {
 	m_currentFrame = sf::Vector2i(0, 0);
+	m_currentFrameCount = 0;
 }

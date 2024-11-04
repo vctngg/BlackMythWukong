@@ -7,7 +7,7 @@ BSHurt::BSHurt(IBoss* boss)
 
 void BSHurt::Init()
 {
-	m_Animation = new Animation2(*DATA->getTexture("Erlang/HURT"), sf::Vector2i(5, 1), 0.1f, 5);
+	m_Animation = new Animation2(*DATA->getTexture("Erlang/HURT"), sf::Vector2i(4, 1), 0.1f, 4);
 	m_Animation->setModeEndFrame(true);
 }
 
@@ -15,6 +15,9 @@ void BSHurt::Update(float deltaTime)
 {
 	m_Animation->Update(deltaTime);
 	Animation2* ani = (Animation2*)m_Animation;
+	if ( ani->getCurrentFrameCount() == ani->getFrameTotals() -1 ) {
+		m_Boss->changeNextState(STATE::IDLE);
+	}
 
 	m_Animation->setPosition(m_Boss->getHitBox()->getPosition().x, m_Boss->getHitBox()->getPosition().y - 16);
 	m_Animation->flip(m_Boss->getHitBox()->getPosition().x > m_Boss->ReturnPlayerPosition().x);

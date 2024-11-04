@@ -24,11 +24,6 @@ void GSIntro::Resume()
 
 void GSIntro::Init()
 {
-	std::fstream input("texture.txt", std::ios::in);
-	std::string name;
-	getline(input, name);
-	DATA->addTexture(name);
-	input.close();
 	sf::Texture* texture = DATA->getTexture("Logo");
 	m_Logo.setTexture(*texture);
 	m_Logo.setPosition((screenWidth / 2) + 45, (screenHeight / 2)+30);
@@ -40,7 +35,7 @@ void GSIntro::Init()
 
 void GSIntro::Update(float deltaTime)
 {
-	//GameStateMachine::GetInstance()->ChangeState(StateTypes::PLAY);
+	GameStateMachine::GetInstance()->ChangeState(StateTypes::PLAY);
 	m_currentTime += deltaTime;
 	if ( m_currentTime >= 1.5 ) {
 		if ( alpha <= 255 ) {

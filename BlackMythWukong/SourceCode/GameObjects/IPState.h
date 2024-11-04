@@ -1,5 +1,6 @@
 #pragma once
 #include "../GameManager/ResourceManager.h"
+#include "PlayerWeapon.h"
 #include "../GameObjects/CollisionManager.h"
 #include "../GameObjects/MovementCheck.h"
 

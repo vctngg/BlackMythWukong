@@ -35,7 +35,7 @@ void GSHighScore::Init()
 	GameButton* button;
 	//close Button
 	button = new GameButton();
-	button->Init("close_2");
+	button->Init("btn_close");
 	button->setOrigin(button->getSize() / 2.f);
 	button->setSize(sf::Vector2f(50, 50));
 	button->setPosition(screenWidth - screenWidth / 20, screenHeight / 8);
@@ -43,7 +43,7 @@ void GSHighScore::Init()
 	m_ListBtn.push_back(button);
 
 	//Background
-	sf::Texture* texture = DATA->getTexture("Background layers/Background");
+	sf::Texture* texture = DATA->getTexture("Background/Forest/Background");
 	m_Background.setTexture(*texture);
 	m_Background.setOrigin((sf::Vector2f)texture->getSize() / 2.f);
 	m_Background.setPosition(screenWidth / 2, screenHeight - texture->getSize().y / 2);

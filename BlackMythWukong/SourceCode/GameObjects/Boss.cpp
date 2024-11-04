@@ -4,6 +4,7 @@
 #include "BSIdle.h"
 #include "BSRun.h"
 #include "BSWaiting.h"
+#include "BSFlee.h"
 
 Boss::Boss()
 {
@@ -13,6 +14,7 @@ Boss::Boss()
 	m_runState = new BSRun(this);
 	m_attackState = new BSAttack(this);
 	m_waitingState = new BSWaiting(this);
+	m_fleeState = new BSFlee(this);
 
 	m_currentState = m_waitingState;
 
@@ -36,6 +38,9 @@ Boss::~Boss()
 	if ( m_waitingState != nullptr ) {
 		delete m_waitingState;
 	}
+	if ( m_fleeState != nullptr ) {
+		delete m_fleeState;
+	}
 	if ( m_BossWeapon != nullptr ) {
 		delete m_BossWeapon;
 	}
@@ -55,6 +60,7 @@ void Boss::Init(CollisionManager& collisionManager)
 	m_attackState->Init();
 	m_hurtState->Init();
 	m_waitingState->Init();
+	m_fleeState->Init();
 
 	m_HitBox = new HitBox(sf::Vector2i(16, 32));
 	m_HitBox->setPosition(screenWidth-300, groundY - m_HitBox->getSize().y / 2);
@@ -135,6 +141,8 @@ void Boss::performStateChange()
 			break;
 		case IBState:: WAITING:
 			m_currentState = m_waitingState;
+		case IBState::FLEE:
+			m_currentState = m_fleeState;
 		default:
 			break;
 		}

@@ -31,6 +31,7 @@ void Bullet::Init()
 	m_deathAni->setModeEndFrame(true);
 	m_currentAni = m_runAni;
 	m_HitBox->SetTag(BOSS_Bullet);
+
 }
 
 void Bullet::Update(float deltaTime)
@@ -56,7 +57,8 @@ void Bullet::Update(float deltaTime)
 			}
 		}
 		m_currentAni->Update(deltaTime);
-		m_currentAni->setPosition(getHitBox()->getPosition());
+		m_currentAni->setPosition(getHitBox()->getPosition().x, getHitBox()->getPosition().y-16);
+		m_currentAni->flip(m_left);
 	}
 	else
 	{
@@ -68,7 +70,8 @@ void Bullet::Update(float deltaTime)
 		Animation2* ani = (Animation2*)m_currentAni;
 		if ( ani->getCurrentFrameCount() != ani->getFrameTotals() - 1 ) {
 			m_currentAni->Update(deltaTime);
-			m_currentAni->setPosition(getHitBox()->getPosition());
+			m_currentAni->setPosition(getHitBox()->getPosition().x, getHitBox()->getPosition().y-16);
+			m_currentAni->flip(m_left);
 		}
 		else m_stop = true;
 
