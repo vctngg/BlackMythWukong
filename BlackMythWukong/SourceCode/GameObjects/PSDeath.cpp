@@ -8,7 +8,7 @@ PSDeath::PSDeath(IPlayer* player)
 
 void PSDeath::Init()
 {
-	m_Animation = new Animation(*DATA->getTexture("Character/Death"), sf::Vector2i(24, 1), 0.1f);
+	m_Animation = new Animation(*DATA->getTexture("wukong/wukong_death"), sf::Vector2i(14, 1), 0.2f);
 	m_Animation->setModeEndFrame(true);
 }
 

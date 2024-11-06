@@ -25,10 +25,7 @@ void GSAbout::Init()
 	GameButton* button;
 	//close Button
 	button = new GameButton();
-	button->Init("btn_close");
-	button->setOrigin(button->getSize() / 2.f);
-	button->setSize(sf::Vector2f(50, 50));
-	button->setPosition(screenWidth - screenWidth / 20, screenHeight / 8);
+	button->Init("close", sf::Vector2i(2, 1), sf::Vector2f(screenWidth - screenWidth / 20 - 50, screenHeight / 8 - 50), 2, sf::Vector2f(100, 100), sf::Vector2f(1, 1));
 	button->setOnClick([]() {GSM->PopState(); });
 	m_ListBtn.push_back(button);
 

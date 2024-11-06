@@ -43,8 +43,8 @@ void ParallexBackground::Init(BGTYPE bg_type)
 	}
 	case FOREST: {
 		Layer* layer;
-		y_pos = 0;
-		m_scaling = sf::Vector2f(2.4f, 2.4f);
+		y_pos = -screenHeight - 20;
+		m_scaling = sf::Vector2f(1.4f, 1.4f);
 		std::string path = "Background/Forest/";
 		//Layer 2
 		layer = new Layer();
@@ -113,6 +113,9 @@ void ParallexBackground::Render(sf::RenderWindow* window)
 
 void ParallexBackground::SwitchBackground(BGTYPE bg_type)
 {
-	m_Background.clear();
-	Init(bg_type);
+	if (m_backgroundType != bg_type )
+	{
+		m_Background.clear();
+		Init(bg_type);
+	}
 }

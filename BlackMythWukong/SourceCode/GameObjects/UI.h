@@ -4,7 +4,7 @@
 class UI :public sf::Sprite
 {
 public: 
-	void Init(sf::Texture& texture, sf::Vector2i frame_num, sf::Vector2f pos, int frame_count);
+	void Init(sf::Texture& texture, sf::Vector2i frame_num, sf::Vector2f pos, int frame_count, sf::Vector2f scaling);
 	void Update(float deltaTime);
 	void Reset();
 	void CalculateRectUV();

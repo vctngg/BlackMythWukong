@@ -3,6 +3,7 @@
 #include "HPManager.h"
 enum TAG 
 {
+	NON_INTERACTIVE,
 	PLAYER,
 	CREEP,
 	BOSS,

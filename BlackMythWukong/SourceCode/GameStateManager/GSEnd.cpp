@@ -25,10 +25,7 @@ void GSEnd::Init()
 	GameButton* button;
 	//menu Button
 	button = new GameButton();
-	button->Init("btn_close");
-	button->setOrigin(button->getSize() / 2.f);
-	button->setSize(sf::Vector2f(50, 50));
-	button->setPosition(screenWidth / 2 + screenWidth / 12, screenHeight - screenHeight / 8);
+	button->Init("home", sf::Vector2i(2, 1), sf::Vector2f(screenWidth / 2 + screenWidth / 12 - 50, screenHeight - screenHeight / 8 - 50), 2, sf::Vector2f(150, 150), sf::Vector2f(1, 1));
 	button->setOnClick([]() {
 		GSM->PopState();
 		GSM->PopState();
@@ -39,10 +36,7 @@ void GSEnd::Init()
 
 	//replay Button
 	button = new GameButton();
-	button->Init("btn_restart");
-	button->setOrigin(button->getSize() / 2.f);
-	button->setSize(sf::Vector2f(50, 50));
-	button->setPosition(screenWidth / 2 - screenWidth / 12, screenHeight - screenHeight / 8);
+	button->Init("restart", sf::Vector2i(2, 1), sf::Vector2f(screenWidth / 2 - screenWidth / 12 - 50, screenHeight - screenHeight / 8 - 50), 2, sf::Vector2f(150, 150), sf::Vector2f(1, 1));
 	button->setOnClick([]() {
 		GSM->PopState();
 		GSM->ChangeState(StateTypes::PLAY);
@@ -60,17 +54,17 @@ void GSEnd::Init()
 	//Tile Game
 	m_Title.setString("END GAME!");
 	m_Title.setFont(*DATA->getFont("ARCADE"));
-	m_Title.setPosition(screenWidth / 2, screenHeight / 5);
+	m_Title.setPosition(screenWidth / 2 - 100, screenHeight / 5);
 
 	//Best Score
-	m_bestScore.setString("BEST SOCRE: " + std::to_string(ScoreManager::GetInstance()->getBestScore()));
+	m_bestScore.setString("BEST SCORE: " + std::to_string(ScoreManager::GetInstance()->getBestScore()));
 	m_bestScore.setFont(*DATA->getFont("ARCADE"));
-	m_bestScore.setPosition(screenWidth / 2, screenHeight / 2);
+	m_bestScore.setPosition(screenWidth / 2 - 100, screenHeight / 2);
 
 	//current Score
-	m_currentScore.setString("YOUR SOCRE: " + std::to_string(ScoreManager::GetInstance()->getCurrentScore()));
+	m_currentScore.setString("YOUR SCORE: " + std::to_string(ScoreManager::GetInstance()->getCurrentScore()));
 	m_currentScore.setFont(*DATA->getFont("ARCADE"));
-	m_currentScore.setPosition(screenWidth / 2, screenHeight / 2 + 50);
+	m_currentScore.setPosition(screenWidth / 2 - 100, screenHeight / 2 + 50);
 }
 
 void GSEnd::Update(float deltaTime)

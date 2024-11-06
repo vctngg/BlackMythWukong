@@ -35,7 +35,7 @@ void GSIntro::Init()
 
 void GSIntro::Update(float deltaTime)
 {
-	GameStateMachine::GetInstance()->ChangeState(StateTypes::PLAY);
+	//GameStateMachine::GetInstance()->ChangeState(StateTypes::PLAY);
 	m_currentTime += deltaTime;
 	if ( m_currentTime >= 1.5 ) {
 		if ( alpha <= 255 ) {

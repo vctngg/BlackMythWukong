@@ -150,7 +150,12 @@
     <ClCompile Include="SourceCode\GameObjects\Bullet.cpp" />
     <ClCompile Include="SourceCode\GameObjects\CollisionManager.cpp" />
     <ClCompile Include="SourceCode\GameObjects\CooldownManager.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\Creep.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\CreepManager.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\DialogManager.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\Dog.cpp" />
     <ClCompile Include="SourceCode\GameObjects\GameButton.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\Guard.cpp" />
     <ClCompile Include="SourceCode\GameObjects\HitBox.cpp" />
     <ClCompile Include="SourceCode\GameObjects\HPManager.cpp" />
     <ClCompile Include="SourceCode\GameObjects\Layer.cpp" />
@@ -185,6 +190,7 @@
   <ItemGroup>
     <ClInclude Include="resource.h" />
     <ClInclude Include="SourceCode\Application.h" />
+    <ClInclude Include="SourceCode\Dialog.h" />
     <ClInclude Include="SourceCode\GameConfig.h" />
     <ClInclude Include="SourceCode\GameManager\ResourceManager.h" />
     <ClInclude Include="SourceCode\GameManager\Singleton.h" />
@@ -202,7 +208,12 @@
     <ClInclude Include="SourceCode\GameObjects\Bullet.h" />
     <ClInclude Include="SourceCode\GameObjects\CollisionManager.h" />
     <ClInclude Include="SourceCode\GameObjects\CooldownManager.h" />
+    <ClInclude Include="SourceCode\GameObjects\Creep.h" />
+    <ClInclude Include="SourceCode\GameObjects\CreepManager.h" />
+    <ClInclude Include="SourceCode\GameObjects\DialogManager.h" />
+    <ClInclude Include="SourceCode\GameObjects\Dog.h" />
     <ClInclude Include="SourceCode\GameObjects\GameButton.h" />
+    <ClInclude Include="SourceCode\GameObjects\Guard.h" />
     <ClInclude Include="SourceCode\GameObjects\HitBox.h" />
     <ClInclude Include="SourceCode\GameObjects\HPManager.h" />
     <ClInclude Include="SourceCode\GameObjects\IBoss.h" />

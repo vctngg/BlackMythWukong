@@ -1,18 +1,19 @@
 #include "UI.h"
 
-void UI::Init(sf::Texture& texture, sf::Vector2i frame_num, sf::Vector2f pos, int frame_count)
+void UI::Init(sf::Texture& texture, sf::Vector2i frame_num, sf::Vector2f pos, int frame_count, sf::Vector2f scaling)
 {
 	m_frameCount = frame_count;
 	m_currentFrameCount = 0;
 	m_frameNum = frame_num;
-	this->setTexture(texture);
+	setTexture(texture);
 	m_currentFrame = sf::Vector2i(0, 0);
-	this->setPosition(pos);
+	setPosition(pos);
 	m_currentTime = 0.f;
 	CalculateRectSize();
 	CalculateRectUV();
 	ApplyRect();
-	this->setOrigin((sf::Vector2f)m_rectSize / 2.f);
+	setOrigin((sf::Vector2f)m_rectSize / 2.f);
+	setScale(scaling);
 }
 void UI::CalculateRectSize()
 {

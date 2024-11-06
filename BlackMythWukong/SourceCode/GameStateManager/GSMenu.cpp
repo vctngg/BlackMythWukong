@@ -37,42 +37,32 @@ void GSMenu::Init()
 
 	//PlayButton
 	button = new GameButton();
-	button->Init("btn_resume");
+	button->Init("play", sf::Vector2i(2,1), sf::Vector2f(screenWidth / 2 - 50, screenHeight / 2 + screenHeight / 10 - 50), 2, sf::Vector2f(150, 150), sf::Vector2f(1,1));
 	button->setOnClick([]() {GSM->ChangeState(StateTypes::PLAY); });
-	button->setPosition(screenWidth / 2, screenHeight / 2 + screenHeight / 10);
-	button->setSize(sf::Vector2f(150, 150));
-	button->setOrigin(button->getSize() / 2.f);
+
 	m_ListBtn.push_back(button);
 
 	//Exit Button
 	button = new GameButton();
-	button->Init("btn_close");
-	button->setOrigin(button->getSize() / 2.f);
-	button->setPosition(screenWidth / 2 + screenWidth / 4, screenHeight - screenHeight / 8);
+	button->Init("close", sf::Vector2i(2, 1), sf::Vector2f(screenWidth / 2 + screenWidth / 4 - 50, screenHeight - screenHeight / 8 - 50), 2, sf::Vector2f(150, 150), sf::Vector2f(1, 1));
 	button->setOnClick([]() {WConnect->getWindow()->close(); });
 	m_ListBtn.push_back(button);
 
 	//Setting Button
 	button = new GameButton();
-	button->Init("btn_menu");
-	button->setOrigin(button->getSize() / 2.f);
-	button->setPosition(screenWidth / 2 - screenWidth / 4, screenHeight - screenHeight / 8);
+	button->Init("settings", sf::Vector2i(2, 1), sf::Vector2f(screenWidth / 2 - screenWidth / 4 - 50, screenHeight - screenHeight / 8 - 50), 2, sf::Vector2f(150, 150), sf::Vector2f(1, 1));
 	button->setOnClick([]() {GSM->ChangeState(StateTypes::SETTING); });
 	m_ListBtn.push_back(button);
 
 	//about Button
 	button = new GameButton();
-	button->Init("btn_info");
-	button->setOrigin(button->getSize() / 2.f);
-	button->setPosition(screenWidth / 2 + screenWidth / 12, screenHeight - screenHeight / 8);
+	button->Init("about", sf::Vector2i(2, 1), sf::Vector2f(screenWidth / 2 + screenWidth / 12 - 50, screenHeight - screenHeight / 8 - 50), 2, sf::Vector2f(150, 150), sf::Vector2f(1, 1));
 	button->setOnClick([]() {GSM->ChangeState(StateTypes::ABOUT); });
 	m_ListBtn.push_back(button);
 
 	//HighScore Button
 	button = new GameButton();
-	button->Init("btn_highscore");
-	button->setOrigin(button->getSize() / 2.f);
-	button->setPosition(screenWidth / 2 - screenWidth / 12, screenHeight - screenHeight / 8);
+	button->Init("achievements", sf::Vector2i(2, 1), sf::Vector2f(screenWidth / 2 - screenWidth / 12 - 50, screenHeight - screenHeight / 8 - 50), 2, sf::Vector2f(150, 150), sf::Vector2f(1, 1));
 	button->setOnClick([]() {GSM->ChangeState(StateTypes::HIGHSCORE); });
 	m_ListBtn.push_back(button);
 
