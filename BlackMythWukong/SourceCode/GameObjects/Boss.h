@@ -9,7 +9,7 @@ public:
 	void changeNextState(IBState::STATE nextState);
 
 	void Init(CollisionManager& collisionManager);
-	void Update(float deltaTime);
+	void Update(float deltaTime, sf::Vector2f offset);
 	void Render(sf::RenderWindow* window);
 	void FacingCheck();
 	HitBox* getHitBox();

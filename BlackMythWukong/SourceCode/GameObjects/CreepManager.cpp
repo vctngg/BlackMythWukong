@@ -13,7 +13,7 @@ CreepManager::~CreepManager()
 		if ( it != nullptr ) {
 			delete it;
 		}
-	}
+	} 
 	m_listGuard.clear();
 	for ( auto it : m_Dog ) {
 		if ( it != nullptr ) {
@@ -41,7 +41,7 @@ void CreepManager::Init(CollisionManager& collisionManager)
 		collisionManager.addObj(dog->getHitBox());
 }
 
-void CreepManager::Update(float deltaTime)
+void CreepManager::Update(float deltaTime,sf::Vector2f offset)
 {
 	m_currentTime += deltaTime;
 	for ( int i = 0; i < m_GuardNum; i++ ) {
@@ -49,11 +49,11 @@ void CreepManager::Update(float deltaTime)
 	}
 	SpawnDog();
 	for ( auto creep : m_listGuard ) {
-		creep->Update(deltaTime);
+		creep->Update(deltaTime, offset);
 		//printf("(%f,%f)\n",creep->getHitBox()->getPosition().x, creep->getHitBox()->getPosition().y);
 	}
 	for ( auto creep : m_Dog ) {
-		creep->Update(deltaTime);
+		creep->Update(deltaTime,offset);
 	}
 }
 
@@ -65,6 +65,11 @@ void CreepManager::Render(sf::RenderWindow* window)
 	for ( auto creep : m_Dog ) {
 		creep->Render(window);
 	}
+}
+
+std::list<Dog*> CreepManager::GetDog()
+{
+	return m_Dog;
 }
 
 void CreepManager::SpawnGuards()

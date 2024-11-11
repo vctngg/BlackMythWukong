@@ -13,6 +13,7 @@ public:
 	void TriggerDialog();
 	void EndDialog();
 	bool IsDialog();
+	int GetCurrentDialog();
 private:
 	UI m_dialogBox;
 	std::list<GameButton*> m_ListBtn;

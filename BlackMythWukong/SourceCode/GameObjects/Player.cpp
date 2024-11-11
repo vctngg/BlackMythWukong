@@ -51,8 +51,17 @@ void Player::Init(CollisionManager& collisionManager)
 
 void Player::Update(float deltaTime)
 {
+	if ( this->getHitBox()->getPosition().x < screenWidth / 4 || this->getHitBox()->getPosition().x > screenWidth * 3 / 4 )
+	{
+		if ( this->getHitBox()->getPosition().x < screenWidth / 4 ) {
+			m_offset.x = abs(screenWidth / 4 - this->getHitBox()->getPosition().x);
+		}
+		if ( this->getHitBox()->getPosition().x > screenWidth * 3 / 4 ) {
+			m_offset.x = -abs(this->getHitBox()->getPosition().x - screenWidth * 3 / 4);
+		}
+	}
 	performStateChange();
-	m_PlayerWeapon->Update(deltaTime);
+	m_PlayerWeapon->Update(deltaTime, m_offset);
 	m_currentState->Update(deltaTime);
 	m_LevelManager.Update(deltaTime);
 }

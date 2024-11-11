@@ -88,32 +88,26 @@ void GSPlay::Update(float deltaTime)
 			}
 		}
 		else ScoreManager::GetInstance()->setCurrentScore(m_currentScore);
+		UpdateBackground(deltaTime);
 		if ( m_Player.getHitBox()->isAlive() )
 		{
-			if ( sf::Keyboard::isKeyPressed(sf::Keyboard::R) ) {
-				m_Background.SwitchBackground(FOREST);
-			}
-
-			if ( m_Player.getHitBox()->getPosition().x < screenWidth / 4 || m_Player.getHitBox()->getPosition().x > screenWidth * 3 / 4 )
-			{
-				if ( m_Player.getHitBox()->getPosition().x < screenWidth / 4 ) {
-					m_Player.getHitBox()->setPosition(screenWidth / 4, m_Player.getHitBox()->getPosition().y);
-				}
-				if ( m_Player.getHitBox()->getPosition().x > screenWidth * 3 / 4 ) {
-					m_Player.getHitBox()->setPosition(screenWidth * 3 / 4, m_Player.getHitBox()->getPosition().y);
-				}
-				if ( m_Player.IsMoving() )
-				{
-					m_Background.Update(deltaTime);
-				}
-			}//screen scrolling mechanic
 			m_Boss.GetDistanceFromPlayer(m_Player.getHitBox());
 			m_Boss.GetPlayerPosition(m_Player.getHitBox());
 		}
 		m_Player.Update(deltaTime);
 		if ( m_Player.getHitBox()->isAlive() ) {
-			m_Boss.Update(deltaTime);
-			m_CreepManager.Update(deltaTime);
+			m_Boss.Update(deltaTime, m_Player.m_offset);
+			if ( m_dialogManager.GetCurrentDialog() == 7 ) {
+				for ( auto dog : m_CreepManager.GetDog() ) {
+					dog->TriggerThreaten(deltaTime);
+				}
+			}
+			if ( m_dialogManager.GetCurrentDialog() == 27 ) {
+				for ( auto dog : m_CreepManager.GetDog() ) {
+					dog->TriggerRetreat(deltaTime);
+				}
+			}
+			m_CreepManager.Update(deltaTime, m_Player.m_offset);
 			m_CollisionManager.Update(deltaTime);
 
 			ManagePlayerHP();
@@ -156,6 +150,30 @@ void GSPlay::Render(sf::RenderWindow* window)
 
 	window->draw(rect);
 
+}
+
+void GSPlay::UpdateBackground(float deltaTime)
+{
+	if ( m_Player.getHitBox()->isAlive() )
+	{
+		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::R) ) {
+			m_Background.SwitchBackground(FOREST);
+		}
+
+		if ( m_Player.getHitBox()->getPosition().x < screenWidth / 4 || m_Player.getHitBox()->getPosition().x > screenWidth * 3 / 4 )
+		{
+			/*if ( m_Player.getHitBox()->getPosition().x < screenWidth / 4 ) {
+				m_Player.getHitBox()->setPosition(screenWidth / 4, m_Player.getHitBox()->getPosition().y);
+			}
+			if ( m_Player.getHitBox()->getPosition().x > screenWidth * 3 / 4 ) {
+				m_Player.getHitBox()->setPosition(screenWidth * 3 / 4, m_Player.getHitBox()->getPosition().y);
+			}*/
+			if ( m_Player.IsMoving() )
+			{
+				m_Background.Update(deltaTime);
+			}
+		}//screen scrolling mechanic
+	}
 }
 
 void GSPlay::ManagePlayerHP()

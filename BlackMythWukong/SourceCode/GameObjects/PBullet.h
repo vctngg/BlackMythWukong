@@ -7,7 +7,7 @@ public:
 	PBullet();
 	~PBullet();
 	virtual void Init();
-	virtual void Update(float deltaTime);
+	virtual void Update(float deltaTime, sf::Vector2f offset);
 	virtual void Render(sf::RenderWindow* window);
 
 	HitBox* getHitBox() {

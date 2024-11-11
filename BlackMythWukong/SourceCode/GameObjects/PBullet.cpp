@@ -30,10 +30,10 @@ void PBullet::Init()
 	m_deathAni = new Animation2(*DATA->getTexture("wukong/wukong_dash_end"), sf::Vector2i(3, 1), 0.1f, 3);
 	m_deathAni->setModeEndFrame(true);
 	m_currentAni = m_runAni;
-	m_HitBox->SetTag(PLAYER_Bullet);
+	m_HitBox->SetTag(PLAYER_Summon);
 }
 
-void PBullet::Update(float deltaTime)
+void PBullet::Update(float deltaTime, sf::Vector2f offset)
 {
 	if ( m_stop == true ) return;
 	if ( m_HitBox->isAlive() ) {
@@ -56,7 +56,7 @@ void PBullet::Update(float deltaTime)
 			}
 		}
 		m_currentAni->Update(deltaTime);
-		m_currentAni->setPosition(getHitBox()->getPosition());
+		m_currentAni->setPosition(getHitBox()->getPosition().x + offset.x, getHitBox()->getPosition().y + offset.y);
 		m_currentAni->flip(m_left);
 	}
 	else
@@ -69,7 +69,7 @@ void PBullet::Update(float deltaTime)
 		Animation2* ani = (Animation2*)m_currentAni;
 		if ( ani->getCurrentFrameCount() != ani->getFrameTotals() - 1 ) {
 			m_currentAni->Update(deltaTime);
-			m_currentAni->setPosition(getHitBox()->getPosition());
+			m_currentAni->setPosition(getHitBox()->getPosition().x + offset.x, getHitBox()->getPosition().y + offset.y);
 			m_currentAni->flip(m_left);
 		}
 		else m_stop = true;

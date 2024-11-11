@@ -34,7 +34,7 @@ void Bullet::Init()
 
 }
 
-void Bullet::Update(float deltaTime)
+void Bullet::Update(float deltaTime, sf::Vector2f offset)
 {
 	if ( m_stop == true ) return;
 	if ( m_HitBox->isAlive() ) {
@@ -57,7 +57,7 @@ void Bullet::Update(float deltaTime)
 			}
 		}
 		m_currentAni->Update(deltaTime);
-		m_currentAni->setPosition(getHitBox()->getPosition().x, getHitBox()->getPosition().y-16);
+		m_currentAni->setPosition(getHitBox()->getPosition().x + offset.x, offset.y+ getHitBox()->getPosition().y-16);
 		m_currentAni->flip(m_left);
 	}
 	else
@@ -70,7 +70,7 @@ void Bullet::Update(float deltaTime)
 		Animation2* ani = (Animation2*)m_currentAni;
 		if ( ani->getCurrentFrameCount() != ani->getFrameTotals() - 1 ) {
 			m_currentAni->Update(deltaTime);
-			m_currentAni->setPosition(getHitBox()->getPosition().x, getHitBox()->getPosition().y-16);
+			m_currentAni->setPosition(getHitBox()->getPosition().x + offset.x, offset.y+ getHitBox()->getPosition().y-16);
 			m_currentAni->flip(m_left);
 		}
 		else m_stop = true;

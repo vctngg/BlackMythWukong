@@ -21,6 +21,7 @@ public:
 	void Init();
 	void Update(float deltaTime);
 	void Render(sf::RenderWindow* window);
+	void UpdateBackground(float deltaTime);
 
 	void ManagePlayerHP();
 	void ManagePlayerEXP();

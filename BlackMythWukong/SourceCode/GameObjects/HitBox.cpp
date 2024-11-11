@@ -38,11 +38,32 @@ void HitBox::SetStats()
 		SetDamage(0);
 		break;
 	}
-	case PLAYER_Bullet: 
+	case PLAYER_Summon: 
 	{
 		SetTotalHP(-1);
 		SetCurrentHP(-1);
 		SetDamage(PLAYER_SUMMON);
+		break;
+	}
+	case PLAYER_Attack1:
+	{
+		SetTotalHP(-1);
+		SetCurrentHP(-1);
+		SetDamage(PLAYER_ATTACK1);
+		break;
+	}
+	case PLAYER_Attack2:
+	{
+		SetTotalHP(-1);
+		SetCurrentHP(-1);
+		SetDamage(PLAYER_ATTACK2);
+		break;
+	}
+	case PLAYER_Attack3:
+	{
+		SetTotalHP(-1);
+		SetCurrentHP(-1);
+		SetDamage(PLAYER_ATTACK3);
 		break;
 	}
 	case BOSS: 

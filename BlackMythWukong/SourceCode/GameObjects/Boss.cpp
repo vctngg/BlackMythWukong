@@ -74,10 +74,11 @@ void Boss::FacingCheck() {
 
 }
 
-void Boss::Update(float deltaTime)
+void Boss::Update(float deltaTime, sf::Vector2f offset)
 {
 	performStateChange();
-	m_BossWeapon->Update(deltaTime);
+	m_playerOffset = offset;
+	m_BossWeapon->Update(deltaTime, offset);
 	m_currentState->Update(deltaTime);
 
 }

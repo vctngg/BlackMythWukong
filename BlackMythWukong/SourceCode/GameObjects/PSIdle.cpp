@@ -21,7 +21,7 @@ void PSIdle::Update(float deltaTime)
 			{
 				sf::Vector2f pos = m_Player->getHitBox()->getPosition();
 				m_Player->getWeapon()->GetDirection(m_Player->FacingLeft());
-				m_Player->getWeapon()->Fire(sf::Vector2f(pos.x, pos.y + 4));
+				m_Player->getWeapon()->Summon(sf::Vector2f(pos.x, pos.y + 4));
 			}
 		}
 		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::Space) ) {
@@ -53,7 +53,6 @@ void PSIdle::Update(float deltaTime)
 		}
 		if ( !m_Player->getHitBox()->isAlive() ) m_Player->changeNextState(IPState::DEATH);
 
-		m_Animation->setPosition(m_Player->getHitBox()->getPosition().x, m_Player->getHitBox()->getPosition().y + 6);
 	}
 	else
 	{
@@ -62,7 +61,7 @@ void PSIdle::Update(float deltaTime)
 			{
 				sf::Vector2f pos = m_Player->getHitBox()->getPosition();
 				m_Player->getWeapon()->GetDirection(m_Player->FacingLeft());
-				m_Player->getWeapon()->Fire(sf::Vector2f(pos.x, pos.y + 4));
+				m_Player->getWeapon()->Summon(sf::Vector2f(pos.x, pos.y + 4));
 			}
 			
 		}
@@ -95,8 +94,8 @@ void PSIdle::Update(float deltaTime)
 		}
 		if ( !m_Player->getHitBox()->isAlive() ) m_Player->changeNextState(IPState::DEATH);
 
-		m_Animation->setPosition(m_Player->getHitBox()->getPosition().x, m_Player->getHitBox()->getPosition().y + 6);
 	}
+	m_Animation->setPosition(m_Player->getHitBox()->getPosition().x + m_Player->m_offset.x, m_Player->getHitBox()->getPosition().y + 6 + m_Player->m_offset.y);
 	m_Animation->flip(m_Player->FacingLeft());
 }
 

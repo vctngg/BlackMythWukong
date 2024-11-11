@@ -29,11 +29,11 @@ void PlayerWeapon::Init(CollisionManager& collisionManager)
 	}
 }
 
-void PlayerWeapon::Update(float deltaTime)
+void PlayerWeapon::Update(float deltaTime, sf::Vector2f offset)
 {
 	m_currentTime += deltaTime;
 	for ( auto bullet : m_ListBullet ) {
-		bullet->Update(deltaTime);
+		bullet->Update(deltaTime, offset);
 	}
 }
 
@@ -51,7 +51,23 @@ void PlayerWeapon::GetDirection(bool going_left)
 	}
 }
 
-void PlayerWeapon::Fire(sf::Vector2f startPoint)
+void PlayerWeapon::Summon(sf::Vector2f startPoint)
+{
+	PBullet* bullet = nullptr;
+	for ( auto it : m_ListBullet ) {
+		if ( it->getHitBox()->isAlive() == false && it->isStop() == true ) {
+			bullet = it;
+			break;
+		} 
+	}
+	if ( bullet == nullptr ) return;
+	bullet->getHitBox()->SetTag(PLAYER_Summon);
+	bullet->getHitBox()->setAlive(true);
+	bullet->setStartPoint(startPoint);
+	bullet->Reset();
+}
+
+void PlayerWeapon::Attack1(sf::Vector2f startPoint)
 {
 	PBullet* bullet = nullptr;
 	for ( auto it : m_ListBullet ) {
@@ -61,6 +77,37 @@ void PlayerWeapon::Fire(sf::Vector2f startPoint)
 		}
 	}
 	if ( bullet == nullptr ) return;
+	bullet->getHitBox()->SetTag(PLAYER_Attack1);
+	bullet->getHitBox()->setAlive(true);
+	bullet->setStartPoint(startPoint);
+	bullet->Reset();
+}
+void PlayerWeapon::Attack2(sf::Vector2f startPoint)
+{
+	PBullet* bullet = nullptr;
+	for ( auto it : m_ListBullet ) {
+		if ( it->getHitBox()->isAlive() == false && it->isStop() == true ) {
+			bullet = it;
+			break;
+		}
+	}
+	if ( bullet == nullptr ) return;
+	bullet->getHitBox()->SetTag(PLAYER_Attack2);
+	bullet->getHitBox()->setAlive(true);
+	bullet->setStartPoint(startPoint);
+	bullet->Reset();
+}
+void PlayerWeapon::Attack3(sf::Vector2f startPoint)
+{
+	PBullet* bullet = nullptr;
+	for ( auto it : m_ListBullet ) {
+		if ( it->getHitBox()->isAlive() == false && it->isStop() == true ) {
+			bullet = it;
+			break;
+		}
+	}
+	if ( bullet == nullptr ) return;
+	bullet->getHitBox()->SetTag(PLAYER_Attack3);
 	bullet->getHitBox()->setAlive(true);
 	bullet->setStartPoint(startPoint);
 	bullet->Reset();

@@ -7,7 +7,7 @@ public:
 	Creep();
 	~Creep();
 	virtual void Init();
-	virtual void Update(float deltaTime);
+	virtual void Update(float deltaTime, sf::Vector2f offset);
 	virtual void Render(sf::RenderWindow* window);
 
 	HitBox* getHitBox() {
@@ -22,6 +22,7 @@ public:
 		return m_stop;
 	}
 protected:
+	float m_currentTime;
 	sf::Vector2f m_startPoint;
 	HitBox* m_HitBox;
 	Animation* m_currentAni;

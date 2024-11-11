@@ -33,7 +33,6 @@ void PSJump::Update(float deltaTime)
 		else m_Player->getHitBox()->move(0, -m_Player->getHitBox()->getVelocity().y * deltaTime + v);
 
 		if ( !m_Player->getHitBox()->isAlive() ) m_Player->changeNextState(IPState::FALL);
-		m_Animation->setPosition(m_Player->getHitBox()->getPosition().x, m_Player->getHitBox()->getPosition().y + 6);
 	}
 	else
 	{
@@ -49,8 +48,8 @@ void PSJump::Update(float deltaTime)
 		}
 		else m_Player->getHitBox()->move(0, -m_Player->getHitBox()->getVelocity().y * deltaTime + v);
 		if ( !m_Player->getHitBox()->isAlive() ) m_Player->changeNextState(IPState::FALL);
-		m_Animation->setPosition(m_Player->getHitBox()->getPosition().x, m_Player->getHitBox()->getPosition().y + 6);
 	}
+	m_Animation->setPosition(m_Player->getHitBox()->getPosition().x + m_Player->m_offset.x, m_Player->getHitBox()->getPosition().y + 6 + m_Player->m_offset.y);
 	m_Animation->flip(m_Player->FacingLeft());
 }
 

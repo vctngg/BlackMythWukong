@@ -34,7 +34,6 @@ void PSFall::Update(float deltaTime)
 				m_Player->getHitBox()->move(m_Player->getHitBox()->getVelocity().x * deltaTime, 0);
 			}
 		}
-		m_Animation->setPosition(m_Player->getHitBox()->getPosition().x, m_Player->getHitBox()->getPosition().y + 6);
 	}
 	else
 	{
@@ -46,8 +45,8 @@ void PSFall::Update(float deltaTime)
 				m_Player->getHitBox()->move(m_Player->getHitBox()->getVelocity().x * deltaTime, 0);
 			}
 		}
-		m_Animation->setPosition(m_Player->getHitBox()->getPosition().x, m_Player->getHitBox()->getPosition().y + 6);
 	}
+	m_Animation->setPosition(m_Player->getHitBox()->getPosition().x + m_Player->m_offset.x, m_Player->getHitBox()->getPosition().y + 6 + m_Player->m_offset.y);
 	m_Animation->flip(m_Player->FacingLeft());
 }
 

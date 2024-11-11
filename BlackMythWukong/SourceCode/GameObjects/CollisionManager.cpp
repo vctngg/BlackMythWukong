@@ -33,11 +33,6 @@ void CollisionManager::Update(float deltaTime)
             if ( !a->isVulnerable() ) continue;
             if ( !b->isVulnerable() ) continue;
 
-            /*if ( a->getTag() == PLAYER && b->getTag() == CREEP ) {
-                a->setAlive(false);
-                b->setAlive(false);
-            }*/
-
             if ( a->getTag() == PLAYER && b->getTag() == BOSS ) {
                 a->TakeDamage(b->GetDamage());
                 b->TakeDamage(a->GetDamage());
@@ -50,20 +45,26 @@ void CollisionManager::Update(float deltaTime)
                 a->setVulnerable(false);
                 b->setAlive(false);
             }
-            if ( a->getTag() == BOSS && b->getTag() == PLAYER_Bullet ) {
+            if ( a->getTag() == BOSS && b->getTag() == PLAYER_Summon ) {
                 a->TakeDamage(b->GetDamage());
                 a->setVulnerable(false);
                 b->setAlive(false);
             }
-
-            /*if ( a->getTag() == CREEP && b->getTag() == BOSS_Bullet ) {
-                a->setAlive(false);
+            if ( a->getTag() == BOSS && b->getTag() == PLAYER_Attack1 ) {
+                a->TakeDamage(b->GetDamage());
+                a->setVulnerable(false);
                 b->setAlive(false);
             }
-            if ( a->getTag() == CREEP && b->getTag() == BOSS ) {
-                a->setAlive(false);
+            if ( a->getTag() == BOSS && b->getTag() == PLAYER_Attack2 ) {
+                a->TakeDamage(b->GetDamage());
+                a->setVulnerable(false);
                 b->setAlive(false);
-            }*/
+            }
+            if ( a->getTag() == BOSS && b->getTag() == PLAYER_Attack3 ) {
+                a->TakeDamage(b->GetDamage());
+                a->setVulnerable(false);
+                b->setAlive(false);
+            }
         }
     }
 }

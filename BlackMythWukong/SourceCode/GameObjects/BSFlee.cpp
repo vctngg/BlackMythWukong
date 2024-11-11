@@ -20,7 +20,7 @@ void BSFlee::Update(float deltaTime)
 	if ( !m_isTalking ) {
 		m_Boss->getHitBox()->move(m_Boss->getHitBox()->getVelocity().x * deltaTime, 0);
 	}
-	m_currentAnimation->setPosition(m_Boss->getHitBox()->getPosition().x, m_Boss->getHitBox()->getPosition().y - 16);
+	m_currentAnimation->setPosition(m_Boss->getHitBox()->getPosition().x + m_Boss->m_playerOffset.x, m_Boss->m_playerOffset.y + m_Boss->getHitBox()->getPosition().y - 16);
 	m_currentAnimation->flip(m_Boss->getHitBox()->getPosition().x > m_Boss->ReturnPlayerPosition().x);
 }
 

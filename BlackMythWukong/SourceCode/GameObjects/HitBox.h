@@ -8,7 +8,10 @@ enum TAG
 	CREEP,
 	BOSS,
 	BOSS_Bullet,
-	PLAYER_Bullet,
+	PLAYER_Summon,
+	PLAYER_Attack1,
+	PLAYER_Attack2,
+	PLAYER_Attack3,
 };
 
 class HitBox :public sf::RectangleShape, public HPManager {

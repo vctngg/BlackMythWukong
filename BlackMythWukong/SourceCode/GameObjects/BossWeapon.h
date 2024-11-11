@@ -8,7 +8,7 @@ public:
 	BossWeapon();
 	~BossWeapon();
 	void Init(CollisionManager& collisionManager);
-	void Update(float deltaTime);
+	void Update(float deltaTime, sf::Vector2f offset);
 	void Render(sf::RenderWindow* window);
 	void GetDirection(bool going_left);
 	void Fire(sf::Vector2f startPoint);

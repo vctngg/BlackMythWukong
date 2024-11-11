@@ -2,6 +2,7 @@
 
 Creep::Creep()
 {
+	m_currentTime = 0;
 	m_stop = true;
 	m_soundDeadisPlay = false;
 }
@@ -27,9 +28,10 @@ void Creep::Init()
 {
 }
 
-void Creep::Update(float deltaTime)
+void Creep::Update(float deltaTime, sf::Vector2f offset)
 {
 	if ( m_stop == true ) return;
+	m_currentTime += deltaTime;
 	if ( m_HitBox->isAlive() ) {
 		//m_HitBox->move(-m_HitBox->getVelocity() * deltaTime);
 		/*if ( m_HitBox->getPosition().x <= -50 ) {
@@ -38,7 +40,7 @@ void Creep::Update(float deltaTime)
 			m_HitBox->setAlive(false);
 		}*/
 		m_currentAni->Update(deltaTime);
-		m_currentAni->setPosition(getHitBox()->getPosition());
+		m_currentAni->setPosition(getHitBox()->getPosition().x + offset.x, getHitBox()->getPosition().y + offset.y);
 	}
 	else
 	{
@@ -49,7 +51,7 @@ void Creep::Update(float deltaTime)
 		m_currentAni = m_deathAni;
 		if ( m_currentAni->getCurrentFrame().x != m_currentAni->getFrameNum().x - 1 ) {
 			m_currentAni->Update(deltaTime);
-			m_currentAni->setPosition(getHitBox()->getPosition());
+			m_currentAni->setPosition(getHitBox()->getPosition().x + offset.x, getHitBox()->getPosition().y + offset.y);
 		}
 		else m_stop = true;
 

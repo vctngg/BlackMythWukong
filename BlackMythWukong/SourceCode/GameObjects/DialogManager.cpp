@@ -13,7 +13,6 @@ void DialogManager::Init(int scene_number)
 	button->setOnClick([]() mutable {&DialogManager::Skip; printf("skip!\n"); });
 
 	m_ListBtn.push_back(button);
-;
 	switch ( scene_number )
 	{
 	case 1: 
@@ -81,13 +80,13 @@ void DialogManager::Update(float deltaTime)
 		{
 		case 1:
 		{
-			if ( m_currentTime > 5 && m_currentTime < 10 ) {
+			if ( m_currentTime > 3 && m_currentTime < 10 ) {
 				TriggerDialog();
 				m_currentTime = 10;
 			}
-			else if ( m_currentTime > 20 && m_currentTime < 30 ) {
+			else if ( m_currentTime > 15 && m_currentTime < 20 ) {
 				TriggerDialog();
-				m_currentTime = 30;
+				m_currentTime = 20;
 			}
 			break;
 		}
@@ -120,7 +119,7 @@ void DialogManager::Skip()
 void DialogManager::NextDialog()
 {
 	if ( m_DialogIndex < 52 ) {
-		if ( m_skipTimer > 2.f )
+		if ( m_skipTimer > 1.5 )
 		{
 			m_skipTimer = 0;
 			m_DialogIndex++;
@@ -165,5 +164,10 @@ void DialogManager::EndDialog()
 bool DialogManager::IsDialog()
 {
 	return m_isDialog;
+}
+
+int DialogManager::GetCurrentDialog()
+{
+	return m_DialogIndex;
 }
 

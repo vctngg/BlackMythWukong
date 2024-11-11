@@ -15,5 +15,6 @@ public:
 	virtual sf::Vector2f ReturnPlayerPosition() = 0;
 	float m_distanceFromPlayer;
 	sf::Vector2f m_playerPosition;
+	sf::Vector2f m_playerOffset = sf::Vector2f(0,0);
 	virtual BossWeapon* getWeapon() = 0;
 };

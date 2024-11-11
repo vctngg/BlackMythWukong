@@ -29,11 +29,11 @@ void BossWeapon::Init(CollisionManager& collisionManager)
 	}
 }
 
-void BossWeapon::Update(float deltaTime)
+void BossWeapon::Update(float deltaTime,sf::Vector2f offset)
 {
 	m_currentTime += deltaTime;
 	for ( auto bullet : m_ListBullet ) {
-		bullet->Update(deltaTime);
+		bullet->Update(deltaTime, offset);
 	}
 }
 

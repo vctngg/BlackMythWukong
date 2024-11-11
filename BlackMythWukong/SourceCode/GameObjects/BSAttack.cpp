@@ -25,7 +25,7 @@ void BSAttack::Update(float deltaTime)
 	if ( ani->getCurrentFrameCount() == ani->getFrameTotals() - 1 ) {
 		m_Boss->changeNextState(STATE::IDLE);
 	}
-	m_Animation->setPosition(m_Boss->getHitBox()->getPosition().x, m_Boss->getHitBox()->getPosition().y - 16);
+	m_Animation->setPosition(m_Boss->getHitBox()->getPosition().x+ m_Boss->m_playerOffset.x, m_Boss->m_playerOffset.y+ m_Boss->getHitBox()->getPosition().y - 16);
 	m_Animation->flip(m_left);
 }
 

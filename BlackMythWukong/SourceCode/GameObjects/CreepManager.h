@@ -9,8 +9,9 @@ public:
 	CreepManager();
 	~CreepManager();
 	void Init(CollisionManager& collisionManager);
-	void Update(float deltaTime);
+	void Update(float deltaTime, sf::Vector2f offset);
 	void Render(sf::RenderWindow* window);
+	std::list<Dog*> GetDog();
 
 private:
 	/*void SpawnRino();
