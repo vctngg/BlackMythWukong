@@ -22,6 +22,7 @@ void PlayerWeapon::Init(CollisionManager& collisionManager)
 	for ( int i = 0; i < m_Num; i++ ) {
 		PBullet* bullet = new PBullet();
 		bullet->Init();	
+		bullet->SetTag(PLAYER_Summon);
 		bullet->getHitBox()->setAlive(false);
 		m_ListBullet.push_back(bullet);
 		collisionManager.addObj(bullet->getHitBox());
@@ -61,6 +62,7 @@ void PlayerWeapon::Summon(sf::Vector2f startPoint)
 		} 
 	}
 	if ( bullet == nullptr ) return;
+	bullet->SetTag(PLAYER_Summon);
 	bullet->getHitBox()->SetTag(PLAYER_Summon);
 	bullet->getHitBox()->setAlive(true);
 	bullet->setStartPoint(startPoint);
@@ -77,7 +79,11 @@ void PlayerWeapon::Attack1(sf::Vector2f startPoint)
 		}
 	}
 	if ( bullet == nullptr ) return;
-	bullet->getHitBox()->SetTag(PLAYER_Attack1);
+	for ( auto it : m_ListBullet )
+	{
+		bullet->SetTag(PLAYER_Attack1);
+		bullet->getHitBox()->SetTag(PLAYER_Attack1);
+	}
 	bullet->getHitBox()->setAlive(true);
 	bullet->setStartPoint(startPoint);
 	bullet->Reset();
@@ -92,7 +98,11 @@ void PlayerWeapon::Attack2(sf::Vector2f startPoint)
 		}
 	}
 	if ( bullet == nullptr ) return;
-	bullet->getHitBox()->SetTag(PLAYER_Attack2);
+	for ( auto it : m_ListBullet )
+	{
+		bullet->SetTag(PLAYER_Attack2);
+		bullet->getHitBox()->SetTag(PLAYER_Attack2);
+	}
 	bullet->getHitBox()->setAlive(true);
 	bullet->setStartPoint(startPoint);
 	bullet->Reset();
@@ -107,7 +117,11 @@ void PlayerWeapon::Attack3(sf::Vector2f startPoint)
 		}
 	}
 	if ( bullet == nullptr ) return;
-	bullet->getHitBox()->SetTag(PLAYER_Attack3);
+	for ( auto it : m_ListBullet )
+	{
+		bullet->SetTag(PLAYER_Attack3);
+		bullet->getHitBox()->SetTag(PLAYER_Attack3);
+	}
 	bullet->getHitBox()->setAlive(true);
 	bullet->setStartPoint(startPoint);
 	bullet->Reset();

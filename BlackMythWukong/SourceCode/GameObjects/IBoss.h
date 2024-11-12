@@ -17,4 +17,5 @@ public:
 	sf::Vector2f m_playerPosition;
 	sf::Vector2f m_playerOffset = sf::Vector2f(0,0);
 	virtual BossWeapon* getWeapon() = 0;
+	bool m_isWaiting;
 };

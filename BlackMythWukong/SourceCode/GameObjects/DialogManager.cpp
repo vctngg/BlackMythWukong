@@ -119,7 +119,7 @@ void DialogManager::Skip()
 void DialogManager::NextDialog()
 {
 	if ( m_DialogIndex < 52 ) {
-		if ( m_skipTimer > 1.5 )
+		if ( m_skipTimer > 0.5 )
 		{
 			m_skipTimer = 0;
 			m_DialogIndex++;
@@ -134,7 +134,7 @@ void DialogManager::NextDialog()
 				else if ( (m_DialogIndex >= 37 && m_DialogIndex <= 51) ) {
 					m_currentChar = m_Char[2];
 				}
-				if ( m_DialogIndex == 7 || m_DialogIndex == 36 || m_DialogIndex == 39 || m_DialogIndex == 27 || m_DialogIndex == 33 || m_DialogIndex == 37 ) {
+				if ( m_DialogIndex == 7 || m_DialogIndex == 35 || m_DialogIndex == 27 || m_DialogIndex == 33 || m_DialogIndex == 37 ) {
 					EndDialog(); //index+1 cuz i used plus before to prevent bug
 				}
 				break;

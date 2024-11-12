@@ -13,6 +13,7 @@ public:
 	HitBox* getHitBox() {
 		return m_HitBox;
 	}
+	void SetTag(TAG tag);
 	void setStartPoint(sf::Vector2f point) {
 		m_startPoint = point;
 	}

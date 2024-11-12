@@ -14,7 +14,7 @@ BossWeapon::~BossWeapon()
 		}
 	}
 	m_ListBullet.clear();
-}
+} 
 
 void BossWeapon::Init(CollisionManager& collisionManager)
 {
@@ -64,4 +64,9 @@ void BossWeapon::Fire(sf::Vector2f startPoint)
 	bullet->getHitBox()->setAlive(true);
 	bullet->setStartPoint(startPoint);
 	bullet->Reset();
+}
+
+void BossWeapon::Axe(sf::Vector2f startPoint)
+{
+
 }

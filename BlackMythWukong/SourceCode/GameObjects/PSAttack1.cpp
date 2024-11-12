@@ -16,6 +16,11 @@ void PSAttack1::Update(float deltaTime)
 	m_Animation->Update(deltaTime);
 	Animation2* ani = (Animation2*)m_Animation;
 	m_Player->FacingCheck();
+	if ( ani->getCurrentFrameCount() == 0 ) {
+		sf::Vector2f pos = m_Player->getHitBox()->getPosition();
+		m_Player->getWeapon()->GetDirection(m_Player->FacingLeft());
+		m_Player->getWeapon()->Attack1(pos);
+	}
 	if ( ani->getCurrentFrameCount() == ani->getFrameTotals() - 1 ) {
 		m_Player->changeNextState(IDLE);
 	}

@@ -12,6 +12,7 @@ public:
 	void Render(sf::RenderWindow* window);
 	void GetDirection(bool going_left);
 	void Fire(sf::Vector2f startPoint);
+	void Axe(sf::Vector2f startPoint);
 private:
 	std::list<Bullet*> m_ListBullet;
 	int m_Num;

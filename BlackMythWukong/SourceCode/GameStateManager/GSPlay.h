@@ -46,6 +46,15 @@ private:
 
 	DialogManager m_dialogManager;
 
+	bool m_bossTrigger = false;
+	bool m_bossPhase2 = false;
+	bool m_bossStateTrigger = false;
+	bool m_bossAxe = false;
+	float m_axeTimer = 0;
+	bool m_bgTrigger = false;
+	float m_fadeTimer = 0;
+	sf::RectangleShape shape;
+	float alpha = 255;
 	//debug
 	sf::RectangleShape rect;
 };

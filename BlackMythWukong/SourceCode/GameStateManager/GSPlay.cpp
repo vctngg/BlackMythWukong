@@ -59,6 +59,8 @@ void GSPlay::Init()
 	/*DATA->playMusic("Uprising");
 	DATA->getMusic("Uprising")->setLoop(true);;
 	DATA->getMusic("Uprising")->setVolume(30);*/
+	shape.setSize(sf::Vector2f(screenWidth, screenHeight));
+	shape.setFillColor(sf::Color(0, 0, 0, alpha));
 }
 
 void GSPlay::Update(float deltaTime)
@@ -96,7 +98,15 @@ void GSPlay::Update(float deltaTime)
 		}
 		m_Player.Update(deltaTime);
 		if ( m_Player.getHitBox()->isAlive() ) {
+			
 			m_Boss.Update(deltaTime, m_Player.m_offset);
+			if ( !m_Boss.getHitBox()->isAlive() && !m_Boss.m_isWaiting ) {
+				if(!m_bossTrigger )
+				{
+					m_bossTrigger = true;
+					m_dialogManager.TriggerDialog();
+				}
+			}
 			if ( m_dialogManager.GetCurrentDialog() == 7 ) {
 				for ( auto dog : m_CreepManager.GetDog() ) {
 					dog->TriggerThreaten(deltaTime);
@@ -105,6 +115,26 @@ void GSPlay::Update(float deltaTime)
 			if ( m_dialogManager.GetCurrentDialog() == 27 ) {
 				for ( auto dog : m_CreepManager.GetDog() ) {
 					dog->TriggerRetreat(deltaTime);
+				}
+				if (!m_bossStateTrigger )
+				{
+					m_bossStateTrigger = true;
+					m_Boss.changeNextState(IBState::STATE::IDLE);
+					m_Boss.getHitBox()->setAlive(true);
+				}
+			}
+			if ( m_Boss.getHitBox()->GetCurrentHP() / m_Boss.getHitBox()->GetTotalHP() <= 0.5 && !m_bossPhase2 ) {
+				m_bossPhase2 = true;
+				m_dialogManager.TriggerDialog();
+			}
+			if ( m_dialogManager.GetCurrentDialog() == 33 ) {
+				if ( !m_bossAxe ) {
+					m_bossAxe = true;
+					m_Boss.getWeapon()->Axe(m_Boss.getHitBox()->getPosition());
+				}
+				m_axeTimer += deltaTime;
+				if ( m_axeTimer > 3 ) {
+					m_dialogManager.TriggerDialog();
 				}
 			}
 			m_CreepManager.Update(deltaTime, m_Player.m_offset);
@@ -129,9 +159,12 @@ void GSPlay::Update(float deltaTime)
 void GSPlay::Render(sf::RenderWindow* window)
 {
 	m_Background.Render(window);
-	m_CreepManager.Render(window);
-	m_Boss.Render(window);
-	m_Player.Render(window);
+	if ( m_dialogManager.GetCurrentDialog() < 37 )
+	{
+		m_CreepManager.Render(window);
+		m_Boss.Render(window);
+		m_Player.Render(window);
+	}
 	window->draw(m_Score);
 	
 	window->draw(m_playerUI4);
@@ -146,33 +179,47 @@ void GSPlay::Render(sf::RenderWindow* window)
 			btn->Render(window);
 		}
 	}
-	
+
 
 	window->draw(rect);
-
+	if ( !m_Boss.getHitBox()->isAlive() && !m_Boss.m_isWaiting && m_dialogManager.GetCurrentDialog() == 37 && !m_dialogManager.IsDialog() )
+	{
+		window->draw(shape);
+	}
 }
 
 void GSPlay::UpdateBackground(float deltaTime)
 {
 	if ( m_Player.getHitBox()->isAlive() )
 	{
-		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::R) ) {
-			m_Background.SwitchBackground(FOREST);
+		if (!m_Boss.getHitBox()->isAlive() && !m_Boss.m_isWaiting && m_dialogManager.GetCurrentDialog() == 37 && !m_dialogManager.IsDialog() ) {
+			if ( !m_bgTrigger )
+			{
+				m_bgTrigger = true;
+				m_Background.SwitchBackground(FOREST);
+			}
+			m_fadeTimer += deltaTime;
+			if ( m_fadeTimer >= 3 ) {
+				if ( alpha >=0 ) {
+					alpha -= 2.4;
+				}
+				else {
+					alpha = 0;
+				}
+			}
+			if ( alpha == 0 ) {
+				m_dialogManager.TriggerDialog();
+			}
+			shape.setFillColor(sf::Color(0, 0, 0, alpha));
 		}
 
 		if ( m_Player.getHitBox()->getPosition().x < screenWidth / 4 || m_Player.getHitBox()->getPosition().x > screenWidth * 3 / 4 )
 		{
-			/*if ( m_Player.getHitBox()->getPosition().x < screenWidth / 4 ) {
-				m_Player.getHitBox()->setPosition(screenWidth / 4, m_Player.getHitBox()->getPosition().y);
-			}
-			if ( m_Player.getHitBox()->getPosition().x > screenWidth * 3 / 4 ) {
-				m_Player.getHitBox()->setPosition(screenWidth * 3 / 4, m_Player.getHitBox()->getPosition().y);
-			}*/
 			if ( m_Player.IsMoving() )
 			{
 				m_Background.Update(deltaTime);
 			}
-		}//screen scrolling mechanic
+		}
 	}
 }
 

@@ -80,7 +80,12 @@ void Boss::Update(float deltaTime, sf::Vector2f offset)
 	m_playerOffset = offset;
 	m_BossWeapon->Update(deltaTime, offset);
 	m_currentState->Update(deltaTime);
-
+	if ( m_currentState == m_waitingState ) {
+		m_isWaiting = true;
+	}
+	else {
+		m_isWaiting = false;
+	}
 }
 
 void Boss::Render(sf::RenderWindow* window)
