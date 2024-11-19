@@ -10,7 +10,7 @@ void DialogManager::Init(int scene_number)
 	GameButton* button;
 	button = new GameButton();
 	button->Init("skip", sf::Vector2i(2, 1), sf::Vector2f(screenWidth / 2 + 250, screenHeight / 2 + screenHeight / 10 ), 2, sf::Vector2f(200, 200), sf::Vector2f(0.75, 0.5));
-	button->setOnClick([]() mutable {&DialogManager::Skip; printf("skip!\n"); });
+	button->setOnClick([]() {DM->Skip(); printf("skip!\n"); });
 
 	m_ListBtn.push_back(button);
 	switch ( scene_number )
@@ -113,6 +113,22 @@ void DialogManager::Render(sf::RenderWindow* window)
 void DialogManager::Skip()
 {
 	EndDialog();
+	switch ( m_sceneNumber )
+	{
+	case 1: {
+		if ( m_DialogIndex < 7 )
+			m_DialogIndex = 7;
+		else if ( m_DialogIndex < 27 )
+			m_DialogIndex = 27;
+		else if ( m_DialogIndex < 33 )
+			m_DialogIndex = 33;
+		else if ( m_DialogIndex < 35 )
+			m_DialogIndex = 35;
+		else if ( m_DialogIndex < 37 )
+			m_DialogIndex = 37;
+	}
+	default: break;
+	}
 	
 }
 

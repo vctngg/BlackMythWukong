@@ -165,6 +165,7 @@
     <ClCompile Include="SourceCode\GameObjects\PBullet.cpp" />
     <ClCompile Include="SourceCode\GameObjects\Player.cpp" />
     <ClCompile Include="SourceCode\GameObjects\PlayerWeapon.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\PNA.cpp" />
     <ClCompile Include="SourceCode\GameObjects\PSAttack1.cpp" />
     <ClCompile Include="SourceCode\GameObjects\PSAttack2.cpp" />
     <ClCompile Include="SourceCode\GameObjects\PSAttack3.cpp" />
@@ -185,6 +186,7 @@
     <ClCompile Include="SourceCode\GameStateManager\GSIntro.cpp" />
     <ClCompile Include="SourceCode\GameStateManager\GSMenu.cpp" />
     <ClCompile Include="SourceCode\GameStateManager\GSPlay.cpp" />
+    <ClCompile Include="SourceCode\GameStateManager\GSPlay2.cpp" />
     <ClCompile Include="SourceCode\GameStateManager\GSSetting.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -227,6 +229,7 @@
     <ClInclude Include="SourceCode\GameObjects\PBullet.h" />
     <ClInclude Include="SourceCode\GameObjects\Player.h" />
     <ClInclude Include="SourceCode\GameObjects\PlayerWeapon.h" />
+    <ClInclude Include="SourceCode\GameObjects\PNA.h" />
     <ClInclude Include="SourceCode\GameObjects\PSAttack1.h" />
     <ClInclude Include="SourceCode\GameObjects\PSAttack2.h" />
     <ClInclude Include="SourceCode\GameObjects\PSAttack3.h" />
@@ -247,6 +250,7 @@
     <ClInclude Include="SourceCode\GameStateManager\GSIntro.h" />
     <ClInclude Include="SourceCode\GameStateManager\GSMenu.h" />
     <ClInclude Include="SourceCode\GameStateManager\GSPlay.h" />
+    <ClInclude Include="SourceCode\GameStateManager\GSPlay2.h" />
     <ClInclude Include="SourceCode\GameStateManager\GSSetting.h" />
   </ItemGroup>
   <ItemGroup>

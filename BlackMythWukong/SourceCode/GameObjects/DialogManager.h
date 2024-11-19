@@ -2,7 +2,10 @@
 #include "../GameManager/ResourceManager.h"
 #include "../Dialog.h"
 #include "UI.h"
-class DialogManager
+#include "../GameManager/Singleton.h"
+
+#define DM DialogManager::GetInstance()
+class DialogManager :public CSingleton<DialogManager>
 {
 public:
 	void Init(int scene_number);

@@ -1,6 +1,8 @@
 #pragma once
 #include "SkillManager.h"
-class Level
+#define LM Level::GetInstance()
+
+class Level :public CSingleton<Level>
 {
 public:
 	void Init();

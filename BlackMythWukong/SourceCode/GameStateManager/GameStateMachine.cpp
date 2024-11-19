@@ -23,6 +23,7 @@ void GameStateMachine::ChangeState(GameStateBase* state)
 void GameStateMachine::ChangeState(StateTypes st)
 {
     GameStateBase* gs = GameStateBase::CreateState(st);
+    printf("%d", st);
     ChangeState(gs);
 }
 

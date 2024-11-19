@@ -8,6 +8,7 @@ GSPlay::GSPlay()
 
 GSPlay::~GSPlay()
 {
+	
 }
 
 void GSPlay::Exit()
@@ -37,13 +38,13 @@ void GSPlay::Init()
 	m_playerUI4.Init(*DATA->getTexture("UI/PLAYER-UI"), sf::Vector2i(1, 1), sf::Vector2f(130, 50), 1, sf::Vector2f(4, 4));
 
 	//Dialog manager
-	m_dialogManager.Init(1);
+	DM->Init(1);
 	
 	// buttons
 	/*GameButton* button;
 	button = new GameButton();
 	button->Init("skip", sf::Vector2i(2, 1), sf::Vector2f(screenWidth / 2 - 50, screenHeight / 2 + screenHeight / 10 - 50), 2, sf::Vector2f(50, 50), sf::Vector2f(1, 1));
-	button->setOnClick([&Skip()]() {m_dialogManager.Skip(); });
+	button->setOnClick([]() {DM->Skip(); });
 	m_listButton.push_back(button);*/
 
 	//ground debug
@@ -66,17 +67,21 @@ void GSPlay::Init()
 void GSPlay::Update(float deltaTime)
 {
 	srand(m_currentTime);
-	m_dialogManager.Update(deltaTime);
-	if ( m_dialogManager.IsDialog() )
+	DM->Update(deltaTime);
+	if ( DM->IsDialog() )
 	{
 		for ( auto btn : m_listButton ) {
 			btn->Update(deltaTime);
 		}
 		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::G) ) {
-			m_dialogManager.Skip();//if not dialog space wont skip
+			GSM->ChangeState(StateTypes::PLAY2);
 		}
 		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) ) {
-			m_dialogManager.NextDialog();
+			DM->NextDialog();
+		}
+		if ( DM->GetCurrentDialog() == 52 ) {
+			printf("change");
+			GSM->ChangeState(StateTypes::PLAY2);
 		}
 	}
 	else
@@ -104,15 +109,15 @@ void GSPlay::Update(float deltaTime)
 				if(!m_bossTrigger )
 				{
 					m_bossTrigger = true;
-					m_dialogManager.TriggerDialog();
+					DM->TriggerDialog();
 				}
 			}
-			if ( m_dialogManager.GetCurrentDialog() == 7 ) {
+			if ( DM->GetCurrentDialog() == 7 ) {
 				for ( auto dog : m_CreepManager.GetDog() ) {
 					dog->TriggerThreaten(deltaTime);
 				}
 			}
-			if ( m_dialogManager.GetCurrentDialog() == 27 ) {
+			if ( DM->GetCurrentDialog() == 27 ) {
 				for ( auto dog : m_CreepManager.GetDog() ) {
 					dog->TriggerRetreat(deltaTime);
 				}
@@ -125,16 +130,16 @@ void GSPlay::Update(float deltaTime)
 			}
 			if ( m_Boss.getHitBox()->GetCurrentHP() / m_Boss.getHitBox()->GetTotalHP() <= 0.5 && !m_bossPhase2 ) {
 				m_bossPhase2 = true;
-				m_dialogManager.TriggerDialog();
+				DM->TriggerDialog();
 			}
-			if ( m_dialogManager.GetCurrentDialog() == 33 ) {
+			if ( DM->GetCurrentDialog() == 33 ) {
 				if ( !m_bossAxe ) {
 					m_bossAxe = true;
 					m_Boss.getWeapon()->Axe(m_Boss.getHitBox()->getPosition());
 				}
 				m_axeTimer += deltaTime;
 				if ( m_axeTimer > 3 ) {
-					m_dialogManager.TriggerDialog();
+					DM->TriggerDialog();
 				}
 			}
 			m_CreepManager.Update(deltaTime, m_Player.m_offset);
@@ -145,7 +150,7 @@ void GSPlay::Update(float deltaTime)
 		}
 
 		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::F) ) {
-			m_dialogManager.TriggerDialog();
+			DM->TriggerDialog();
 		}
 		
 	}
@@ -159,7 +164,7 @@ void GSPlay::Update(float deltaTime)
 void GSPlay::Render(sf::RenderWindow* window)
 {
 	m_Background.Render(window);
-	if ( m_dialogManager.GetCurrentDialog() < 37 )
+	if ( DM->GetCurrentDialog() < 37 )
 	{
 		m_CreepManager.Render(window);
 		m_Boss.Render(window);
@@ -172,9 +177,9 @@ void GSPlay::Render(sf::RenderWindow* window)
 	window->draw(m_playerUI2);
 	window->draw(m_playerUI);
 
-	if ( m_dialogManager.IsDialog() )
+	if ( DM->IsDialog() )
 	{
-		m_dialogManager.Render(window);
+		DM->Render(window);
 		for ( auto btn : m_listButton ) {
 			btn->Render(window);
 		}
@@ -182,7 +187,7 @@ void GSPlay::Render(sf::RenderWindow* window)
 
 
 	window->draw(rect);
-	if ( !m_Boss.getHitBox()->isAlive() && !m_Boss.m_isWaiting && m_dialogManager.GetCurrentDialog() == 37 && !m_dialogManager.IsDialog() )
+	if ( !m_Boss.getHitBox()->isAlive() && !m_Boss.m_isWaiting && DM->GetCurrentDialog() == 37 && !DM->IsDialog() )
 	{
 		window->draw(shape);
 	}
@@ -192,7 +197,7 @@ void GSPlay::UpdateBackground(float deltaTime)
 {
 	if ( m_Player.getHitBox()->isAlive() )
 	{
-		if (!m_Boss.getHitBox()->isAlive() && !m_Boss.m_isWaiting && m_dialogManager.GetCurrentDialog() == 37 && !m_dialogManager.IsDialog() ) {
+		if (!m_Boss.getHitBox()->isAlive() && !m_Boss.m_isWaiting && DM->GetCurrentDialog() == 37 && !DM->IsDialog() ) {
 			if ( !m_bgTrigger )
 			{
 				m_bgTrigger = true;
@@ -208,7 +213,7 @@ void GSPlay::UpdateBackground(float deltaTime)
 				}
 			}
 			if ( alpha == 0 ) {
-				m_dialogManager.TriggerDialog();
+				DM->TriggerDialog();
 			}
 			shape.setFillColor(sf::Color(0, 0, 0, alpha));
 		}

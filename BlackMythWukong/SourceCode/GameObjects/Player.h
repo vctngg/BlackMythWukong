@@ -12,6 +12,7 @@ public:
 	void Update(float deltaTime);
 	void Render(sf::RenderWindow* window);
 	HitBox* getHitBox();
+	sf::Vector2f getPosition();
 	PlayerWeapon* getWeapon();
 
 private:

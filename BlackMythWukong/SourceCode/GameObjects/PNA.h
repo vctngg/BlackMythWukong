@@ -2,10 +2,10 @@
 #include "../GameManager/ResourceManager.h"
 #include "HitBox.h"
 
-class PBullet {
+class PNA {
 public:
-	PBullet();
-	~PBullet();
+	PNA();
+	~PNA();
 	virtual void Init();
 	virtual void Update(float deltaTime, sf::Vector2f offset);
 	virtual void Render(sf::RenderWindow* window);
@@ -29,9 +29,6 @@ public:
 protected:
 	sf::Vector2f m_startPoint;
 	HitBox* m_HitBox;
-	Animation* m_currentAni;
-	Animation* m_deathAni;
-	Animation* m_runAni;
 
 	bool m_stop;
 	bool m_soundIsPlaying;

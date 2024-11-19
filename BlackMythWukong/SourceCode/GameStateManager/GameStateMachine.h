@@ -13,6 +13,7 @@ enum StateTypes
 	INTRO,
 	MENU,
 	PLAY,
+	PLAY2,
 	SETTING,
 	ABOUT,
 	HIGHSCORE,

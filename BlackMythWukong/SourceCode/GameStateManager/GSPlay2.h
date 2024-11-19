@@ -4,15 +4,14 @@
 #include "../GameObjects/ParallelBackground.h"
 
 #include "../GameObjects/Player.h"
-#include "../GameObjects/Boss.h"
 #include "../GameObjects/CreepManager.h"
 
 #include "../GameObjects/DialogManager.h"
 
-class GSPlay : public GameStateBase {
+class GSPlay2 : public GameStateBase {
 public:
-	GSPlay();
-	virtual ~GSPlay();
+	GSPlay2();
+	virtual ~GSPlay2();
 
 	void Exit();
 	void Pause();
@@ -30,12 +29,12 @@ private:
 	Player m_Player;
 	CreepManager m_CreepManager;
 	CollisionManager m_CollisionManager;
-	Boss m_Boss;
 
 	int m_currentScore;
 	float m_currentTime;
 
 	sf::Text m_Score;
+	sf::Text m_title;
 
 	UI m_playerUI;
 	UI m_playerUI2;
@@ -44,15 +43,7 @@ private:
 
 	std::list<GameButton*> m_listButton;
 
-	bool m_bossTrigger = false;
-	bool m_bossPhase2 = false;
-	bool m_bossStateTrigger = false;
-	bool m_bossAxe = false;
-	float m_axeTimer = 0;
-	bool m_bgTrigger = false;
-	float m_fadeTimer = 0;
-	sf::RectangleShape shape;
-	float alpha = 255;
 	//debug
 	sf::RectangleShape rect;
 };
+

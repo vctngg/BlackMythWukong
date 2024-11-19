@@ -35,7 +35,7 @@ void GSIntro::Init()
 
 void GSIntro::Update(float deltaTime)
 {
-	//GameStateMachine::GetInstance()->ChangeState(StateTypes::PLAY);
+	//GSM->ChangeState(StateTypes::PLAY);
 	m_currentTime += deltaTime;
 	if ( m_currentTime >= 1.5 ) {
 		if ( alpha <= 255 ) {
@@ -45,7 +45,7 @@ void GSIntro::Update(float deltaTime)
 	
 	shape.setFillColor(sf::Color(0, 0, 0, alpha));
 	if ( m_currentTime >= 3.f ) {
-		GameStateMachine::GetInstance()->ChangeState(StateTypes::MENU);
+		GSM->ChangeState(StateTypes::MENU);
 	}
 }
 

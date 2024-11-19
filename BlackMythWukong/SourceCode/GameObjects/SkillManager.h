@@ -1,6 +1,6 @@
 #pragma once
 #include "Skill.h"
-
+#include "../GameManager/Singleton.h"
 
 class SkillManager 
 {

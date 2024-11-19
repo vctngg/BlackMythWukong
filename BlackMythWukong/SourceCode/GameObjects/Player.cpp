@@ -46,7 +46,7 @@ void Player::Init(CollisionManager& collisionManager)
 
 	collisionManager.addObj(m_HitBox);
 	m_PlayerWeapon->Init(collisionManager);
-	m_LevelManager.Init();
+	LM->Init();
 }
 
 void Player::Update(float deltaTime)
@@ -63,7 +63,7 @@ void Player::Update(float deltaTime)
 	performStateChange();
 	m_PlayerWeapon->Update(deltaTime, m_offset);
 	m_currentState->Update(deltaTime);
-	m_LevelManager.Update(deltaTime);
+	LM->Update(deltaTime);
 }
 
 void Player::Render(sf::RenderWindow* window)
@@ -77,6 +77,11 @@ void Player::Render(sf::RenderWindow* window)
 HitBox* Player::getHitBox()
 {
 	return m_HitBox;
+}
+
+sf::Vector2f Player::getPosition() 
+{
+	return getHitBox()->getPosition();
 }
 
 PlayerWeapon* Player::getWeapon()

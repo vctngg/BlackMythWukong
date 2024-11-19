@@ -2,6 +2,7 @@
 #include "../GameManager/ResourceManager.h"
 #include "CollisionManager.h"
 #include "PBullet.h"
+#include "PNA.h"
 
 class PlayerWeapon {
 public:
@@ -17,6 +18,7 @@ public:
 	void Attack3(sf::Vector2f startPoint);
 private:
 	std::list<PBullet*> m_ListBullet;
+	std::list<PNA*> m_ListNA;
 	int m_Num;
 	float m_currentTime;
 };

@@ -2,10 +2,12 @@
 #include "GSIntro.h"
 #include "GSMenu.h"
 #include "GSPlay.h"
+#include "GSPlay2.h"
 #include "GSEnd.h"
 #include "GSSetting.h"
 #include "GSHighScore.h"
 #include "GSAbout.h"
+
 
 GameStateBase* GameStateBase::CreateState(StateTypes st) {
 	GameStateBase* gs = nullptr;
@@ -21,6 +23,9 @@ GameStateBase* GameStateBase::CreateState(StateTypes st) {
 		break;
 	case PLAY:
 		gs = new GSPlay();
+		break;
+	case PLAY2:
+		gs = new GSPlay2();
 		break;
 	case SETTING:
 		gs = new GSSetting();

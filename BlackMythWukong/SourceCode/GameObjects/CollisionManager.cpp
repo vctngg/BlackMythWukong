@@ -20,13 +20,14 @@ void CollisionManager::Update(float deltaTime)
 {
     m_currentTime += deltaTime;
     for ( auto a : m_listObj ) {
+        a->Update(deltaTime);
+    }
+    for ( auto a : m_listObj ) {
         if ( a->GetCurrentHP() == 0 ) a->setAlive(false);
         if ( a->isAlive() == false ) continue;
         for ( auto b : m_listObj ) {
             if ( b->GetCurrentHP() == 0 ) b->setAlive(false);
             if ( b->isAlive() == false ) continue;
-            a->Update(deltaTime);
-            b->Update(deltaTime);
             if ( a->getTag() == b->getTag() ) continue;
             if ( !checkCollision(a, b) ) continue;
             
@@ -65,6 +66,7 @@ void CollisionManager::Update(float deltaTime)
                 a->setVulnerable(false);
                 b->setAlive(false);
             }
+            
         }
     }
 }

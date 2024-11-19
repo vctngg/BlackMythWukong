@@ -37,97 +37,24 @@ void PBullet::Update(float deltaTime, sf::Vector2f offset)
 {
 	if ( m_stop == true ) return;
 	if ( m_HitBox->isAlive() ) {
-		switch ( m_HitBox->getTag() )
+		if ( !m_left )
 		{
-		case PLAYER_Summon: {
-			if ( !m_left )
-			{
-				m_HitBox->move(m_HitBox->getVelocity() * deltaTime);
-				if ( m_HitBox->getPosition().x > m_startPoint.x + 100 ) {
-					m_HitBox->setPosition(m_startPoint);
-					m_stop = true;
-					m_HitBox->setAlive(false);//kill bullet
-				}
+			m_HitBox->move(m_HitBox->getVelocity() * deltaTime);
+			if ( m_HitBox->getPosition().x > m_startPoint.x + 100 ) {
+				m_HitBox->setPosition(m_startPoint);
+				m_stop = true;
+				m_HitBox->setAlive(false);//kill bullet
 			}
-			else
-			{
-				m_HitBox->move(-m_HitBox->getVelocity() * deltaTime);
-				if ( m_HitBox->getPosition().x < m_startPoint.x - 100 ) {
-					m_HitBox->setPosition(m_startPoint);
-					m_stop = true;
-					m_HitBox->setAlive(false);//kill bullet
-				}
-			}
-			break;
 		}
-		case PLAYER_Attack1: {
-			if ( !m_left )
-			{
-				m_HitBox->move(m_HitBox->getVelocity() * deltaTime);
-				if ( m_HitBox->getPosition().x > m_startPoint.x + 30 ) {
-					m_HitBox->setPosition(m_startPoint);
-					m_stop = true;
-					m_HitBox->setAlive(false);//kill bullet
-				}
+		else
+		{
+			m_HitBox->move(-m_HitBox->getVelocity() * deltaTime);
+			if ( m_HitBox->getPosition().x < m_startPoint.x - 100 ) {
+				m_HitBox->setPosition(m_startPoint);
+				m_stop = true;
+				m_HitBox->setAlive(false);//kill bullet
 			}
-			else
-			{
-				m_HitBox->move(-m_HitBox->getVelocity() * deltaTime);
-				if ( m_HitBox->getPosition().x < m_startPoint.x - 30 ) {
-					m_HitBox->setPosition(m_startPoint);
-					m_stop = true;
-					m_HitBox->setAlive(false);//kill bullet
-				}
-			}
-			break;
 		}
-		case PLAYER_Attack2: {
-			if ( !m_left )
-			{
-				m_HitBox->move(m_HitBox->getVelocity() * deltaTime);
-				if ( m_HitBox->getPosition().x > m_startPoint.x + 30 ) {
-					m_HitBox->setPosition(m_startPoint);
-					m_stop = true;
-					m_HitBox->setAlive(false);//kill bullet
-				}
-			}
-			else
-			{
-				m_HitBox->move(-m_HitBox->getVelocity() * deltaTime);
-				if ( m_HitBox->getPosition().x < m_startPoint.x - 30 ) {
-					m_HitBox->setPosition(m_startPoint);
-					m_stop = true;
-					m_HitBox->setAlive(false);//kill bullet
-				}
-			}
-			break;
-		}
-		case PLAYER_Attack3: {
-			if ( !m_left )
-			{
-				m_HitBox->move(m_HitBox->getVelocity() * deltaTime);
-				if ( m_HitBox->getPosition().x > m_startPoint.x + 30 ) {
-					m_HitBox->setPosition(m_startPoint);
-					m_stop = true;
-					m_HitBox->setAlive(false);//kill bullet
-				}
-			}
-			else
-			{
-				m_HitBox->move(-m_HitBox->getVelocity() * deltaTime);
-				if ( m_HitBox->getPosition().x < m_startPoint.x - 30 ) {
-					m_HitBox->setPosition(m_startPoint);
-					m_stop = true;
-					m_HitBox->setAlive(false);//kill bullet
-				}
-			}
-			break;
-		}
-		default: {
-			break;
-		}
-		}
-		
 		m_currentAni->Update(deltaTime);
 		m_currentAni->setPosition(getHitBox()->getPosition().x + offset.x, getHitBox()->getPosition().y + offset.y);
 		m_currentAni->flip(m_left);
@@ -161,31 +88,6 @@ void PBullet::Render(sf::RenderWindow* window)
 	window->draw(*m_HitBox);
 }
 
-void PBullet::SetTag(TAG tag)
-{
-	switch ( tag )
-	{
-	case PLAYER_Summon: {
-		m_HitBox->SetTag(PLAYER_Summon);
-		break;
-	}
-	case PLAYER_Attack1: {
-		m_HitBox->SetTag(PLAYER_Attack1);
-		break;
-	}
-	case PLAYER_Attack2: {
-		m_HitBox->SetTag(PLAYER_Attack2);
-		break;
-	}
-	case PLAYER_Attack3: {
-		m_HitBox->SetTag(PLAYER_Attack3);
-		break;
-	}
-	default: {
-		break;
-	}
-	}
-}
 
 void PBullet::Reset()
 {
