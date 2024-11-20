@@ -29,7 +29,6 @@ private:
 	ParallexBackground m_Background;
 	Player m_Player;
 	CreepManager m_CreepManager;
-	CollisionManager m_CollisionManager;
 	Boss m_Boss;
 
 	int m_currentScore;

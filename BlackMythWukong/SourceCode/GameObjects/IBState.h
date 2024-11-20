@@ -3,6 +3,7 @@
 #include "BossWeapon.h"
 #include "../GameObjects/CollisionManager.h"
 #include "../GameObjects/MovementCheck.h"
+#include "SkillManager.h"
 
 class IBState {
 public:

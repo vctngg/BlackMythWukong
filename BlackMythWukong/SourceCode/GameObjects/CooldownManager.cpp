@@ -17,6 +17,7 @@ void CooldownManager::Update(float deltaTime)
 void CooldownManager::SetOnCooldown(bool is_on_cd)
 {
 	m_onCooldown = is_on_cd;
+	m_currentTime = 0;
 }
 
 bool CooldownManager::IsOnCooldown()

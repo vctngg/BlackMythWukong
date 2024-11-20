@@ -18,6 +18,7 @@ enum StateTypes
 	ABOUT,
 	HIGHSCORE,
 	END,
+
 };
 
 class GameStateMachine :public CSingleton<GameStateMachine> {

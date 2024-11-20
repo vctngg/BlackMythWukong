@@ -3,6 +3,7 @@
 #include "PlayerWeapon.h"
 #include "../GameObjects/CollisionManager.h"
 #include "../GameObjects/MovementCheck.h"
+#include "LevelManager.h"
 
 class IPState {
 public:

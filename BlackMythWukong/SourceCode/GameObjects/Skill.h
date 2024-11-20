@@ -7,6 +7,9 @@ enum SKILL {
 	PLAYER_ATTACK_1,
 	PLAYER_ATTACK_2,
 	PLAYER_ATTACK_3,
+	MONSTER_STRIKE,
+	MONSTER_CHOP,
+	MONSTER_SWING,
 };
 class Skill :public CooldownManager
 {

@@ -16,7 +16,7 @@ BossWeapon::~BossWeapon()
 	m_ListBullet.clear();
 } 
 
-void BossWeapon::Init(CollisionManager& collisionManager)
+void BossWeapon::Init()
 {
 
 	for ( int i = 0; i < m_Num; i++ ) {
@@ -24,7 +24,7 @@ void BossWeapon::Init(CollisionManager& collisionManager)
 		bullet->Init();
 		bullet->getHitBox()->setAlive(false);
 		m_ListBullet.push_back(bullet);
-		collisionManager.addObj(bullet->getHitBox());
+		CM->addObj(bullet->getHitBox());
 
 	}
 }

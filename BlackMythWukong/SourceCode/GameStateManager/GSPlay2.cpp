@@ -25,8 +25,8 @@ void GSPlay2::Resume()
 void GSPlay2::Init()
 {
 	m_Background.Init(FOREST);
-	m_Player.Init(m_CollisionManager);
-	m_CreepManager.Init(m_CollisionManager);
+	m_Player.Init();
+	m_CreepManager.Init(2);
 
 	//UI
 	m_playerUI.Init(*DATA->getTexture("UI/HP/HP"), sf::Vector2i(9, 1), sf::Vector2f(171, 26), 9, sf::Vector2f(2.5, 2.5));
@@ -36,7 +36,7 @@ void GSPlay2::Init()
 	m_playerUI4.Init(*DATA->getTexture("UI/PLAYER-UI"), sf::Vector2i(1, 1), sf::Vector2f(130, 50), 1, sf::Vector2f(4, 4));
 
 	//Dialog manager
-	DM->Init(1);
+	DM->Init(2);
 
 	//ground debug
 	rect.setSize(sf::Vector2f(screenWidth, 1));
@@ -60,7 +60,29 @@ void GSPlay2::Update(float deltaTime)
 	m_currentTime += deltaTime;
 	srand(m_currentTime);
 	DM->Update(deltaTime);
+	if ( DM->IsDialog() )
+	{
 
+	}
+	else
+	{
+		LM->Update(deltaTime);
+		if ( m_Player.getHitBox()->isAlive() ) {
+			m_currentTime += deltaTime;
+			
+		}
+		else ScoreManager::GetInstance()->setCurrentScore(m_currentScore);
+		UpdateBackground(deltaTime);
+		m_Player.Update(deltaTime);
+		if ( m_Player.getHitBox()->isAlive() )
+		{
+			m_CreepManager.Update(deltaTime, m_Player.m_offset, m_Player.getHitBox());
+			CM->Update(deltaTime);
+
+			ManagePlayerHP();
+			ManagePlayerEXP();
+		}
+	}
 	m_playerUI.Update(deltaTime);
 	m_playerUI2.Update(deltaTime);
 	m_playerUI3.Update(deltaTime);
@@ -77,6 +99,9 @@ void GSPlay2::Render(sf::RenderWindow* window)
 	window->draw(m_playerUI3);
 	window->draw(m_playerUI2);
 	window->draw(m_playerUI);
+
+	m_Player.Render(window);
+	m_CreepManager.Render(window);
 
 	window->draw(rect);
 

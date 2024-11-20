@@ -3,6 +3,8 @@
 CreepManager::CreepManager()
 {
 	m_GuardNum = 50;
+	m_MonsterNum = 1;
+
 	m_TimeSpwanCreep = 2.f;
 	m_currentTime = 0.f;
 }
@@ -20,51 +22,105 @@ CreepManager::~CreepManager()
 			delete it;
 		}
 	}
+	m_Dog.clear();
+	for ( auto it : m_listMonster ) {
+		if ( it != nullptr ) {
+			delete it;
+		}
+	}
+	m_listMonster.clear();
 
 }
 
-void CreepManager::Init(CollisionManager& collisionManager)
+void CreepManager::Init(int stage)
 {
+	m_stageNumber = stage;
+	switch ( m_stageNumber )
+	{
+	case 1: {
+		for ( int i = 0; i < m_GuardNum; i++ ) {
+			Guard* creepR = new Guard();
+			creepR->Init();
+			creepR->getHitBox()->setAlive(false);
+			m_listGuard.push_back(creepR);
+			CM->addObj(creepR->getHitBox());
+		}
 
-	for ( int i = 0; i < m_GuardNum; i++ ) {
-		Guard* creepR = new Guard();
-		creepR->Init();
-		creepR->getHitBox()->setAlive(false);
-		m_listGuard.push_back(creepR);
-		collisionManager.addObj(creepR->getHitBox());
-
-	}
 		Dog* dog = new Dog();
 		dog->Init();
 		dog->getHitBox()->setAlive(false);
 		m_Dog.push_back(dog);
-		collisionManager.addObj(dog->getHitBox());
+		CM->addObj(dog->getHitBox());
+
+		break;
+	}
+	case 2: {
+		for ( int i = 0; i < m_MonsterNum; i++ ) {
+			Monster* m = new Monster();
+			m->Init();
+			m->getHitBox()->setAlive(true);
+			m_listMonster.push_back(m);
+			CM->addObj(m->getHitBox());
+		}
+		break;
+	}
+	}
 }
 
-void CreepManager::Update(float deltaTime,sf::Vector2f offset)
+void CreepManager::Update(float deltaTime,sf::Vector2f offset, HitBox* player_hitbox)
 {
 	m_currentTime += deltaTime;
-	for ( int i = 0; i < m_GuardNum; i++ ) {
-		SpawnGuards();
+	switch ( m_stageNumber )
+	{
+	case 1: {
+		for ( int i = 0; i < m_GuardNum; i++ ) {
+			SpawnGuards();
+		}
+		SpawnDog();
+		for ( auto creep : m_listGuard ) {
+			creep->Update(deltaTime, offset);
+		}
+		for ( auto creep : m_Dog ) {
+			creep->Update(deltaTime, offset);
+		}
+		break;
 	}
-	SpawnDog();
-	for ( auto creep : m_listGuard ) {
-		creep->Update(deltaTime, offset);
-		//printf("(%f,%f)\n",creep->getHitBox()->getPosition().x, creep->getHitBox()->getPosition().y);
+	case 2: {
+		for ( int i = 0; i < m_MonsterNum; i++ ) {
+			SpawnMonster();
+		}
+		for ( auto creep : m_listMonster ) {
+			creep->Update(deltaTime, offset, player_hitbox);
+		}
+		break;
 	}
-	for ( auto creep : m_Dog ) {
-		creep->Update(deltaTime,offset);
 	}
+	
 }
 
 void CreepManager::Render(sf::RenderWindow* window)
 {
-	for ( auto creep : m_listGuard ) {
-		creep->Render(window);
+	switch ( m_stageNumber )
+	{
+	case 1: {
+		for ( auto creep : m_listGuard ) {
+			creep->Render(window);
+		}
+		for ( auto creep : m_Dog ) {
+			creep->Render(window);
+		}
+		break;
 	}
-	for ( auto creep : m_Dog ) {
-		creep->Render(window);
+	case 2: {
+		for ( auto creep : m_listMonster ) {
+			creep->Render(window);
+		}
+		break;
 	}
+	default: break;
+	}
+	
+
 }
 
 std::list<Dog*> CreepManager::GetDog()
@@ -74,7 +130,7 @@ std::list<Dog*> CreepManager::GetDog()
 
 void CreepManager::SpawnGuards()
 {
-	Creep* creep = nullptr;
+	Guard* creep = nullptr;
 	for ( auto it : m_listGuard ) {
 		if ( it->getHitBox()->isAlive() == false && it->isStop() == true ) {
 			creep = it;
@@ -102,17 +158,17 @@ void CreepManager::SpawnDog()
 	dog->Reset();
 }
 
-//void CreepManager::SpawnBat()
-//{
-//	Creep* creep = nullptr;
-//	for ( auto it : m_ListCreepBat ) {
-//		if ( it->getHitBox()->isAlive() == false && it->isStop() == true ) {
-//			creep = it;
-//			break;
-//		}
-//	}
-//	if ( creep == nullptr ) return;
-//	creep->getHitBox()->setAlive(true);
-//	creep->setStartPoint(sf::Vector2f(screenWidth + rand() % (150 - 50 + 1) + 50, groundY - (rand() % (300 - 100 + 1) + 100)));
-//	creep->Reset();
-//}
+void CreepManager::SpawnMonster()
+{
+	Monster* creep = nullptr;
+	for ( auto it : m_listMonster ) {
+		if ( it->getHitBox()->isAlive() == false && it->isStop() == true ) {
+			creep = it;
+			break;
+		}
+	}
+	if ( creep == nullptr ) return;
+	creep->getHitBox()->setAlive(true);
+	creep->setStartPoint(sf::Vector2f(screenWidth - 0.4 * screenWidth * (rand() % (3)), -50 + groundY - creep->getHitBox()->getSize().y / 2));
+	creep->Reset();
+}

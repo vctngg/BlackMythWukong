@@ -12,17 +12,9 @@ public:
 	int GetCurrentLevel();
 	void GetExp(bool met_requirement);
 	void ObtainSkill();
-	SkillManager AccessSkillManager();
 private:
 	int m_currentLevel;
 	float m_exp;
 	float m_expPerLevel;
 	float m_expToLevelUp;
-
-	SkillManager m_SkillManager;
-	Skill* m_skill1;
-	Skill* m_skill2;
-	Skill* m_skill3;
-	Skill* m_skill4;
-	Skill* m_skill5;
 };

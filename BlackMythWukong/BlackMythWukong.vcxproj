@@ -160,6 +160,10 @@
     <ClCompile Include="SourceCode\GameObjects\HPManager.cpp" />
     <ClCompile Include="SourceCode\GameObjects\Layer.cpp" />
     <ClCompile Include="SourceCode\GameObjects\LevelManager.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\MBullet.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\MNA.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\Monster.cpp" />
+    <ClCompile Include="SourceCode\GameObjects\MonsterWeapon.cpp" />
     <ClCompile Include="SourceCode\GameObjects\MovementCheck.cpp" />
     <ClCompile Include="SourceCode\GameObjects\ParallelBackground.cpp" />
     <ClCompile Include="SourceCode\GameObjects\PBullet.cpp" />
@@ -224,6 +228,10 @@
     <ClInclude Include="SourceCode\GameObjects\IPState.h" />
     <ClInclude Include="SourceCode\GameObjects\Layer.h" />
     <ClInclude Include="SourceCode\GameObjects\LevelManager.h" />
+    <ClInclude Include="SourceCode\GameObjects\MBullet.h" />
+    <ClInclude Include="SourceCode\GameObjects\MNA.h" />
+    <ClInclude Include="SourceCode\GameObjects\Monster.h" />
+    <ClInclude Include="SourceCode\GameObjects\MonsterWeapon.h" />
     <ClInclude Include="SourceCode\GameObjects\MovementCheck.h" />
     <ClInclude Include="SourceCode\GameObjects\ParallelBackground.h" />
     <ClInclude Include="SourceCode\GameObjects\PBullet.h" />

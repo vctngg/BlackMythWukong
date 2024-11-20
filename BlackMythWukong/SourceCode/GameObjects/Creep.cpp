@@ -4,10 +4,11 @@ Creep::Creep()
 {
 	m_currentTime = 0;
 	m_stop = true;
+	m_isAttacking = false;
 	m_soundDeadisPlay = false;
 }
 
-Creep::~Creep()
+Creep::~Creep() 
 {
 	m_currentAni = nullptr;
 	if ( m_deathAni != nullptr ) {
@@ -44,10 +45,10 @@ void Creep::Update(float deltaTime, sf::Vector2f offset)
 	}
 	else
 	{
-		if ( m_soundDeadisPlay == false ) {
+		/*if ( m_soundDeadisPlay == false ) {
 			DATA->playSound("monster-hurt");
 			m_soundDeadisPlay = true;
-		}
+		}*/
 		m_currentAni = m_deathAni;
 		if ( m_currentAni->getCurrentFrame().x != m_currentAni->getFrameNum().x - 1 ) {
 			m_currentAni->Update(deltaTime);
@@ -56,7 +57,7 @@ void Creep::Update(float deltaTime, sf::Vector2f offset)
 		else m_stop = true;
 
 	}
-
+	//printf("creep");
 }
 
 void Creep::Render(sf::RenderWindow* window)
@@ -64,6 +65,21 @@ void Creep::Render(sf::RenderWindow* window)
 	if ( m_stop ) return;
 	window->draw(*m_currentAni);
 	window->draw(*m_HitBox);
+}
+ 
+void Creep::CalculateDistanceFromPlayer(HitBox* player_hitbox)
+{
+	m_distanceFromPlayer = CM->GetDistance(m_HitBox, player_hitbox);
+}
+
+void Creep::GetPlayerPosition(HitBox* player_hitbox)
+{
+	m_playerPosition = player_hitbox->getPosition();
+}
+
+void Creep::GetFacing()
+{
+	m_left = (m_HitBox->getPosition().x > m_playerPosition.x);
 }
 
 void Creep::Reset()

@@ -16,6 +16,24 @@ void SkillManager::Update(float deltaTime)
 	}
 }
 
+bool SkillManager::IsOnCD(SKILL skill)
+{
+	for ( auto s : m_listSkill ) {
+		if ( s->GetType() == skill ) {
+			return(s->IsOnCooldown());
+		}
+	}
+}
+
+void SkillManager::SetOnCD(SKILL skill)
+{
+	for ( auto a : m_listSkill ) {
+		if ( a->GetType() == skill ) {
+			a->SetOnCooldown(true);
+		}
+	}
+}
+ 
 
 void SkillManager::LockSkill(SKILL skill)
 {

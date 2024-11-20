@@ -9,7 +9,6 @@ public:
 	void Update(float deltaTime);
 	void Render(sf::RenderWindow* window);
 	void Reset();
-	void SetDir();
 
 private:
 	IBoss* m_Boss;

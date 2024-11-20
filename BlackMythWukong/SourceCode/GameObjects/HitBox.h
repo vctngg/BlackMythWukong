@@ -12,6 +12,9 @@ enum TAG
 	PLAYER_Attack1,
 	PLAYER_Attack2,
 	PLAYER_Attack3,
+	MONSTER,
+	MONSTER_Attack,
+	MONSTER_Swing,
 };
 
 class HitBox :public sf::RectangleShape, public HPManager {

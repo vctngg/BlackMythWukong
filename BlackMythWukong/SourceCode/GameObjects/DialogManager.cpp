@@ -17,6 +17,7 @@ void DialogManager::Init(int scene_number)
 	{
 	case 1: 
 	{
+		m_isDialog = false;
 		sf::Text text;
 		float box_size_x = m_dialogBox.getGlobalBounds().getSize().x;
 		float box_size_y = m_dialogBox.getGlobalBounds().getSize().y;
@@ -57,6 +58,11 @@ void DialogManager::Init(int scene_number)
 		m_currentChar = m_Char[0];
 		break;
 	}
+	case 2:
+	{
+		m_isDialog = false;
+		break;
+	}
 	default: 
 	{
 		break;
@@ -88,6 +94,10 @@ void DialogManager::Update(float deltaTime)
 				TriggerDialog();
 				m_currentTime = 20;
 			}
+			break;
+		}
+		case 2:
+		{
 			break;
 		}
 		default:
@@ -126,6 +136,10 @@ void DialogManager::Skip()
 			m_DialogIndex = 35;
 		else if ( m_DialogIndex < 37 )
 			m_DialogIndex = 37;
+		else m_DialogIndex = 52;
+	}
+	case 2: {
+		break;
 	}
 	default: break;
 	}

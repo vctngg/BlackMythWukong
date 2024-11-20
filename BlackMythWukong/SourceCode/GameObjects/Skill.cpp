@@ -24,6 +24,18 @@ void Skill::SetCD()
 		m_cooldownDuration = 0.4;
 		break;
 		}
+	case (MONSTER_CHOP): {
+		m_cooldownDuration = 3;
+		break;
+	}
+	case (MONSTER_STRIKE): {
+		m_cooldownDuration = 0.8;
+		break;
+	}
+	case (MONSTER_SWING): {
+		m_cooldownDuration = 5;
+		break;
+	}
 	default: {
 		break;
 		}

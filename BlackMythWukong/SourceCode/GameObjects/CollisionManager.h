@@ -1,7 +1,10 @@
 #pragma once
 #include "HitBox.h"
+#include "../GameManager/Singleton.h"
+#define CM CollisionManager::GetInstance()
 
-class CollisionManager {
+class CollisionManager :public CSingleton<CollisionManager>
+{
 public:
 	void addObj(HitBox* hitBox);
 	bool checkCollision(HitBox* a, HitBox* b);

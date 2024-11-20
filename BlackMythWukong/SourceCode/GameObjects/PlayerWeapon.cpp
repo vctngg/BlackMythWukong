@@ -22,7 +22,7 @@ PlayerWeapon::~PlayerWeapon()
 	m_ListNA.clear();
 }
 
-void PlayerWeapon::Init(CollisionManager& collisionManager)
+void PlayerWeapon::Init()
 {
 
 	for ( int i = 0; i < m_Num; i++ ) {
@@ -30,13 +30,13 @@ void PlayerWeapon::Init(CollisionManager& collisionManager)
 		bullet->Init();	
 		bullet->getHitBox()->setAlive(false);
 		m_ListBullet.push_back(bullet);
-		collisionManager.addObj(bullet->getHitBox());
+		CM->addObj(bullet->getHitBox());
 
 		PNA* na = new PNA();
 		na->Init();
 		na->getHitBox()->setAlive(false);
 		m_ListNA.push_back(na);
-		collisionManager.addObj(na->getHitBox());
+		CM->addObj(na->getHitBox());
 
 	}
 }

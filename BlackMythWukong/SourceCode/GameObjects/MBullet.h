@@ -1,13 +1,11 @@
 #pragma once
 #include "../GameManager/ResourceManager.h"
 #include "HitBox.h"
-#include "SkillManager.h"
-#include "CollisionManager.h"
 
-class Creep {
+class MBullet {
 public:
-	Creep();
-	~Creep();
+	MBullet();
+	~MBullet();
 	virtual void Init();
 	virtual void Update(float deltaTime, sf::Vector2f offset);
 	virtual void Render(sf::RenderWindow* window);
@@ -15,32 +13,29 @@ public:
 	HitBox* getHitBox() {
 		return m_HitBox;
 	}
-	void CalculateDistanceFromPlayer(HitBox* player_hitbox);
-	void GetPlayerPosition(HitBox* player_hitbox);
-	void GetFacing();
-
 	void setStartPoint(sf::Vector2f point) {
 		m_startPoint = point;
 	}
-
+	void SetDirection(bool going_left) {
+		m_left = going_left;
+	}
+	bool GetDirection() {
+		return m_left;
+	}
 	void Reset();
 	bool isStop() {
 		return m_stop;
 	}
 protected:
-	float m_currentTime;
 	sf::Vector2f m_startPoint;
 	HitBox* m_HitBox;
 	Animation* m_currentAni;
 	Animation* m_deathAni;
 	Animation* m_runAni;
-	Animation* m_idleAni;
 
-	float m_distanceFromPlayer;
-	sf::Vector2f m_playerPosition;
+	bool m_stop;
+	bool m_soundIsPlaying;
 
 	bool m_left;
-	bool m_isAttacking;
-	bool m_stop;
-	bool m_soundDeadisPlay;
+	bool m_leftOnFire;
 };

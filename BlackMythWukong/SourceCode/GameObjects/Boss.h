@@ -8,7 +8,7 @@ public:
 	~Boss();
 	void changeNextState(IBState::STATE nextState);
 
-	void Init(CollisionManager& collisionManager);
+	void Init();
 	void Update(float deltaTime, sf::Vector2f offset);
 	void Render(sf::RenderWindow* window);
 	void FacingCheck();
@@ -37,6 +37,4 @@ private:
 	IBState* m_waitingState;
 	IBState* m_fleeState;
 
-
-	CollisionManager m_collisionManager;
 };

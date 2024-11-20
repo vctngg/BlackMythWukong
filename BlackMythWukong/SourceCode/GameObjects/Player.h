@@ -8,7 +8,7 @@ public:
 	~Player();
 	void changeNextState(IPState::STATE nextState);
 
-	void Init(CollisionManager& collisionManager);
+	void Init();
 	void Update(float deltaTime);
 	void Render(sf::RenderWindow* window);
 	HitBox* getHitBox();
@@ -32,7 +32,8 @@ private:
 	IPState* m_idleState;
 
 	PlayerWeapon* m_PlayerWeapon;
-
-	CollisionManager m_collisionManager;
-
+	Skill* m_skillJ;
+	Skill* m_skillK;
+	Skill* m_skillL;
+	Skill* m_skillO;
 };

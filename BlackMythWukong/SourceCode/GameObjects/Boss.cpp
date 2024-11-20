@@ -53,7 +53,7 @@ void Boss::changeNextState(IBState::STATE nextState)
 	m_nextState = nextState;
 }
 
-void Boss::Init(CollisionManager& collisionManager)
+void Boss::Init()
 {
 	m_runState->Init();
 	m_idleState->Init();
@@ -67,8 +67,8 @@ void Boss::Init(CollisionManager& collisionManager)
 	m_HitBox->Init(sf::Vector2f(100, 500));
 	m_HitBox->SetTag(BOSS);
 
-	collisionManager.addObj(m_HitBox);
-	m_BossWeapon->Init(collisionManager);
+	CM->addObj(m_HitBox);
+	m_BossWeapon->Init();
 }
 void Boss::FacingCheck() {
 
@@ -103,7 +103,7 @@ HitBox* Boss::getHitBox()
 
 void Boss::GetDistanceFromPlayer(HitBox* player_hitbox)
 {
-	m_distanceFromPlayer = m_collisionManager.GetDistance(m_HitBox, player_hitbox);
+	m_distanceFromPlayer = CM->GetDistance(m_HitBox, player_hitbox);
 }
 
 float Boss::ReturnDistanceFromPlayer()

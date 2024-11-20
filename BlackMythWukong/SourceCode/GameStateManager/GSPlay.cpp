@@ -26,9 +26,9 @@ void GSPlay::Resume()
 void GSPlay::Init()
 {
 	m_Background.Init(GLACIAL_MOUNTAIN);
-	m_Player.Init(m_CollisionManager);
-	m_Boss.Init(m_CollisionManager);
-	m_CreepManager.Init(m_CollisionManager);
+	m_Player.Init();
+	m_Boss.Init();
+	m_CreepManager.Init(1);
 
 	//UI
 	m_playerUI.Init(*DATA->getTexture("UI/HP/HP"), sf::Vector2i(9, 1),sf::Vector2f(171,26),9, sf::Vector2f(2.5, 2.5));
@@ -41,12 +41,7 @@ void GSPlay::Init()
 	DM->Init(1);
 	
 	// buttons
-	/*GameButton* button;
-	button = new GameButton();
-	button->Init("skip", sf::Vector2i(2, 1), sf::Vector2f(screenWidth / 2 - 50, screenHeight / 2 + screenHeight / 10 - 50), 2, sf::Vector2f(50, 50), sf::Vector2f(1, 1));
-	button->setOnClick([]() {DM->Skip(); });
-	m_listButton.push_back(button);*/
-
+	
 	//ground debug
 	rect.setSize(sf::Vector2f(screenWidth, 1));
 	rect.setFillColor(sf::Color::Green);
@@ -68,31 +63,31 @@ void GSPlay::Update(float deltaTime)
 {
 	srand(m_currentTime);
 	DM->Update(deltaTime);
+	if ( sf::Keyboard::isKeyPressed(sf::Keyboard::G) ) {
+		GSM->ChangeState(StateTypes::PLAY2);
+	}
 	if ( DM->IsDialog() )
 	{
 		for ( auto btn : m_listButton ) {
 			btn->Update(deltaTime);
 		}
-		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::G) ) {
-			GSM->ChangeState(StateTypes::PLAY2);
-		}
 		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) ) {
 			DM->NextDialog();
 		}
 		if ( DM->GetCurrentDialog() == 52 ) {
-			printf("change");
 			GSM->ChangeState(StateTypes::PLAY2);
 		}
 	}
 	else
 	{
+		LM->Update(deltaTime);
 		if ( m_Player.getHitBox()->isAlive() ) {
 			m_currentTime += deltaTime;
-			if ( m_currentTime >= 0.5f ) {
+			/*if ( m_currentTime >= 0.5f ) {
 				m_currentScore++;
 				m_Score.setString(std::to_string(m_currentScore));
 				m_currentTime -= 1.f;
-			}
+			}*/
 		}
 		else ScoreManager::GetInstance()->setCurrentScore(m_currentScore);
 		UpdateBackground(deltaTime);
@@ -142,8 +137,8 @@ void GSPlay::Update(float deltaTime)
 					DM->TriggerDialog();
 				}
 			}
-			m_CreepManager.Update(deltaTime, m_Player.m_offset);
-			m_CollisionManager.Update(deltaTime);
+			m_CreepManager.Update(deltaTime, m_Player.m_offset, m_Player.getHitBox());
+			CM->Update(deltaTime);
 
 			ManagePlayerHP();
 			ManagePlayerEXP();
@@ -151,6 +146,9 @@ void GSPlay::Update(float deltaTime)
 
 		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::F) ) {
 			DM->TriggerDialog();
+		}
+		if ( DM->GetCurrentDialog() == 52 ) {
+			GSM->ChangeState(StateTypes::PLAY2);
 		}
 		
 	}

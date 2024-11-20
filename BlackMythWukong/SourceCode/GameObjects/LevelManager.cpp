@@ -6,34 +6,12 @@ void Level::Init()
 	m_exp = 0;
 	m_expPerLevel = EXP_PER_LEVEL;
 	m_expToLevelUp = EXP_PER_LEVEL;
-
-	m_skill1 = new Skill;
-	m_skill2 = new Skill;
-	m_skill3 = new Skill;
-	m_skill4 = new Skill;
-	m_skill5 = new Skill;
-
-	m_skill1->SetType(BOSS_NA);
-	m_skill2->SetType(PLAYER_SKILL_SUMMON);
-	m_skill3->SetType(PLAYER_ATTACK_1);
-	m_skill4->SetType(PLAYER_ATTACK_2);
-	m_skill5->SetType(PLAYER_ATTACK_3);
-
-	m_SkillManager.AddSkill(m_skill1);
-	m_SkillManager.AddSkill(m_skill2);
-	m_SkillManager.AddSkill(m_skill3);
-	m_SkillManager.AddSkill(m_skill4);
-	m_SkillManager.AddSkill(m_skill5);
-
-	m_SkillManager.UnlockSkill(PLAYER_ATTACK_1);
-	m_SkillManager.UnlockSkill(PLAYER_ATTACK_3);
-	m_SkillManager.UnlockSkill(BOSS_NA);
 }
 
 void Level::Update(float deltaTime)
 {
 	LevelUp();
-	m_SkillManager.Update(deltaTime);
+	SM->Update(deltaTime);
 
 }
 
@@ -67,15 +45,12 @@ void Level::GetExp(bool met_requirement)
 void Level::ObtainSkill()
 {
 	if ( m_currentLevel == 1 ) {
-		m_SkillManager.UnlockSkill(PLAYER_ATTACK_3);
+		SM->UnlockSkill(PLAYER_ATTACK_3);
 	}
 	if ( m_currentLevel == 3 ) {
-		m_SkillManager.UnlockSkill(PLAYER_ATTACK_2);
+		SM->UnlockSkill(PLAYER_ATTACK_2);
 	}
 	if ( m_currentLevel == 5 ) {
-		m_SkillManager.UnlockSkill(PLAYER_SKILL_SUMMON);
+		SM->UnlockSkill(PLAYER_SKILL_SUMMON);
 	}
-}
-SkillManager Level::AccessSkillManager() {
-	return m_SkillManager;
 }
