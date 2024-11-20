@@ -1,12 +1,12 @@
 #pragma once
 #include "GameStateBase.h"
 
-#include "../GameObjects/ParallelBackground.h"
+#include "../GameObjects/Background/ParallelBackground.h"
 
-#include "../GameObjects/Player.h"
-#include "../GameObjects/CreepManager.h"
+#include "../GameObjects/Player/Player.h"
+#include "../GameObjects/Creep/CreepManager.h"
 
-#include "../GameObjects/DialogManager.h"
+#include "../GameObjects/UI/DialogManager.h"
 
 class GSPlay2 : public GameStateBase {
 public:

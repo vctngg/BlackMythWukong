@@ -1,7 +1,7 @@
 #pragma once
 #include "../GameManager/Singleton.h"
 #include <list>
-#include "../GameObjects/ScoreManager.h"
+#include "../GameObjects/Score/ScoreManager.h"
 
 #define GSM GameStateMachine::GetInstance()
 

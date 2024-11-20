@@ -2,8 +2,8 @@
 #include <map>
 #include <list>
 #include <string>
-#include "../GameObjects/GameButton.h"
-#include "../GameObjects/Animation2.h"
+#include "../GameObjects/UI/GameButton.h"
+#include "../GameObjects/ObjectManager/Animation/Animation2.h"
 #include "../GameConfig.h"
 #include "SFML/Audio.hpp"
 #include <cstdlib>

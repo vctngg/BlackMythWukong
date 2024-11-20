@@ -63,142 +63,151 @@
     <ClCompile Include="SourceCode\GameManager\WindowConnector.cpp">
       <Filter>Source Files\GameManager</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\Animation.cpp">
+    <ClCompile Include="SourceCode\GameObjects\ObjectManager\Animation\Animation.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\Animation2.cpp">
+    <ClCompile Include="SourceCode\GameObjects\ObjectManager\Animation\Animation2.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\CollisionManager.cpp">
+    <ClCompile Include="SourceCode\GameObjects\ObjectManager\Collision\CollisionManager.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\GameButton.cpp">
+    <ClCompile Include="SourceCode\GameObjects\UI\GameButton.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\HitBox.cpp">
+    <ClCompile Include="SourceCode\GameObjects\ObjectManager\Collision\HitBox.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\Layer.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Background\Layer.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\PSAttack1.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Player\PSAttack1.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\PSDeath.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Player\PSDeath.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\PSFall.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Player\PSFall.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\PSJump.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Player\PSJump.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\PSRun.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Player\PSRun.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\ParallelBackground.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Background\ParallelBackground.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\Player.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Player\Player.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\ScoreManager.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Score\ScoreManager.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\PSAttack2.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Player\PSAttack2.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\PSAttack3.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Player\PSAttack3.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\PSIdle.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Player\PSIdle.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\MovementCheck.cpp">
+    <ClCompile Include="SourceCode\GameObjects\ObjectManager\Collision\MovementCheck.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\Bullet.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Erlang\Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\BossWeapon.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Erlang\BossWeapon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\BSAttack.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Erlang\BSAttack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\BSRun.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Erlang\BSRun.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\BSIdle.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Erlang\BSIdle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\BSHurt.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Erlang\BSHurt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\Boss.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Erlang\Boss.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\UI.cpp">
+    <ClCompile Include="SourceCode\GameObjects\UI\UI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\BSWaiting.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Erlang\BSWaiting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\PBullet.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Player\PBullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\PlayerWeapon.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Player\PlayerWeapon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\HPManager.cpp">
+    <ClCompile Include="SourceCode\GameObjects\ObjectManager\Collision\HPManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\CooldownManager.cpp">
+    <ClCompile Include="SourceCode\GameObjects\ObjectManager\Skill\CooldownManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\SkillManager.cpp">
+    <ClCompile Include="SourceCode\GameObjects\ObjectManager\Skill\SkillManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\Skill.cpp">
+    <ClCompile Include="SourceCode\GameObjects\ObjectManager\Skill\Skill.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\LevelManager.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Player\LevelManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\BSFlee.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Erlang\BSFlee.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\DialogManager.cpp">
+    <ClCompile Include="SourceCode\GameObjects\UI\DialogManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\Creep.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Creep\Creep.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\CreepManager.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Creep\CreepManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\Guard.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Creep\Guard\Guard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\Dog.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Creep\Dog\Dog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SourceCode\GameStateManager\GSPlay2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\PNA.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Player\PNA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\Monster.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Creep\Minotaur\Monster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\MonsterWeapon.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Creep\Minotaur\MonsterWeapon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\MBullet.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Creep\Minotaur\MBullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceCode\GameObjects\MNA.cpp">
+    <ClCompile Include="SourceCode\GameObjects\Creep\Minotaur\MNA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\Frog\FrogWeapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\Frog\FBullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\Frog\FNA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -245,160 +254,175 @@
     <ClInclude Include="SourceCode\GameManager\WindowConnector.h">
       <Filter>Source Files\GameManager</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\Animation.h">
+    <ClInclude Include="SourceCode\GameObjects\ObjectManager\Animation\Animation.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\Animation2.h">
+    <ClInclude Include="SourceCode\GameObjects\ObjectManager\Animation\Animation2.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\CollisionManager.h">
+    <ClInclude Include="SourceCode\GameObjects\ObjectManager\Collision\CollisionManager.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\GameButton.h">
+    <ClInclude Include="SourceCode\GameObjects\UI\GameButton.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\HitBox.h">
+    <ClInclude Include="SourceCode\GameObjects\ObjectManager\Collision\HitBox.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\IPState.h">
+    <ClInclude Include="SourceCode\GameObjects\Player\IPState.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\IPlayer.h">
+    <ClInclude Include="SourceCode\GameObjects\Player\IPlayer.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\Layer.h">
+    <ClInclude Include="SourceCode\GameObjects\Background\Layer.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\PSAttack1.h">
+    <ClInclude Include="SourceCode\GameObjects\Player\PSAttack1.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\PSDeath.h">
+    <ClInclude Include="SourceCode\GameObjects\Player\PSDeath.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\PSFall.h">
+    <ClInclude Include="SourceCode\GameObjects\Player\PSFall.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\PSJump.h">
+    <ClInclude Include="SourceCode\GameObjects\Player\PSJump.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\PSRun.h">
+    <ClInclude Include="SourceCode\GameObjects\Player\PSRun.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\ParallelBackground.h">
+    <ClInclude Include="SourceCode\GameObjects\Background\ParallelBackground.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\Player.h">
+    <ClInclude Include="SourceCode\GameObjects\Player\Player.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\ScoreManager.h">
+    <ClInclude Include="SourceCode\GameObjects\Score\ScoreManager.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\PSAttack2.h">
+    <ClInclude Include="SourceCode\GameObjects\Player\PSAttack2.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\PSAttack3.h">
+    <ClInclude Include="SourceCode\GameObjects\Player\PSAttack3.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\PSIdle.h">
+    <ClInclude Include="SourceCode\GameObjects\Player\PSIdle.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\MovementCheck.h">
+    <ClInclude Include="SourceCode\GameObjects\ObjectManager\Collision\MovementCheck.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\IBoss.h">
+    <ClInclude Include="SourceCode\GameObjects\Erlang\IBoss.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\IBState.h">
+    <ClInclude Include="SourceCode\GameObjects\Erlang\IBState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\BossWeapon.h">
+    <ClInclude Include="SourceCode\GameObjects\Erlang\BossWeapon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\Bullet.h">
+    <ClInclude Include="SourceCode\GameObjects\Erlang\Bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\BSAttack.h">
+    <ClInclude Include="SourceCode\GameObjects\Erlang\BSAttack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\BSHurt.h">
+    <ClInclude Include="SourceCode\GameObjects\Erlang\BSHurt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\BSIdle.h">
+    <ClInclude Include="SourceCode\GameObjects\Erlang\BSIdle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\BSRun.h">
+    <ClInclude Include="SourceCode\GameObjects\Erlang\BSRun.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\Boss.h">
+    <ClInclude Include="SourceCode\GameObjects\Erlang\Boss.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\UI.h">
+    <ClInclude Include="SourceCode\GameObjects\UI\UI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\BSWaiting.h">
+    <ClInclude Include="SourceCode\GameObjects\Erlang\BSWaiting.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\PlayerWeapon.h">
+    <ClInclude Include="SourceCode\GameObjects\Player\PlayerWeapon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\PBullet.h">
+    <ClInclude Include="SourceCode\GameObjects\Player\PBullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\HPManager.h">
+    <ClInclude Include="SourceCode\GameObjects\ObjectManager\Collision\HPManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\CooldownManager.h">
+    <ClInclude Include="SourceCode\GameObjects\ObjectManager\Skill\CooldownManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\SkillManager.h">
+    <ClInclude Include="SourceCode\GameObjects\ObjectManager\Skill\SkillManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\Skill.h">
+    <ClInclude Include="SourceCode\GameObjects\ObjectManager\Skill\Skill.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\LevelManager.h">
+    <ClInclude Include="SourceCode\GameObjects\Player\LevelManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\BSFlee.h">
+    <ClInclude Include="SourceCode\GameObjects\Erlang\BSFlee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SourceCode\Dialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\DialogManager.h">
+    <ClInclude Include="SourceCode\GameObjects\UI\DialogManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\Creep.h">
+    <ClInclude Include="SourceCode\GameObjects\Creep\Creep.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\CreepManager.h">
+    <ClInclude Include="SourceCode\GameObjects\Creep\CreepManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\Guard.h">
+    <ClInclude Include="SourceCode\GameObjects\Creep\Guard\Guard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\Dog.h">
+    <ClInclude Include="SourceCode\GameObjects\Creep\Dog\Dog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SourceCode\GameStateManager\GSPlay2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\PNA.h">
+    <ClInclude Include="SourceCode\GameObjects\Player\PNA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\Monster.h">
+    <ClInclude Include="SourceCode\GameObjects\Creep\Minotaur\Monster.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\MonsterWeapon.h">
+    <ClInclude Include="SourceCode\GameObjects\Creep\Minotaur\MonsterWeapon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\MBullet.h">
+    <ClInclude Include="SourceCode\GameObjects\Creep\Minotaur\MBullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCode\GameObjects\MNA.h">
+    <ClInclude Include="SourceCode\GameObjects\Creep\Minotaur\MNA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\Frog\IFState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\Frog\IFrog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\Frog\FrogWeapon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\Frog\FBullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\Frog\FNA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

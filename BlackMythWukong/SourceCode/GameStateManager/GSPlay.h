@@ -1,13 +1,13 @@
 #pragma once
 #include "GameStateBase.h"
 
-#include "../GameObjects/ParallelBackground.h"
+#include "../GameObjects/Background/ParallelBackground.h"
 
-#include "../GameObjects/Player.h"
-#include "../GameObjects/Boss.h"
-#include "../GameObjects/CreepManager.h"
+#include "../GameObjects/Player/Player.h"
+#include "../GameObjects/Erlang/Boss.h"
+#include "../GameObjects/Creep/CreepManager.h"
 
-#include "../GameObjects/DialogManager.h"
+#include "../GameObjects/UI/DialogManager.h"
 
 class GSPlay : public GameStateBase {
 public:
