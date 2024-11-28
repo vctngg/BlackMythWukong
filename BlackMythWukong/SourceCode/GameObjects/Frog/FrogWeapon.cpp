@@ -26,6 +26,7 @@ void FrogWeapon::Init()
 {
 
 	for ( int i = 0; i < m_Num; i++ ) {
+		printf("+1\n");
 		FBullet* bullet = new FBullet();
 		bullet->Init();
 		bullet->getHitBox()->setAlive(false);

@@ -82,30 +82,49 @@ void HitBox::SetStats()
 	}
 	case CREEP: 
 	{
+
 		break;
 	}
 	case MONSTER:
 	{
+		SetTotalHP(MINOTAUR_HP);
+		SetCurrentHP(MINOTAUR_HP);
+		SetDamage(5);
 		break;
 	}
 	case MONSTER_Attack:
 	{
+		SetTotalHP(-1);
+		SetCurrentHP(-1);
+		SetDamage(MINOTAUR_ATTACK);
 		break;
 	}
 	case MONSTER_Swing:
 	{
+		SetTotalHP(-1);
+		SetCurrentHP(-1);
+		SetDamage(MINOTAUR_SWING);
 		break;
 	}
 	case FROG:
 	{
+		SetTotalHP(FROG_HP);
+		SetCurrentHP(FROG_HP);
+		SetDamage(5);
 		break;
 	}
 	case FROG_Attack:
 	{
+		SetTotalHP(-1);
+		SetCurrentHP(-1);
+		SetDamage(FROG_LICK);
 		break;
 	}
 	case FROG_Spit:
 	{
+		SetTotalHP(-1);
+		SetCurrentHP(-1);
+		SetDamage(FROG_SPIT);
 		break;
 	}
 	default: 

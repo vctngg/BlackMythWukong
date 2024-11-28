@@ -32,8 +32,5 @@ private:
 	IPState* m_idleState;
 
 	PlayerWeapon* m_PlayerWeapon;
-	Skill* m_skillJ;
-	Skill* m_skillK;
-	Skill* m_skillL;
-	Skill* m_skillO;
+	Skill* m_skill;
 };

@@ -25,13 +25,13 @@ MonsterWeapon::~MonsterWeapon()
 void MonsterWeapon::Init()
 {
 
-	for ( int i = 0; i < m_Num; i++ ) {
+	/*for ( int i = 0; i < m_Num; i++ ) {
 		MBullet* bullet = new MBullet();
 		bullet->Init();
 		bullet->getHitBox()->setAlive(false);
 		m_ListBullet.push_back(bullet);
 		CM->addObj(bullet->getHitBox());
-	}
+	}*/
 	for ( int i = 0; i < m_Num; i++ ) {
 		MNA* bullet = new MNA();
 		bullet->Init();
@@ -44,9 +44,9 @@ void MonsterWeapon::Init()
 void MonsterWeapon::Update(float deltaTime, sf::Vector2f offset)
 {
 	m_currentTime += deltaTime;
-	for ( auto bullet : m_ListBullet ) {
+	/*for ( auto bullet : m_ListBullet ) {
 		bullet->Update(deltaTime, offset);
-	}
+	}*/
 	for ( auto bullet : m_ListNA ) {
 		bullet->Update(deltaTime, offset);
 	}
@@ -54,9 +54,9 @@ void MonsterWeapon::Update(float deltaTime, sf::Vector2f offset)
 
 void MonsterWeapon::Render(sf::RenderWindow* window)
 {
-	for ( auto bullet : m_ListBullet ) {
+	/*for ( auto bullet : m_ListBullet ) {
 		bullet->Render(window);
-	}
+	}*/
 	for ( auto bullet : m_ListNA ) {
 		bullet->Render(window);
 	}
@@ -64,9 +64,9 @@ void MonsterWeapon::Render(sf::RenderWindow* window)
 
 void MonsterWeapon::GetDirection(bool going_left)
 {
-	for ( auto it : m_ListBullet ) {
+	/*for ( auto it : m_ListBullet ) {
 		it->SetDirection(going_left);
-	}
+	}*/
 	for ( auto it : m_ListNA ) {
 		it->SetDirection(going_left);
 	}

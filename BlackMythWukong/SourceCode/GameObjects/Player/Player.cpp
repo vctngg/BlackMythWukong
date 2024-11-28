@@ -22,22 +22,24 @@ Player::Player()
 	m_currentState = m_idleState;
 
 	m_PlayerWeapon = new PlayerWeapon();
-	m_skillJ = new Skill();
-	m_skillK = new Skill();
-	m_skillL = new Skill();
-	m_skillO = new Skill();
-	m_skillJ->SetType(PLAYER_ATTACK_1);
-	m_skillK->SetType(PLAYER_ATTACK_2);
-	m_skillL->SetType(PLAYER_ATTACK_3);
-	m_skillO->SetType(PLAYER_SKILL_SUMMON);
-	m_skillJ->UnlockSkill();
-	m_skillK->UnlockSkill();
-	m_skillL->UnlockSkill();
-	m_skillO->UnlockSkill();
-	SM->AddSkill(m_skillJ);
-	SM->AddSkill(m_skillK);
-	SM->AddSkill(m_skillL);
-	SM->AddSkill(m_skillO);
+
+	m_skill = new Skill();
+	m_skill->SetType(PLAYER_ATTACK_1);
+	m_skill->UnlockSkill();
+	SM->AddSkill(m_skill);
+	m_skill = new Skill();
+	m_skill->SetType(PLAYER_ATTACK_2);
+	m_skill->UnlockSkill();
+	SM->AddSkill(m_skill);
+	m_skill = new Skill();
+	m_skill->SetType(PLAYER_ATTACK_3);
+	m_skill->UnlockSkill();
+	SM->AddSkill(m_skill);
+	m_skill = new Skill();
+	m_skill->SetType(PLAYER_SKILL_SUMMON);
+	m_skill->UnlockSkill();
+	SM->AddSkill(m_skill);
+	delete m_skill;
 }
 
 void Player::changeNextState(IPState::STATE nextState)

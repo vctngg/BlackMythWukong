@@ -36,15 +36,15 @@ void Skill::SetCD()
 		m_cooldownDuration = 5;
 		break;
 	}
-	case (FROG_SPIT): {
-		m_cooldownDuration = 2;
+	case (FROG_SKILL_SPIT): {
+		m_cooldownDuration = 4;
 		break;
 	}
-	case (FROG_HEAL): {
-		m_cooldownDuration = 6;
+	case (FROG_SKILL_HEAL): {
+		m_cooldownDuration = 15;
 		break;
 	}
-	case (FROG_LICK): {
+	case (FROG_SKILL_LICK): {
 		m_cooldownDuration = 1.2;
 		break;
 	}

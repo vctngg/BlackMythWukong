@@ -26,6 +26,7 @@ void GSPlay2::Init()
 {
 	m_Background.Init(FOREST);
 	m_Player.Init();
+	m_Frog.Init();
 	m_CreepManager.Init(2);
 
 	//UI
@@ -76,6 +77,9 @@ void GSPlay2::Update(float deltaTime)
 		m_Player.Update(deltaTime);
 		if ( m_Player.getHitBox()->isAlive() )
 		{
+			m_Frog.GetDistanceFromPlayer(m_Player.getHitBox());
+			m_Frog.GetPlayerPosition(m_Player.getHitBox());
+			m_Frog.Update(deltaTime, m_Player.m_offset);
 			m_CreepManager.Update(deltaTime, m_Player.m_offset, m_Player.getHitBox());
 			CM->Update(deltaTime);
 
@@ -101,6 +105,7 @@ void GSPlay2::Render(sf::RenderWindow* window)
 	window->draw(m_playerUI);
 
 	m_Player.Render(window);
+	m_Frog.Render(window);
 	m_CreepManager.Render(window);
 
 	window->draw(rect);

@@ -1,6 +1,7 @@
 #pragma once
 #include "IFState.h"
 #include "../ObjectManager/Collision/HitBox.h"
+#include "../ObjectManager/Skill/SkillManager.h"
 
 class IFrog :public MovementCheck
 {
@@ -18,4 +19,5 @@ public:
 	sf::Vector2f m_playerOffset = sf::Vector2f(0, 0);
 	virtual FrogWeapon* getWeapon() = 0;
 	bool m_isWaiting;
+
 };

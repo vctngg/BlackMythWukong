@@ -48,15 +48,12 @@ void Monster::Update(float deltaTime, sf::Vector2f offset, HitBox* player_hitbox
 			if ( m_distanceFromPlayer < 32 ) {
 				if ( SM->IsUnlocked(MONSTER_SWING) && !SM->IsOnCD(MONSTER_SWING)) {
 					Swing();
-					printf("swing\n");
 				}
 				else if ( SM->IsUnlocked(MONSTER_CHOP) && !SM->IsOnCD(MONSTER_CHOP) ) {
 					Chop();
-					printf("chop\n");
 				}
 				else if ( SM->IsUnlocked(MONSTER_STRIKE) && !SM->IsOnCD(MONSTER_STRIKE) ) {
 					Strike();
-					printf("strike\n");
 				}
 				else {
 					if ( m_currentAni != m_idleAni )
@@ -119,6 +116,7 @@ void Monster::Chop()
 { 
 	if (!m_isAttacking )
 	{
+		printf("chop\n");
 		m_isAttacking = true;
 		m_currentAni = m_chopAni;
 		sf::Vector2f pos = getHitBox()->getPosition();
@@ -133,6 +131,7 @@ void Monster::Strike()
 {
 	if ( !m_isAttacking )
 	{
+		printf("strike\n");
 		m_isAttacking = true;
 		m_currentAni = m_strikeAni;
 		sf::Vector2f pos = getHitBox()->getPosition();
@@ -146,6 +145,7 @@ void Monster::Swing()
 {
 	if ( !m_isAttacking )
 	{
+		printf("swing\n");
 		m_isAttacking = true;
 		m_currentAni = m_swingAni;
 		sf::Vector2f pos = getHitBox()->getPosition();

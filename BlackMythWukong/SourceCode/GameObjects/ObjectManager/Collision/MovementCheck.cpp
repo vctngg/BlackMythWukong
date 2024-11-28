@@ -10,7 +10,7 @@ bool MovementCheck::IsMoving()
 	else m_isMoving = false;
 
 	return m_isMoving;
-}
+} 
 
 void MovementCheck::FacingCheck()
 {
@@ -26,6 +26,18 @@ void MovementCheck::FacingCheck()
 			m_leftfacing = false;
 			m_rightfacing = true;
 		}
+	}
+}
+
+void MovementCheck::MFacingCheck(float monster_posx, float player_posx)
+{
+	if ( monster_posx > player_posx ) {
+		m_leftfacing = true;
+		m_rightfacing = false;
+	}
+	else if ( monster_posx < player_posx ) {
+		m_leftfacing = false;
+		m_rightfacing = true;
 	}
 }
 

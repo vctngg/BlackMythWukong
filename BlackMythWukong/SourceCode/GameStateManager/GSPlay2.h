@@ -5,6 +5,7 @@
 
 #include "../GameObjects/Player/Player.h"
 #include "../GameObjects/Creep/CreepManager.h"
+#include "../GameObjects/Frog/Frog.h"
 
 #include "../GameObjects/UI/DialogManager.h"
 
@@ -27,6 +28,7 @@ public:
 private:
 	ParallexBackground m_Background;
 	Player m_Player;
+	Frog m_Frog;
 	CreepManager m_CreepManager;
 
 	int m_currentScore;
