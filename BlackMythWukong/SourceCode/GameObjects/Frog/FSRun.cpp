@@ -17,7 +17,7 @@ void FSRun::Update(float deltaTime)
 	m_Frog->MFacingCheck(m_Frog->getHitBox()->getPosition().x, m_Frog->ReturnPlayerPosition().x);
 	if ( m_Frog->getHitBox()->isAlive() )
 	{
-		if ( m_Frog->ReturnDistanceFromPlayer() > 32 && m_Frog->ReturnDistanceFromPlayer() < screenWidth ) {
+		if ( m_Frog->ReturnDistanceFromPlayer() > 48 && m_Frog->ReturnDistanceFromPlayer() < screenWidth ) {
 			if ( m_Frog->FacingLeft() ) {
 				//printf("left\n");
 				m_Frog->getHitBox()->move(-m_Frog->getHitBox()->getVelocity().x * deltaTime, 0);
@@ -30,7 +30,7 @@ void FSRun::Update(float deltaTime)
 				m_Frog->changeNextState(HURT);
 			}
 		}
-		else if ( m_Frog->ReturnDistanceFromPlayer() <= 32 ) {
+		else if ( m_Frog->ReturnDistanceFromPlayer() <= 48 ) {
 			if ( SM->IsUnlocked(FROG_SKILL_HEAL) && !SM->IsOnCD(FROG_SKILL_HEAL) ) {
 				SM->SetOnCD(FROG_SKILL_HEAL);
 				m_Frog->changeNextState(HEAL);

@@ -12,6 +12,7 @@ void BSRun::Init()
 
 void BSRun::Update(float deltaTime)
 {
+	printf("run\n");
 	m_currentTime += deltaTime;
 	m_Animation->Update(deltaTime);
 	if (m_Boss->getHitBox()->isAlive())
@@ -38,7 +39,7 @@ void BSRun::Update(float deltaTime)
 		}
 	}
 	else {
-		m_Boss->changeNextState(FLEE);
+		
 	}
 	m_Animation->setPosition(m_Boss->getHitBox()->getPosition().x + m_Boss->m_playerOffset.x, m_Boss->m_playerOffset.y+ m_Boss->getHitBox()->getPosition().y - 16);
 	m_Animation->flip(m_Boss->getHitBox()->getPosition().x > m_Boss->ReturnPlayerPosition().x);

@@ -82,9 +82,13 @@ void HitBox::SetStats()
 	}
 	case CREEP: 
 	{
-
 		break;
 	}
+	case NON_INTERACTIVE:
+		SetTotalHP(-1);
+		SetCurrentHP(-1);
+		SetDamage(0);
+		break;
 	case MONSTER:
 	{
 		SetTotalHP(MINOTAUR_HP);
@@ -137,7 +141,6 @@ sf::Vector2f HitBox::getVelocity()
 {
 	return m_Velocity;
 }
-
 void HitBox::setVelocity(sf::Vector2f velocity)
 {
 	m_Velocity = velocity;

@@ -12,6 +12,7 @@ void BSIdle::Init()
 
 void BSIdle::Update(float deltaTime)
 {
+	printf("idle\n");
 	m_currentTime += deltaTime;
 	m_Animation->Update(deltaTime);
 	if (m_Boss->getHitBox()->isAlive() )
@@ -30,7 +31,7 @@ void BSIdle::Update(float deltaTime)
 		}
 	}
 	else {
-		m_Boss->changeNextState(FLEE);
+		
 	}
 
 	m_Animation->setPosition(m_Boss->getHitBox()->getPosition().x + m_Boss->m_playerOffset.x, m_Boss->m_playerOffset.y+ m_Boss->getHitBox()->getPosition().y-16);

@@ -16,13 +16,13 @@ void FSIdle::Update(float deltaTime)
 	m_Animation->Update(deltaTime);
 	if ( m_Frog->getHitBox()->isAlive() )
 	{
-		if ( m_Frog->ReturnDistanceFromPlayer() > 32 && m_Frog->ReturnDistanceFromPlayer() < screenWidth ) {
+		if ( m_Frog->ReturnDistanceFromPlayer() > 48 && m_Frog->ReturnDistanceFromPlayer() < screenWidth ) {
 			m_Frog->changeNextState(RUN);
 			if ( !m_Frog->getHitBox()->isVulnerable() ) {
 				m_Frog->changeNextState(HURT);
 			}
 		}
-		else if ( m_Frog->ReturnDistanceFromPlayer() <= 32 ) {
+		else if ( m_Frog->ReturnDistanceFromPlayer() <= 48 ) {
 			if ( SM->IsUnlocked(FROG_SKILL_HEAL) && !SM->IsOnCD(FROG_SKILL_HEAL) ) {
 				SM->SetOnCD(FROG_SKILL_HEAL);
 				m_Frog->changeNextState(HEAL);

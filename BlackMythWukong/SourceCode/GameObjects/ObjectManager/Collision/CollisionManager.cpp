@@ -23,10 +23,10 @@ void CollisionManager::Update(float deltaTime)
         a->Update(deltaTime);
     }
     for ( auto a : m_listObj ) {
-        if ( a->GetCurrentHP() == 0 ) a->setAlive(false);
+        if ( a->GetCurrentHP() <= 0 && a->GetCurrentHP() != -1 ) a->setAlive(false);
         if ( a->isAlive() == false ) continue;
         for ( auto b : m_listObj ) {
-            if ( b->GetCurrentHP() == 0 ) b->setAlive(false);
+            if ( b->GetCurrentHP() <= 0 && b->GetCurrentHP() != -1 ) b->setAlive(false);
             if ( b->isAlive() == false ) continue;
             if ( a->getTag() == b->getTag() ) continue;
             if ( !checkCollision(a, b) ) continue;

@@ -147,8 +147,10 @@ void Boss::performStateChange()
 			break;
 		case IBState:: WAITING:
 			m_currentState = m_waitingState;
+			break;
 		case IBState::FLEE:
 			m_currentState = m_fleeState;
+			break;
 		default:
 			break;
 		}
