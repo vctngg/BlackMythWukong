@@ -11,6 +11,9 @@ public:
 	virtual void Reset();
 
 	void setModeEndFrame(bool stop);
+	bool IsEndFrame() {
+		return m_endframe;
+	}
 	void flip(bool do_flip);
 
 	sf::Vector2i getFrameNum() {

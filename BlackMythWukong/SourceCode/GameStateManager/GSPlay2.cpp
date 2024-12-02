@@ -70,7 +70,8 @@ void GSPlay2::Update(float deltaTime)
 		LM->Update(deltaTime);
 		if ( m_Player.getHitBox()->isAlive() ) {
 			m_currentTime += deltaTime;
-			
+			m_currentScore = LM->GetCurrentExp();
+			m_Score.setString(std::to_string(m_currentScore));
 		}
 		else ScoreManager::GetInstance()->setCurrentScore(m_currentScore);
 		UpdateBackground(deltaTime);
@@ -138,7 +139,16 @@ void GSPlay2::ManagePlayerHP()
 
 void GSPlay2::ManagePlayerEXP()
 {
-	float expperframe = m_Player.getHitBox()->GetTotalHP() / 8;//EXP bar has 8 frames
-	int frame = (int)((m_Player.getHitBox()->GetTotalHP() - m_Player.getHitBox()->GetCurrentHP()) / expperframe) + 1;
-	m_playerUI3.ChangeFrame(8 - frame + 1);
+	/*for ( auto creep : m_CreepManager.GetMonster() )
+	{
+		LM->GetExp(!creep->getHitBox()->isAlive());
+	}
+	if (!exp_gain && !m_Frog.getHitBox()->isAlive() )
+	{
+		exp_gain = true;
+		LM->GetExp(!m_Frog.getHitBox()->isAlive());
+	}*/
+	float expperframe = LM->GetExpPerLevel() / 8;//EXP bar has 8 frames
+	int frame = (int)((LM->GetExpToLevelUp() - LM->GetCurrentExp()) / expperframe)+1;
+	m_playerUI3.ChangeFrame(frame);
 }

@@ -15,11 +15,21 @@ void FSHurt::Update(float deltaTime)
 {
 	m_currentTime += deltaTime;
 	m_Animation->Update(deltaTime);
+	/*if ( m_Frog->getHitBox()->isVulnerable() ) {
+		printf("vulnerable\n");
+	}
+	else {
+		printf("invulnerable\n");
+	}*/
 	if ( m_Frog->getHitBox()->isAlive() )
 	{
-		Animation2* ani = (Animation2*)m_Animation;
-		if ( (ani->getCurrentFrameCount() == ani->getFrameTotals() - 1) && m_Frog->getHitBox()->isVulnerable() ) {
-			m_Frog->changeNextState(STATE::IDLE);
+		//printf("(%f,%f)\n", float(ani->getCurrentFrameCount()), float(ani->getFrameTotals() - 1));
+		if ( m_Animation->IsEndFrame() ) {
+			
+			if ( m_Frog->getHitBox()->isVulnerable() )
+			{
+				m_Frog->changeNextState(STATE::IDLE);
+			}
 		}
 	}
 	else {

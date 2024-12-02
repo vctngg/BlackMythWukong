@@ -32,8 +32,11 @@ void BossWeapon::Init()
 void BossWeapon::Update(float deltaTime,sf::Vector2f offset)
 {
 	m_currentTime += deltaTime;
-	for ( auto bullet : m_ListBullet ) {
-		bullet->Update(deltaTime, offset);
+	if (!m_ListBullet.empty() )
+	{
+		for ( auto bullet : m_ListBullet ) {
+			bullet->Update(deltaTime, offset);
+		}
 	}
 }
 

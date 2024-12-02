@@ -26,8 +26,9 @@ void Level::LevelUp()
 		m_currentLevel++;
 		m_expToLevelUp = EXP_PER_LEVEL * (1 - pow(EXP_MULTIPLIER, m_currentLevel + 1)) / (1 - EXP_MULTIPLIER);
 		ObtainSkill();
+		m_expPerLevel = pow(EXP_MULTIPLIER, m_currentLevel + 1) * EXP_PER_LEVEL;
 	}
-	m_expPerLevel += m_currentLevel * EXP_MULTIPLIER * EXP_PER_LEVEL;
+	
 }
 
 int Level::GetCurrentLevel()

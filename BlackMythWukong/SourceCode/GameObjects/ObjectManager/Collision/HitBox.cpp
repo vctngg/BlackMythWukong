@@ -131,6 +131,41 @@ void HitBox::SetStats()
 		SetDamage(FROG_SPIT);
 		break;
 	}
+	case DEMON:
+	{
+		SetTotalHP(DEMON_HP);
+		SetCurrentHP(DEMON_HP);
+		SetDamage(5);
+		break;
+	}
+	case DEMON_NA:
+	{
+		SetTotalHP(-1);
+		SetCurrentHP(-1);
+		SetDamage(DEMON_CLEAVE);
+		break;
+	}
+	case DEMON_Spell:
+	{
+		SetTotalHP(-1);
+		SetCurrentHP(-1);
+		SetDamage(DEMON_SPELL);
+		break;
+	}
+	case DEMON_Fire:
+	{
+		SetTotalHP(-1);
+		SetCurrentHP(-1);
+		SetDamage(DEMON_FIRE);
+		break;
+	}
+	case DEMON_Smash:
+	{
+		SetTotalHP(-1);
+		SetCurrentHP(-1);
+		SetDamage(DEMON_SMASH);
+		break;
+	}
 	default: 
 	{
 		break;

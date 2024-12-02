@@ -74,12 +74,13 @@ void Frog::changeNextState(IFState::STATE nextState)
 
 void Frog::Init()
 {
+
 	m_runState->Init();
 	m_idleState->Init();
 	m_attackState->Init();
 	m_hurtState->Init();
 	m_spitState->Init();
-	m_deathState->Init();
+    m_deathState->Init();
 	m_healState->Init();
 
 	m_HitBox = new HitBox(sf::Vector2i(64, 64));
@@ -144,7 +145,6 @@ FrogWeapon* Frog::getWeapon()
 void Frog::performStateChange()
 {
 	if ( m_nextState != IFState::SNULL ) {
-		printf("change\n");
 		switch ( m_nextState )
 		{
 		case IFState::RUN:
@@ -169,6 +169,7 @@ void Frog::performStateChange()
 			m_currentState = m_deathState;
 			break;
 		default:
+			m_currentState = m_idleState;
 			break;
 		}
 		m_nextState = IFState::SNULL;

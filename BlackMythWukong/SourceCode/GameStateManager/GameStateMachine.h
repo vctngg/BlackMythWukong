@@ -14,6 +14,7 @@ enum StateTypes
 	MENU,
 	PLAY,
 	PLAY2,
+	FINAL,
 	SETTING,
 	ABOUT,
 	HIGHSCORE,

@@ -1,7 +1,6 @@
 #pragma once
 #include "IPState.h"
 #include "../ObjectManager/Collision/HitBox.h"
-#include "LevelManager.h"
 
 
 class IPlayer :public MovementCheck

@@ -15,7 +15,7 @@ void FSSpit::Update(float deltaTime)
 {
 	m_Animation->Update(deltaTime);
 	Animation2* ani = (Animation2*)m_Animation;
-	if ( ani->getCurrentFrameCount() == 0 ) {
+	if ( ani->getCurrentFrameCount() == 1 ) {
 		sf::Vector2f pos = m_Frog->getHitBox()->getPosition();
 		m_Frog->getWeapon()->GetDirection(m_Frog->FacingLeft());
 		m_Frog->getWeapon()->Spit(pos);

@@ -234,6 +234,63 @@
     <ClCompile Include="SourceCode\GameObjects\Frog\FSHurt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SourceCode\GameStateManager\GSFinal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\Demon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\DemonWeapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\DSIdle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\DSRun.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\DSHurt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\DSTransform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\DSIdleD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\DSRunD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\DSHurtD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\DSCleave.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\DSSmash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\DSFireBreath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\DSCastSpell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\DSDeath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\DNA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\Fire.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\Spell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceCode\GameObjects\FinalBoss\Smash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SourceCode\Application.h">
@@ -471,6 +528,69 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SourceCode\GameObjects\Frog\FSHurt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameStateManager\GSFinal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\Demon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\IDemon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\IDState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\DemonWeapon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\DSIdle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\DSRun.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\DSHurt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\DSTransform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\DSIdleD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\DSRunD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\DSHurtD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\DSCleave.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\DSSmash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\DSFireBreath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\DSCastSpell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\DSDeath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\DNA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\Fire.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\Spell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCode\GameObjects\FinalBoss\Smash.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

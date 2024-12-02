@@ -45,30 +45,54 @@ void PlayerWeapon::Update(float deltaTime, sf::Vector2f offset)
 {
 	m_currentTime += deltaTime;
 	for ( auto bullet : m_ListBullet ) {
-		bullet->Update(deltaTime, offset);
+		if (bullet != nullptr )
+		{
+			bullet->Update(deltaTime, offset);
+		}
 	}
 	for ( auto na : m_ListNA ) {
-		na->Update(deltaTime, offset);
+		if (na != nullptr )
+		{
+			try
+			{
+				na->Update(deltaTime, offset);
+			}
+			catch ( const char* e ) {
+
+			}
+		}
 	}
 }
 
 void PlayerWeapon::Render(sf::RenderWindow* window)
 {
 	for ( auto bullet : m_ListBullet ) {
-		bullet->Render(window);
+		if ( bullet != nullptr )
+		{
+			bullet->Render(window);
+		}
 	}
 	for ( auto na : m_ListNA ) {
-		na->Render(window);
+		if ( na != nullptr )
+		{
+			na->Render(window);
+		}
 	}
 }
 
 void PlayerWeapon::GetDirection(bool going_left)
 {
 	for ( auto it : m_ListBullet ) {
-		it->SetDirection(going_left);
+		if ( it != nullptr )
+		{
+			it->SetDirection(going_left);
+		}
 	}
 	for ( auto it : m_ListNA ) {
-		it->SetDirection(going_left);
+		if ( it != nullptr )
+		{
+			it->SetDirection(going_left);
+		}
 	}
 }
 

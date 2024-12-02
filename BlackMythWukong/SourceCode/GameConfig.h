@@ -26,3 +26,8 @@
 #define FROG_LICK 30
 #define FROG_HEAL 50
 
+#define DEMON_HP 500
+#define DEMON_SMASH 50
+#define DEMON_CLEAVE 25
+#define DEMON_FIRE 40
+#define DEMON_SPELL 35

@@ -4,20 +4,31 @@
 enum TAG 
 {
 	NON_INTERACTIVE,
+
 	PLAYER,
-	CREEP,
-	BOSS,
-	BOSS_Bullet,
 	PLAYER_Summon,
 	PLAYER_Attack1,
 	PLAYER_Attack2,
 	PLAYER_Attack3,
+
+	CREEP,
+
+	BOSS,
+	BOSS_Bullet,
+	
 	MONSTER,
 	MONSTER_Attack,
 	MONSTER_Swing,
+
 	FROG,
 	FROG_Attack,
 	FROG_Spit,
+
+	DEMON,
+	DEMON_NA,
+	DEMON_Spell,
+	DEMON_Smash,
+	DEMON_Fire,
 };
 
 class HitBox :public sf::RectangleShape, public HPManager {

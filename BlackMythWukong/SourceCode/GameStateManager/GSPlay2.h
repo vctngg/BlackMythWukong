@@ -31,6 +31,8 @@ private:
 	Frog m_Frog;
 	CreepManager m_CreepManager;
 
+	bool exp_gain = false;
+
 	int m_currentScore;
 	float m_currentTime;
 

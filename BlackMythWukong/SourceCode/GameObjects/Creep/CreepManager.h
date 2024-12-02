@@ -12,6 +12,9 @@ public:
 	void Update(float deltaTime, sf::Vector2f offset, HitBox* player_hitbox);
 	void Render(sf::RenderWindow* window);
 	std::list<Dog*> GetDog();
+	std::list<Monster*> GetMonster() {
+		return m_listMonster;
+	}
 
 private:
 	int m_stageNumber;

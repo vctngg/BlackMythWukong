@@ -1,6 +1,7 @@
 #pragma once
 #include "HitBox.h"
 #include "../../../GameManager/Singleton.h"
+#include "../../Player/LevelManager.h"
 #define CM CollisionManager::GetInstance()
 
 class CollisionManager :public CSingleton<CollisionManager>

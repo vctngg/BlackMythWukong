@@ -80,6 +80,7 @@ void Boss::Update(float deltaTime, sf::Vector2f offset)
 	m_playerOffset = offset;
 	m_BossWeapon->Update(deltaTime, offset);
 	m_currentState->Update(deltaTime);
+
 	if ( m_currentState == m_waitingState ) {
 		m_isWaiting = true;
 	}
@@ -152,6 +153,7 @@ void Boss::performStateChange()
 			m_currentState = m_fleeState;
 			break;
 		default:
+			m_currentState = m_waitingState;
 			break;
 		}
 		m_nextState = IBState::SNULL;

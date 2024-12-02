@@ -89,6 +89,22 @@ void ParallexBackground::Init(BGTYPE bg_type)
 		break;
 	}
 	case AUTUMN_FOREST: {
+		Layer* layer;
+		y_pos = 0;
+		m_scaling = sf::Vector2f(3.f, 3.f);
+		std::string path = "Background/Autumn-Forest/";
+		//Layer 1
+		layer = new Layer();
+		layer->Init(path + "background_layer_1", 100, y_pos, m_scaling);
+		m_Background.push_back(layer);
+		//Layer 2
+		layer = new Layer();
+		layer->Init(path + "background_layer_2", 60, y_pos, m_scaling);
+		m_Background.push_back(layer);
+		//Layer 3
+		layer = new Layer();
+		layer->Init(path + "background_layer_3", 50, y_pos, m_scaling);
+		m_Background.push_back(layer);
 		break;
 	}
 	default: {

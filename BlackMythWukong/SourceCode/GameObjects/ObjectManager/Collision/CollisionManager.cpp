@@ -70,61 +70,97 @@ void CollisionManager::Update(float deltaTime)
                 a->TakeDamage(b->GetDamage());
                 a->setVulnerable(false);
                 b->setAlive(false);
+                if ( a->GetCurrentHP() <= 0 ) {
+                    LM->GetExp(true);
+                }
             }
             if ( a->getTag() == BOSS && b->getTag() == PLAYER_Attack1 ) {
                 a->TakeDamage(b->GetDamage());
                 a->setVulnerable(false);
                 b->setAlive(false);
+                if ( a->GetCurrentHP() <= 0 ) {
+                    LM->GetExp(true);
+                }
             }
             if ( a->getTag() == BOSS && b->getTag() == PLAYER_Attack2 ) {
                 a->TakeDamage(b->GetDamage());
                 a->setVulnerable(false);
                 b->setAlive(false);
+                if ( a->GetCurrentHP() <= 0 ) {
+                    LM->GetExp(true);
+                }
             }
             if ( a->getTag() == BOSS && b->getTag() == PLAYER_Attack3 ) {
                 a->TakeDamage(b->GetDamage());
                 a->setVulnerable(false);
                 b->setAlive(false);
+                if ( a->GetCurrentHP() <= 0 ) {
+                    LM->GetExp(true);
+                }
             }
             if ( a->getTag() == FROG && b->getTag() == PLAYER_Summon ) {
                 a->TakeDamage(b->GetDamage());
                 a->setVulnerable(false);
                 b->setAlive(false);
+                if ( a->GetCurrentHP() <= 0 ) {
+                    LM->GetExp(true);
+                }
             }
             if ( a->getTag() == FROG && b->getTag() == PLAYER_Attack1 ) {
                 a->TakeDamage(b->GetDamage());
                 a->setVulnerable(false);
                 b->setAlive(false);
+                if ( a->GetCurrentHP() <= 0 ) {
+                    LM->GetExp(true);
+                }
             }
             if ( a->getTag() == FROG && b->getTag() == PLAYER_Attack2 ) {
                 a->TakeDamage(b->GetDamage());
                 a->setVulnerable(false);
                 b->setAlive(false);
+                if ( a->GetCurrentHP() <= 0 ) {
+                    LM->GetExp(true);
+                }
             }
             if ( a->getTag() == FROG && b->getTag() == PLAYER_Attack3 ) {
                 a->TakeDamage(b->GetDamage());
                 a->setVulnerable(false);
                 b->setAlive(false);
+                if ( a->GetCurrentHP() <= 0 ) {
+                    LM->GetExp(true);
+                }
             }
             if ( a->getTag() == MONSTER && b->getTag() == PLAYER_Summon ) {
                 a->TakeDamage(b->GetDamage());
                 a->setVulnerable(false);
                 b->setAlive(false);
+                if ( a->GetCurrentHP() <= 0 ) {
+                    LM->GetExp(true);
+                }
             }
             if ( a->getTag() == MONSTER && b->getTag() == PLAYER_Attack1 ) {
                 a->TakeDamage(b->GetDamage());
                 a->setVulnerable(false);
                 b->setAlive(false);
+                if ( a->GetCurrentHP() <= 0 ) {
+                    LM->GetExp(true);
+                }
             }
             if ( a->getTag() == MONSTER && b->getTag() == PLAYER_Attack2 ) {
                 a->TakeDamage(b->GetDamage());
                 a->setVulnerable(false);
                 b->setAlive(false);
+                if ( a->GetCurrentHP() <= 0 ) {
+                    LM->GetExp(true);
+                }
             }
             if ( a->getTag() == MONSTER && b->getTag() == PLAYER_Attack3 ) {
                 a->TakeDamage(b->GetDamage());
                 a->setVulnerable(false);
                 b->setAlive(false);
+                if ( a->GetCurrentHP() <= 0 ) {
+                    LM->GetExp(true);
+                }
             }
             
         }

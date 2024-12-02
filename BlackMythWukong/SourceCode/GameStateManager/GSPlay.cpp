@@ -29,6 +29,7 @@ void GSPlay::Init()
 	m_Player.Init();
 	m_Boss.Init();
 	m_CreepManager.Init(1);
+	printf("init gsplay\n");
 
 	//UI
 	m_playerUI.Init(*DATA->getTexture("UI/HP/HP"), sf::Vector2i(9, 1),sf::Vector2f(171,26),9, sf::Vector2f(2.5, 2.5));
@@ -61,10 +62,14 @@ void GSPlay::Init()
 
 void GSPlay::Update(float deltaTime)
 {
+	printf("update gsplay\n");
 	srand(m_currentTime);
 	DM->Update(deltaTime);
 	if ( sf::Keyboard::isKeyPressed(sf::Keyboard::G) ) {
 		GSM->ChangeState(StateTypes::PLAY2);
+	}
+	if ( sf::Keyboard::isKeyPressed(sf::Keyboard::H) ) {
+		GSM->ChangeState(StateTypes::FINAL);
 	}
 	if ( DM->IsDialog() )
 	{
@@ -83,11 +88,6 @@ void GSPlay::Update(float deltaTime)
 		LM->Update(deltaTime);
 		if ( m_Player.getHitBox()->isAlive() ) {
 			m_currentTime += deltaTime;
-			/*if ( m_currentTime >= 0.5f ) {
-				m_currentScore++;
-				m_Score.setString(std::to_string(m_currentScore));
-				m_currentTime -= 1.f;
-			}*/
 		}
 		else ScoreManager::GetInstance()->setCurrentScore(m_currentScore);
 		UpdateBackground(deltaTime);
@@ -234,7 +234,7 @@ void GSPlay::ManagePlayerHP()
 }
 void GSPlay::ManagePlayerEXP()
 {
-	float expperframe = m_Player.getHitBox()->GetTotalHP() / 8;//EXP bar has 8 frames
-	int frame = (int)((m_Player.getHitBox()->GetTotalHP() - m_Player.getHitBox()->GetCurrentHP()) / expperframe) + 1;
-	m_playerUI3.ChangeFrame(8 - frame + 1);
+	float expperframe = LM->GetExpPerLevel() / 8;//EXP bar has 8 frames
+	int frame = (int)((LM->GetExpToLevelUp() - LM->GetCurrentExp()) / expperframe) + 1;
+	m_playerUI3.ChangeFrame(frame);
 }

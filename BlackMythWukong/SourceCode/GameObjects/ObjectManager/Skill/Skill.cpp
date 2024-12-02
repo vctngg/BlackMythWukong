@@ -48,6 +48,18 @@ void Skill::SetCD()
 		m_cooldownDuration = 1.2;
 		break;
 	}
+	case DEMON_SKILL_NA:
+		m_cooldownDuration = 1.2;
+		break;
+	case DEMON_SKILL_SMASH:
+		m_cooldownDuration = 10;
+		break;
+	case DEMON_SKILL_FIRE:
+		m_cooldownDuration = 6;
+		break;
+	case DEMON_SKILL_SPELL:
+		m_cooldownDuration = 15;
+		break;
 	default: {
 		break;
 		}

@@ -34,6 +34,7 @@ void Animation::ApplyRect()
 void Animation::Update(float deltaTime)
 {
 	if ( (m_currentFrame.x == (m_frameNum.x - 1)) && m_modeStopAtEndFrame ) {
+		m_endframe = true;
 		return;
 	}
 	m_currentTime += deltaTime;

@@ -19,6 +19,7 @@ Player::Player()
 	m_attack2State = new PSAttack2(this);
 	m_attack3State = new PSAttack3(this);
 	m_idleState = new PSIdle(this);
+
 	m_currentState = m_idleState;
 
 	m_PlayerWeapon = new PlayerWeapon();
@@ -137,6 +138,7 @@ void Player::performStateChange()
 			m_currentState = m_deathState;
 			break;
 		default:
+			m_currentState = m_idleState;
 			break;
 		}
 		m_nextState = IPState::SNULL;

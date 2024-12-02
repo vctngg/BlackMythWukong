@@ -7,6 +7,7 @@
 #include "GSSetting.h"
 #include "GSHighScore.h"
 #include "GSAbout.h"
+#include "GSFinal.h"
 
 
 GameStateBase* GameStateBase::CreateState(StateTypes st) {
@@ -26,6 +27,9 @@ GameStateBase* GameStateBase::CreateState(StateTypes st) {
 		break;
 	case PLAY2:
 		gs = new GSPlay2();
+		break;
+	case FINAL:
+		gs = new GSFinal();
 		break;
 	case SETTING:
 		gs = new GSSetting();

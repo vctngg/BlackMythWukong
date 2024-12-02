@@ -1,5 +1,6 @@
 #pragma once
 #include "../ObjectManager/Collision/CollisionManager.h"
+#include "../../GameManager/ResourceManager.h"
 #include "FBullet.h"
 #include "FNA.h"
 
