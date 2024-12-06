@@ -3,9 +3,9 @@
 CreepManager::CreepManager()
 {
 	m_GuardNum = 50;
-	m_MonsterNum = 1;
+	m_MonsterNum = 4;
 
-	m_TimeSpwanCreep = 2.f;
+	m_TimeSpawnCreep = 2.f;
 	m_currentTime = 0.f;
 }
 
@@ -32,7 +32,7 @@ CreepManager::~CreepManager()
 
 }
 
-void CreepManager::Init(int stage)
+void CreepManager::Init(int stage, CollisionManager& CM, SkillManager& SM)
 {
 	m_stageNumber = stage;
 	switch ( m_stageNumber )
@@ -43,31 +43,31 @@ void CreepManager::Init(int stage)
 			creepR->Init();
 			creepR->getHitBox()->setAlive(false);
 			m_listGuard.push_back(creepR);
-			CM->addObj(creepR->getHitBox());
+			CM.addObj(creepR->getHitBox());
 		}
 
 		Dog* dog = new Dog();
 		dog->Init();
 		dog->getHitBox()->setAlive(false);
 		m_Dog.push_back(dog);
-		CM->addObj(dog->getHitBox());
+		CM.addObj(dog->getHitBox());
 
 		break;
 	}
 	case 2: {
 		for ( int i = 0; i < m_MonsterNum; i++ ) {
 			Monster* m = new Monster();
-			m->Init();
+			m->Init(SM);
 			m->getHitBox()->setAlive(true);
 			m_listMonster.push_back(m);
-			CM->addObj(m->getHitBox());
+			CM.addObj(m->getHitBox());
 		}
 		break;
 	}
 	}
 }
 
-void CreepManager::Update(float deltaTime,sf::Vector2f offset, HitBox* player_hitbox)
+void CreepManager::Update(float deltaTime,sf::Vector2f offset, HitBox* player_hitbox,CollisionManager& CM, SkillManager& SM)
 {
 	m_currentTime += deltaTime;
 	switch ( m_stageNumber )
@@ -86,11 +86,12 @@ void CreepManager::Update(float deltaTime,sf::Vector2f offset, HitBox* player_hi
 		break;
 	}
 	case 2: {
-		for ( int i = 0; i < m_MonsterNum; i++ ) {
+		if ( m_currentTime >= m_TimeSpawnCreep ) {
 			SpawnMonster();
+			m_currentTime -= m_TimeSpawnCreep;
 		}
 		for ( auto creep : m_listMonster ) {
-			creep->Update(deltaTime, offset, player_hitbox);
+			creep->Update(deltaTime, offset, player_hitbox,SM,CM);
 		}
 		break;
 	}

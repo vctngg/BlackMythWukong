@@ -7,7 +7,7 @@ class DSIdleD :public IDState {
 public:
 	DSIdleD(IDemon* demon);
 	void Init();
-	void Update(float deltaTime);
+	void Update(float deltaTime, SkillManager& SM);
 	void Render(sf::RenderWindow* window);
 	void Reset();
 

@@ -14,7 +14,7 @@ DNA::~DNA()
 
 void DNA::Init()
 {
-	m_HitBox = new HitBox(sf::Vector2i(16, 16));
+	m_HitBox = new HitBox(sf::Vector2i(32, 32));
 	m_HitBox->Init(sf::Vector2f(240, 0));
 	m_HitBox->SetTag(DEMON_NA);
 	setStartPoint(sf::Vector2f(screenWidth + 100, groundY));

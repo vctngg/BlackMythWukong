@@ -8,24 +8,22 @@ void Level::Init()
 	m_expToLevelUp = EXP_PER_LEVEL;
 }
 
-void Level::Update(float deltaTime)
+void Level::Update(float deltaTime, SkillManager& skillmanager)
 {
-	LevelUp();
-	SM->Update(deltaTime);
-
+	LevelUp(skillmanager);
 }
 
 void Level::Reset()
 {
 }
 
-void Level::LevelUp()
+void Level::LevelUp(SkillManager& skillmanager)
 {
 	m_expToLevelUp = EXP_PER_LEVEL * (1 - pow(EXP_MULTIPLIER, m_currentLevel+1)) / (1 - EXP_MULTIPLIER);
 	while ( m_exp > m_expToLevelUp ) {
 		m_currentLevel++;
 		m_expToLevelUp = EXP_PER_LEVEL * (1 - pow(EXP_MULTIPLIER, m_currentLevel + 1)) / (1 - EXP_MULTIPLIER);
-		ObtainSkill();
+		ObtainSkill(skillmanager);
 		m_expPerLevel = pow(EXP_MULTIPLIER, m_currentLevel + 1) * EXP_PER_LEVEL;
 	}
 	
@@ -43,15 +41,15 @@ void Level::GetExp(bool met_requirement)
 	}
 }
 
-void Level::ObtainSkill()
+void Level::ObtainSkill(SkillManager& skillmanager)
 {
 	if ( m_currentLevel == 1 ) {
-		SM->UnlockSkill(PLAYER_ATTACK_3);
+		skillmanager.UnlockSkill(PLAYER_ATTACK_3);
 	}
 	if ( m_currentLevel == 3 ) {
-		SM->UnlockSkill(PLAYER_ATTACK_2);
+		skillmanager.UnlockSkill(PLAYER_ATTACK_2);
 	}
 	if ( m_currentLevel == 5 ) {
-		SM->UnlockSkill(PLAYER_SKILL_SUMMON);
+		skillmanager.UnlockSkill(PLAYER_SKILL_SUMMON);
 	}
 }

@@ -44,6 +44,10 @@ private:
 	UI m_playerUI3;
 	UI m_playerUI4;
 
+	Level LM;
+	SkillManager SM;
+	CollisionManager CM;
+
 	std::list<GameButton*> m_listButton;
 
 	//debug

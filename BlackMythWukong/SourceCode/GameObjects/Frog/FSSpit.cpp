@@ -11,7 +11,7 @@ void FSSpit::Init()
 	m_Animation->setModeEndFrame(true);
 }
 
-void FSSpit::Update(float deltaTime)
+void FSSpit::Update(float deltaTime, SkillManager& SM)
 {
 	m_Animation->Update(deltaTime);
 	Animation2* ani = (Animation2*)m_Animation;

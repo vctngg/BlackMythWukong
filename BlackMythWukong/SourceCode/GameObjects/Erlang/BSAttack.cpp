@@ -3,6 +3,7 @@
 BSAttack::BSAttack(IBoss* boss)
 {
 	m_Boss = boss;
+	printf("construct attack\n");
 }
 
 void BSAttack::Init()
@@ -11,7 +12,7 @@ void BSAttack::Init()
 	m_Animation->setModeEndFrame(true);
 }
 
-void BSAttack::Update(float deltaTime)
+void BSAttack::Update(float deltaTime, SkillManager& SM)
 {
 	printf("attack\n");
 	m_left = m_Boss->getHitBox()->getPosition().x > m_Boss->ReturnPlayerPosition().x;

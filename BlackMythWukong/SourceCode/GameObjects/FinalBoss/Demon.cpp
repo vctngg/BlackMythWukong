@@ -28,34 +28,17 @@ Demon::Demon()
 	m_firebreathState = new DSFireBreath(this);
 	m_deathState = new DSDeath(this);
 
-	m_currentState = m_idleState;
+	m_currentState = m_transformState;
 
 	m_DemonWeapon = new DemonWeapon();
 
-	m_skill = new Skill();
-	m_skill->SetType(DEMON_SKILL_NA);
-	m_skill->UnlockSkill();
-	SM->AddSkill(m_skill);
-	m_skill = new Skill();
-	m_skill->SetType(DEMON_SKILL_FIRE);
-	m_skill->UnlockSkill();
-	SM->AddSkill(m_skill);
-	m_skill = new Skill();
-	m_skill->SetType(DEMON_SKILL_SMASH);
-	m_skill->UnlockSkill();
-	SM->AddSkill(m_skill);
-	m_skill = new Skill();
-	m_skill->SetType(DEMON_SKILL_SPELL);
-	m_skill->UnlockSkill();
-	SM->AddSkill(m_skill);
-	delete m_skill;
 }
 
 void Demon::changeNextState(IDState::STATE nextState)
 {
 	m_nextState = nextState;
 }
-void Demon::Init()
+void Demon::Init(CollisionManager& CM, SkillManager& SM)
 {
 	m_runState->Init();
 	m_runDState->Init();
@@ -70,24 +53,43 @@ void Demon::Init()
 	m_firebreathState->Init();
 	m_deathState->Init();
 
-	m_HitBox = new HitBox(sf::Vector2i(15, 30));
+	m_skill = new Skill();
+	m_skill->SetType(DEMON_SKILL_NA);
+	m_skill->UnlockSkill();
+	SM.AddSkill(m_skill);
+	//delete m_skill;
+	m_skill = new Skill();
+	m_skill->SetType(DEMON_SKILL_FIRE);
+	m_skill->UnlockSkill();
+	SM.AddSkill(m_skill);
+	//delete m_skill;
+	m_skill = new Skill();
+	m_skill->SetType(DEMON_SKILL_SMASH);
+	m_skill->UnlockSkill();
+	SM.AddSkill(m_skill);
+	//delete m_skill;
+	m_skill = new Skill();
+	m_skill->SetType(DEMON_SKILL_SPELL);
+	m_skill->UnlockSkill();
+	SM.AddSkill(m_skill);
+	//delete m_skill;
+
+	m_HitBox = new HitBox(sf::Vector2i(64, 64));
 	m_HitBox->setPosition(400, groundY - m_HitBox->getSize().y / 2);
-	m_HitBox->Init(sf::Vector2f(200, 500));
+	m_HitBox->Init(sf::Vector2f(100, 500));
 	m_HitBox->SetTag(DEMON);
 	m_HitBox->setAlive(true);
 
-	CM->addObj(m_HitBox);
-	m_DemonWeapon->Init();
-	LM->Init();
+	CM.addObj(m_HitBox);
+	m_DemonWeapon->Init(CM);
 }
 
-void Demon::Update(float deltaTime, sf::Vector2f offset)
+void Demon::Update(float deltaTime, sf::Vector2f offset, SkillManager& SM)
 {
 	performStateChange();
 	m_playerOffset = offset;
-	m_currentState->Update(deltaTime);
 	m_DemonWeapon->Update(deltaTime, m_playerOffset);
-	m_currentState->Update(deltaTime);
+	m_currentState->Update(deltaTime,SM);
 }
 
 void Demon::Render(sf::RenderWindow* window)
@@ -117,9 +119,9 @@ void Demon::FacingCheck()
 {
 }
 
-void Demon::GetDistanceFromPlayer(HitBox* player_hitbox)
+void Demon::GetDistanceFromPlayer(HitBox* player_hitbox, CollisionManager& CM)
 {
-	m_distanceFromPlayer = CM->GetDistance(m_HitBox, player_hitbox);
+	m_distanceFromPlayer = CM.GetDistance(m_HitBox, player_hitbox);
 }
 
 float Demon::ReturnDistanceFromPlayer()

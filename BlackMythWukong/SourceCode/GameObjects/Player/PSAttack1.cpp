@@ -11,7 +11,7 @@ void PSAttack1::Init()
 	m_Animation->setModeEndFrame(true);
 }
 
-void PSAttack1::Update(float deltaTime)
+void PSAttack1::Update(float deltaTime, SkillManager& SM)
 {
 	m_Animation->Update(deltaTime);
 	Animation2* ani = (Animation2*)m_Animation;

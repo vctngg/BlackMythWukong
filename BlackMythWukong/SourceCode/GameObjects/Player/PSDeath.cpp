@@ -12,7 +12,7 @@ void PSDeath::Init()
 	m_Animation->setModeEndFrame(true);
 }
 
-void PSDeath::Update(float deltaTime)
+void PSDeath::Update(float deltaTime, SkillManager& SM)
 {
 	m_Player->FacingCheck();
 	m_currentTime += deltaTime;

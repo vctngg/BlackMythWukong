@@ -2,7 +2,7 @@
 
 FrogWeapon::FrogWeapon()
 {
-	m_Num = 1;
+	m_Num = 5;
 	m_currentTime = 0.f;
 }
 
@@ -22,7 +22,7 @@ FrogWeapon::~FrogWeapon()
 	m_ListNA.clear();
 }
 
-void FrogWeapon::Init()
+void FrogWeapon::Init(CollisionManager& CM)
 {
 
 	for ( int i = 0; i < m_Num; i++ ) {
@@ -31,13 +31,13 @@ void FrogWeapon::Init()
 		bullet->Init();
 		bullet->getHitBox()->setAlive(false);
 		m_ListBullet.push_back(bullet);
-		CM->addObj(bullet->getHitBox());
+		CM.addObj(bullet->getHitBox());
 
 		FNA* na = new FNA();
 		na->Init();
 		na->getHitBox()->setAlive(false);
 		m_ListNA.push_back(na);
-		CM->addObj(na->getHitBox());
+		CM.addObj(na->getHitBox());
 
 	}
 }

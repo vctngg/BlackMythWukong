@@ -26,10 +26,10 @@ void GSPlay::Resume()
 void GSPlay::Init()
 {
 	m_Background.Init(GLACIAL_MOUNTAIN);
-	m_Player.Init();
-	m_Boss.Init();
-	m_CreepManager.Init(1);
-	printf("init gsplay\n");
+	m_Player.Init(CM,SM);
+	LM.Init();
+	m_Boss.Init(CM);
+	m_CreepManager.Init(1,CM,SM);
 
 	//UI
 	m_playerUI.Init(*DATA->getTexture("UI/HP/HP"), sf::Vector2i(9, 1),sf::Vector2f(171,26),9, sf::Vector2f(2.5, 2.5));
@@ -53,16 +53,15 @@ void GSPlay::Init()
 	m_Score.setFillColor(sf::Color::White);
 	m_Score.setPosition(screenWidth - 100, 50);
 	//music
-	/*DATA->playMusic("Uprising");
+	DATA->playMusic("Uprising");
 	DATA->getMusic("Uprising")->setLoop(true);;
-	DATA->getMusic("Uprising")->setVolume(30);*/
+	DATA->getMusic("Uprising")->setVolume(30);
 	shape.setSize(sf::Vector2f(screenWidth, screenHeight));
 	shape.setFillColor(sf::Color(0, 0, 0, alpha));
 }
 
 void GSPlay::Update(float deltaTime)
 {
-	printf("update gsplay\n");
 	srand(m_currentTime);
 	DM->Update(deltaTime);
 	if ( sf::Keyboard::isKeyPressed(sf::Keyboard::G) ) {
@@ -73,9 +72,6 @@ void GSPlay::Update(float deltaTime)
 	}
 	if ( DM->IsDialog() )
 	{
-		for ( auto btn : m_listButton ) {
-			btn->Update(deltaTime);
-		}
 		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) ) {
 			DM->NextDialog();
 		}
@@ -85,7 +81,8 @@ void GSPlay::Update(float deltaTime)
 	}
 	else
 	{
-		LM->Update(deltaTime);
+		LM.Update(deltaTime,SM);
+		SM.Update(deltaTime);
 		if ( m_Player.getHitBox()->isAlive() ) {
 			m_currentTime += deltaTime;
 		}
@@ -93,13 +90,13 @@ void GSPlay::Update(float deltaTime)
 		UpdateBackground(deltaTime);
 		if ( m_Player.getHitBox()->isAlive() )
 		{
-			m_Boss.GetDistanceFromPlayer(m_Player.getHitBox());
+			m_Boss.GetDistanceFromPlayer(m_Player.getHitBox(),CM);
 			m_Boss.GetPlayerPosition(m_Player.getHitBox());
 		}
-		m_Player.Update(deltaTime);
+		m_Player.Update(deltaTime,SM);
 		if ( m_Player.getHitBox()->isAlive() ) {
 			
-			m_Boss.Update(deltaTime, m_Player.m_offset);
+			m_Boss.Update(deltaTime, m_Player.m_offset,SM);
 			if ( !m_Boss.getHitBox()->isAlive() && !m_Boss.m_isWaiting ) {
 				if(!m_bossTrigger )
 				{
@@ -137,8 +134,8 @@ void GSPlay::Update(float deltaTime)
 					DM->TriggerDialog();
 				}
 			}
-			m_CreepManager.Update(deltaTime, m_Player.m_offset, m_Player.getHitBox());
-			CM->Update(deltaTime);
+			m_CreepManager.Update(deltaTime, m_Player.m_offset, m_Player.getHitBox(),CM,SM);
+			CM.Update(deltaTime,LM);
 
 			ManagePlayerHP();
 			ManagePlayerEXP();
@@ -168,7 +165,7 @@ void GSPlay::Render(sf::RenderWindow* window)
 		m_Boss.Render(window);
 		m_Player.Render(window);
 	}
-	window->draw(m_Score);
+	//window->draw(m_Score);
 	
 	window->draw(m_playerUI4);
 	window->draw(m_playerUI3);
@@ -178,13 +175,10 @@ void GSPlay::Render(sf::RenderWindow* window)
 	if ( DM->IsDialog() )
 	{
 		DM->Render(window);
-		for ( auto btn : m_listButton ) {
-			btn->Render(window);
-		}
 	}
 
 
-	window->draw(rect);
+	//window->draw(rect);
 	if ( !m_Boss.getHitBox()->isAlive() && !m_Boss.m_isWaiting && DM->GetCurrentDialog() == 37 && !DM->IsDialog() )
 	{
 		window->draw(shape);
@@ -234,7 +228,7 @@ void GSPlay::ManagePlayerHP()
 }
 void GSPlay::ManagePlayerEXP()
 {
-	float expperframe = LM->GetExpPerLevel() / 8;//EXP bar has 8 frames
-	int frame = (int)((LM->GetExpToLevelUp() - LM->GetCurrentExp()) / expperframe) + 1;
+	float expperframe = LM.GetExpPerLevel() / 8;//EXP bar has 8 frames
+	int frame = (int)((LM.GetExpToLevelUp() - LM.GetCurrentExp()) / expperframe) + 1;
 	m_playerUI3.ChangeFrame(frame);
 }

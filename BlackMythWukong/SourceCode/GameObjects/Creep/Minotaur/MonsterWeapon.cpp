@@ -22,7 +22,7 @@ MonsterWeapon::~MonsterWeapon()
 	m_ListNA.clear();
 }
 
-void MonsterWeapon::Init()
+void MonsterWeapon::Init(CollisionManager& CM)
 {
 
 	/*for ( int i = 0; i < m_Num; i++ ) {
@@ -37,7 +37,7 @@ void MonsterWeapon::Init()
 		bullet->Init();
 		bullet->getHitBox()->setAlive(false);
 		m_ListNA.push_back(bullet);
-		CM->addObj(bullet->getHitBox());
+		CM.addObj(bullet->getHitBox());
 	}
 }
 

@@ -25,8 +25,9 @@ void GSFinal::Resume()
 void GSFinal::Init()
 {
 	m_Background.Init(AUTUMN_FOREST);
-	m_Player.Init();
-	m_Demon.Init();
+	m_Player.Init(CM,SM);
+	LM.Init();
+	m_Demon.Init(CM,SM);
 
 	//UI
 	m_playerUI.Init(*DATA->getTexture("UI/HP/HP"), sf::Vector2i(9, 1), sf::Vector2f(171, 26), 9, sf::Vector2f(2.5, 2.5));
@@ -60,27 +61,31 @@ void GSFinal::Update(float deltaTime)
 	m_currentTime += deltaTime;
 	srand(m_currentTime);
 	DM->Update(deltaTime);
+	if ( sf::Keyboard::isKeyPressed(sf::Keyboard::P) ) {
+		m_Demon.getHitBox()->SetCurrentHP(0);
+	}
 	if ( DM->IsDialog() )
 	{
 
 	}
 	else
 	{
-		LM->Update(deltaTime);
+		LM.Update(deltaTime,SM);
+		SM.Update(deltaTime);
 		if ( m_Player.getHitBox()->isAlive() ) {
 			m_currentTime += deltaTime;
-			m_currentScore = LM->GetCurrentExp();
+			m_currentScore = LM.GetCurrentExp();
 			m_Score.setString(std::to_string(m_currentScore));
 		}
 		else ScoreManager::GetInstance()->setCurrentScore(m_currentScore);
 		UpdateBackground(deltaTime);
-		m_Player.Update(deltaTime);
+		m_Player.Update(deltaTime,SM);
 		if ( m_Player.getHitBox()->isAlive() )
 		{
-			m_Demon.GetDistanceFromPlayer(m_Player.getHitBox());
+			m_Demon.GetDistanceFromPlayer(m_Player.getHitBox(),CM);
 			m_Demon.GetPlayerPosition(m_Player.getHitBox());
-			m_Demon.Update(deltaTime, m_Player.m_offset);
-			CM->Update(deltaTime);
+			m_Demon.Update(deltaTime, m_Player.m_offset,SM);
+			CM.Update(deltaTime,LM);
 
 			ManagePlayerHP();
 			ManagePlayerEXP();
@@ -136,7 +141,7 @@ void GSFinal::ManagePlayerHP()
 
 void GSFinal::ManagePlayerEXP()
 {
-	float expperframe = LM->GetExpPerLevel() / 8;//EXP bar has 8 frames
-	int frame = (int)((LM->GetExpToLevelUp() - LM->GetCurrentExp()) / expperframe) + 1;
+	float expperframe = LM.GetExpPerLevel() / 8;//EXP bar has 8 frames
+	int frame = (int)((LM.GetExpToLevelUp() - LM.GetCurrentExp()) / expperframe) + 1;
 	m_playerUI3.ChangeFrame(frame);
 }

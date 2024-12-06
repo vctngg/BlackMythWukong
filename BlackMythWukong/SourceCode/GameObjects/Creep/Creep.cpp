@@ -45,10 +45,10 @@ void Creep::Update(float deltaTime, sf::Vector2f offset)
 	}
 	else
 	{
-		/*if ( m_soundDeadisPlay == false ) {
+		if ( m_soundDeadisPlay == false ) {
 			DATA->playSound("monster-hurt");
 			m_soundDeadisPlay = true;
-		}*/
+		}
 		m_currentAni = m_deathAni;
 		if ( m_currentAni->getCurrentFrame().x != m_currentAni->getFrameNum().x - 1 ) {
 			m_currentAni->Update(deltaTime);
@@ -67,9 +67,9 @@ void Creep::Render(sf::RenderWindow* window)
 	window->draw(*m_HitBox);
 }
  
-void Creep::CalculateDistanceFromPlayer(HitBox* player_hitbox)
+void Creep::CalculateDistanceFromPlayer(HitBox* player_hitbox, CollisionManager& CM)
 {
-	m_distanceFromPlayer = CM->GetDistance(m_HitBox, player_hitbox);
+	m_distanceFromPlayer = CM.GetDistance(m_HitBox, player_hitbox);
 }
 
 void Creep::GetPlayerPosition(HitBox* player_hitbox)

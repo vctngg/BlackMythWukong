@@ -3,6 +3,7 @@
 BSFlee::BSFlee(IBoss* boss)
 {
 	m_Boss = boss;
+	printf("construct flee\n");
 }
 
 void BSFlee::Init()
@@ -13,7 +14,7 @@ void BSFlee::Init()
 	m_isTalking = true;
 }
 
-void BSFlee::Update(float deltaTime)
+void BSFlee::Update(float deltaTime, SkillManager& SM)
 {
 	m_currentTime += deltaTime;
 	m_currentAnimation->Update(deltaTime);

@@ -8,8 +8,8 @@ public:
 	~Player();
 	void changeNextState(IPState::STATE nextState);
 
-	void Init();
-	void Update(float deltaTime);
+	void Init(CollisionManager& collisionmanager, SkillManager& SM);
+	void Update(float deltaTime, SkillManager& SM);
 	void Render(sf::RenderWindow* window);
 	HitBox* getHitBox();
 	sf::Vector2f getPosition();

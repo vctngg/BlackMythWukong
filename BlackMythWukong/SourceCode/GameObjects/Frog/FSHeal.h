@@ -6,7 +6,7 @@ class FSHeal :public IFState {
 public:
 	FSHeal(IFrog* frog);
 	void Init();
-	void Update(float deltaTime);
+	void Update(float deltaTime, SkillManager& CM);
 	void Render(sf::RenderWindow* window);
 	void Reset();
 

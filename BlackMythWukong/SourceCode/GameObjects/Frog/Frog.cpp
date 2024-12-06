@@ -22,19 +22,6 @@ Frog::Frog()
 
 	m_FrogWeapon = new FrogWeapon();
 
-	m_skill = new Skill();
-	m_skill->SetType(FROG_SKILL_HEAL);
-	m_skill->UnlockSkill();
-	SM->AddSkill(m_skill);
-	m_skill = new Skill();
-	m_skill->SetType(FROG_SKILL_LICK);
-	m_skill->UnlockSkill();
-	SM->AddSkill(m_skill);
-	m_skill = new Skill();
-	m_skill->SetType(FROG_SKILL_SPIT);
-	m_skill->UnlockSkill();
-	SM->AddSkill(m_skill);
-	delete m_skill;
 }
 
 Frog::~Frog()
@@ -72,7 +59,7 @@ void Frog::changeNextState(IFState::STATE nextState)
 	m_nextState = nextState;
 }
 
-void Frog::Init()
+void Frog::Init(CollisionManager& CM, SkillManager& SM)
 {
 
 	m_runState->Init();
@@ -83,23 +70,39 @@ void Frog::Init()
     m_deathState->Init();
 	m_healState->Init();
 
+	m_skill = new Skill();
+	m_skill->SetType(FROG_SKILL_HEAL);
+	m_skill->UnlockSkill();
+	SM.AddSkill(m_skill);
+	//delete m_skill;
+	m_skill = new Skill();
+	m_skill->SetType(FROG_SKILL_LICK);
+	m_skill->UnlockSkill();
+	SM.AddSkill(m_skill);
+	//delete m_skill;
+	m_skill = new Skill();
+	m_skill->SetType(FROG_SKILL_SPIT);
+	m_skill->UnlockSkill();
+	SM.AddSkill(m_skill);
+	//delete m_skill;
+
 	m_HitBox = new HitBox(sf::Vector2i(64, 64));
 	m_HitBox->setPosition(screenWidth - 300, groundY - m_HitBox->getSize().y / 2);
 	m_HitBox->Init(sf::Vector2f(100, 500));
 	m_HitBox->SetTag(FROG);
 	m_HitBox->setAlive(true);
 
-	CM->addObj(m_HitBox);
-	m_FrogWeapon->Init();
+	CM.addObj(m_HitBox);
+	m_FrogWeapon->Init(CM);
 }
 
-void Frog::Update(float deltaTime, sf::Vector2f offset)
+void Frog::Update(float deltaTime, sf::Vector2f offset, SkillManager& SM)
 {
 	MFacingCheck(getHitBox()->getPosition().x, ReturnPlayerPosition().x);
 	performStateChange();
 	m_playerOffset = offset;
 	m_FrogWeapon->Update(deltaTime, offset);
-	m_currentState->Update(deltaTime);
+	m_currentState->Update(deltaTime, SM);
 }
 void Frog::FacingCheck() {
 
@@ -117,9 +120,9 @@ HitBox* Frog::getHitBox()
 	return m_HitBox;
 }
 
-void Frog::GetDistanceFromPlayer(HitBox* player_hitbox)
+void Frog::GetDistanceFromPlayer(HitBox* player_hitbox, CollisionManager& CM)
 {
-	m_distanceFromPlayer = CM->GetDistance(m_HitBox, player_hitbox);
+	m_distanceFromPlayer = CM.GetDistance(m_HitBox, player_hitbox);
 }
 
 float Frog::ReturnDistanceFromPlayer()

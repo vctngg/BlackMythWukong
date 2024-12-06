@@ -1,17 +1,16 @@
 #pragma once
 #include "../ObjectManager/Skill/SkillManager.h"
-#define LM Level::GetInstance()
 
-class Level :public CSingleton<Level>
+class Level
 {
 public:
 	void Init();
-	void Update(float deltaTime);
+	void Update(float deltaTime, SkillManager& skillmanager);
 	void Reset();
-	void LevelUp();
+	void LevelUp(SkillManager& skillmanager);
 	int GetCurrentLevel();
 	void GetExp(bool met_requirement);
-	void ObtainSkill();
+	void ObtainSkill(SkillManager& skillmanager);
 	float GetExpPerLevel() {
 		return m_expPerLevel;
 	}

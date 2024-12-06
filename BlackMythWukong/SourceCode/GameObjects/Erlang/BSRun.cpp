@@ -3,6 +3,7 @@
 BSRun::BSRun(IBoss* boss)
 {
 	m_Boss = boss;
+	printf("construct run\n");
 }
 
 void BSRun::Init()
@@ -10,7 +11,7 @@ void BSRun::Init()
 	m_Animation = new Animation(*DATA->getTexture("Erlang/RUN"), sf::Vector2i(8, 1), 0.1f);
 }
 
-void BSRun::Update(float deltaTime)
+void BSRun::Update(float deltaTime, SkillManager& SM)
 {
 	printf("run\n");
 	m_currentTime += deltaTime;
@@ -39,7 +40,7 @@ void BSRun::Update(float deltaTime)
 		}
 	}
 	else {
-		
+		m_Boss->changeNextState(FLEE);
 	}
 	m_Animation->setPosition(m_Boss->getHitBox()->getPosition().x + m_Boss->m_playerOffset.x, m_Boss->m_playerOffset.y+ m_Boss->getHitBox()->getPosition().y - 16);
 	m_Animation->flip(m_Boss->getHitBox()->getPosition().x > m_Boss->ReturnPlayerPosition().x);

@@ -11,7 +11,7 @@ void FSLick::Init()
 	m_Animation->setModeEndFrame(true);	
 }
 
-void FSLick::Update(float deltaTime)
+void FSLick::Update(float deltaTime, SkillManager& SM)
 {
 	m_Animation->Update(deltaTime);
 	Animation2* ani = (Animation2*)m_Animation;

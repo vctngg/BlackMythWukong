@@ -10,7 +10,7 @@ void PSFall::Init()
 	m_Animation = new Animation(*DATA->getTexture("wukong/wukong_jump"), sf::Vector2i(4, 1), 0.1f);
 }
 
-void PSFall::Update(float deltaTime)
+void PSFall::Update(float deltaTime, SkillManager& SM)
 {
 	m_Animation->Update(deltaTime);
 	m_Player->FacingCheck();

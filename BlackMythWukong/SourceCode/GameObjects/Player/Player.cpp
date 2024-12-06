@@ -24,30 +24,13 @@ Player::Player()
 
 	m_PlayerWeapon = new PlayerWeapon();
 
-	m_skill = new Skill();
-	m_skill->SetType(PLAYER_ATTACK_1);
-	m_skill->UnlockSkill();
-	SM->AddSkill(m_skill);
-	m_skill = new Skill();
-	m_skill->SetType(PLAYER_ATTACK_2);
-	m_skill->UnlockSkill();
-	SM->AddSkill(m_skill);
-	m_skill = new Skill();
-	m_skill->SetType(PLAYER_ATTACK_3);
-	m_skill->UnlockSkill();
-	SM->AddSkill(m_skill);
-	m_skill = new Skill();
-	m_skill->SetType(PLAYER_SKILL_SUMMON);
-	m_skill->UnlockSkill();
-	SM->AddSkill(m_skill);
-	delete m_skill;
 }
 
 void Player::changeNextState(IPState::STATE nextState)
 {
 	m_nextState = nextState;
 }
-void Player::Init()
+void Player::Init(CollisionManager& collisionmanager, SkillManager& skillmanager)
 {
 	m_runState->Init();
 	m_jumpState->Init();
@@ -58,18 +41,38 @@ void Player::Init()
 	m_attack3State->Init();
 	m_idleState->Init();
 
+	m_skill = new Skill();
+	m_skill->SetType(PLAYER_ATTACK_1);
+	m_skill->UnlockSkill();
+	skillmanager.AddSkill(m_skill);
+	//delete m_skill;
+	m_skill = new Skill();
+	m_skill->SetType(PLAYER_ATTACK_2);
+	m_skill->UnlockSkill();
+	skillmanager.AddSkill(m_skill);
+	//delete m_skill;
+	m_skill = new Skill();
+	m_skill->SetType(PLAYER_ATTACK_3);
+	m_skill->UnlockSkill();
+	skillmanager.AddSkill(m_skill);
+	//delete m_skill;
+	m_skill = new Skill();
+	m_skill->SetType(PLAYER_SKILL_SUMMON);
+	m_skill->UnlockSkill();
+	skillmanager.AddSkill(m_skill);
+	//delete m_skill;
+
 	m_HitBox = new HitBox(sf::Vector2i(15, 30));
 	m_HitBox->setPosition(400, groundY-m_HitBox->getSize().y/2);
 	m_HitBox->Init(sf::Vector2f(200, 500));
 	m_HitBox->SetTag(PLAYER);
 	m_HitBox->setAlive(true);
 
-	CM->addObj(m_HitBox);
-	m_PlayerWeapon->Init();
-	LM->Init();
+	collisionmanager.addObj(m_HitBox);
+	m_PlayerWeapon->Init(collisionmanager);
 }
 
-void Player::Update(float deltaTime)
+void Player::Update(float deltaTime, SkillManager& SM)
 {
 	if ( this->getHitBox()->getPosition().x < screenWidth / 4 || this->getHitBox()->getPosition().x > screenWidth * 3 / 4 )
 	{
@@ -82,7 +85,7 @@ void Player::Update(float deltaTime)
 	}
 	performStateChange();
 	m_PlayerWeapon->Update(deltaTime, m_offset);
-	m_currentState->Update(deltaTime);
+	m_currentState->Update(deltaTime, SM);
 }
 
 void Player::Render(sf::RenderWindow* window)

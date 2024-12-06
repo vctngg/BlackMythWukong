@@ -8,7 +8,7 @@ class PlayerWeapon {
 public:
 	PlayerWeapon();
 	~PlayerWeapon();
-	void Init();
+	void Init(CollisionManager& collisionmanager);
 	void Update(float deltaTime, sf::Vector2f offset);
 	void Render(sf::RenderWindow* window);
 	void GetDirection(bool going_left);

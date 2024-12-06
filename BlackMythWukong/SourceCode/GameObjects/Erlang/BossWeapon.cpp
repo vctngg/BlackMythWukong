@@ -2,7 +2,7 @@
 
 BossWeapon::BossWeapon()
 {
-	m_Num = 1;
+	m_Num = 5;
 	m_currentTime = 0.f;
 }
 
@@ -16,7 +16,7 @@ BossWeapon::~BossWeapon()
 	m_ListBullet.clear();
 } 
 
-void BossWeapon::Init()
+void BossWeapon::Init(CollisionManager& CM)
 {
 
 	for ( int i = 0; i < m_Num; i++ ) {
@@ -24,7 +24,7 @@ void BossWeapon::Init()
 		bullet->Init();
 		bullet->getHitBox()->setAlive(false);
 		m_ListBullet.push_back(bullet);
-		CM->addObj(bullet->getHitBox());
+		CM.addObj(bullet->getHitBox());
 
 	}
 }
@@ -32,12 +32,10 @@ void BossWeapon::Init()
 void BossWeapon::Update(float deltaTime,sf::Vector2f offset)
 {
 	m_currentTime += deltaTime;
-	if (!m_ListBullet.empty() )
-	{
-		for ( auto bullet : m_ListBullet ) {
-			bullet->Update(deltaTime, offset);
-		}
+	for ( auto bullet : m_ListBullet ) {
+		bullet->Update(deltaTime, offset);
 	}
+	
 }
 
 void BossWeapon::Render(sf::RenderWindow* window)

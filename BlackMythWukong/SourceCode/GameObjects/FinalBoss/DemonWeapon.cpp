@@ -34,10 +34,31 @@ DemonWeapon::~DemonWeapon()
 	m_ListSpell.clear();
 }
 
-void DemonWeapon::Init()
+void DemonWeapon::Init(CollisionManager& CM)
 {
 	for ( int i = 0; i < m_Num; i++ ) {
-		
+		DNA* na = new DNA();
+		na->Init();
+		na->getHitBox()->setAlive(false);
+		m_ListNA.push_back(na);
+		CM.addObj(na->getHitBox());
+		Spell* s = new Spell();
+		s->Init();
+		s->getHitBox()->setAlive(false);
+		m_ListSpell.push_back(s);
+		CM.addObj(s->getHitBox());
+		Smash* sm = new Smash();
+		sm->Init();
+		sm->getHitBox()->setAlive(false);
+		m_ListSmash.push_back(sm);
+		CM.addObj(sm->getHitBox());
+	}
+	for ( int i = 0; i < (m_Num + 4); i++ ) {
+		Fire* f = new Fire();
+		f->Init();
+		f->getHitBox()->setAlive(false);
+		m_ListFire.push_back(f);
+		CM.addObj(f->getHitBox());
 	}
 }
 
@@ -130,10 +151,16 @@ void DemonWeapon::CastSmash(sf::Vector2f startPoint)
 			bullet = it;
 			break;
 		}
+		else if ( it->getHitBox2()->isAlive() == false && it->isStop() == true ) {
+			bullet = it;
+			break;
+		}
 	}
 	if ( bullet == nullptr ) return;
 	bullet->getHitBox()->SetTag(DEMON_Smash);
 	bullet->getHitBox()->setAlive(true);
+	bullet->getHitBox2()->SetTag(DEMON_Smash);
+	bullet->getHitBox2()->setAlive(true);
 	bullet->setStartPoint(startPoint);
 	bullet->Reset();
 }

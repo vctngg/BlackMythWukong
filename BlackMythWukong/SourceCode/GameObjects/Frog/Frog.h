@@ -8,12 +8,12 @@ public:
 	~Frog();
 	void changeNextState(IFState::STATE nextState);
 
-	void Init();
-	void Update(float deltaTime, sf::Vector2f offset);
+	void Init(CollisionManager& CM, SkillManager& SM);
+	void Update(float deltaTime, sf::Vector2f offset, SkillManager& SM);
 	void Render(sf::RenderWindow* window);
 	HitBox* getHitBox();
 	void FacingCheck();
-	void GetDistanceFromPlayer(HitBox* player_hitbox);
+	void GetDistanceFromPlayer(HitBox* player_hitbox, CollisionManager& CM);
 	float ReturnDistanceFromPlayer();
 	void GetPlayerPosition(HitBox* player_hitbox);
 	sf::Vector2f ReturnPlayerPosition();

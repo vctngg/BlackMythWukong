@@ -3,7 +3,7 @@
 DSDeath::DSDeath(IDemon* demon)
 {
 	m_Demon = demon;
-	m_timeRemain = 2.5f;
+	m_timeRemain = 2.2f;
 }
 
 void DSDeath::Init()
@@ -12,8 +12,9 @@ void DSDeath::Init()
 	m_Animation->setModeEndFrame(true);
 }
 
-void DSDeath::Update(float deltaTime)
+void DSDeath::Update(float deltaTime, SkillManager& SM)
 {
+	
 	m_Demon->FacingCheck();
 	m_currentTime += deltaTime;
 	if ( m_currentTime >= m_timeRemain ) {
@@ -21,7 +22,7 @@ void DSDeath::Update(float deltaTime)
 		//DATA->getMusic("Uprising")->stop();
 	}
 	m_Animation->Update(deltaTime);
-	m_Animation->setPosition(m_Demon->getHitBox()->getPosition().x + m_Demon->m_playerOffset.x, m_Demon->getHitBox()->getPosition().y - 64 + m_Demon->m_playerOffset.y);
+	m_Animation->setPosition(m_Demon->getHitBox()->getPosition().x + m_Demon->m_playerOffset.x, m_Demon->getHitBox()->getPosition().y - 48 + m_Demon->m_playerOffset.y);
 	m_Animation->flip(!m_Demon->FacingLeft());
 }
 

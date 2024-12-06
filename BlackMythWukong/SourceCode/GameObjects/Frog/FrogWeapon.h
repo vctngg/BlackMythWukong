@@ -8,7 +8,7 @@ class FrogWeapon {
 public:
 	FrogWeapon();
 	~FrogWeapon();
-	void Init();
+	void Init(CollisionManager& CM);
 	void Update(float deltaTime, sf::Vector2f offset);
 	void Render(sf::RenderWindow* window);
 	void GetDirection(bool going_left);

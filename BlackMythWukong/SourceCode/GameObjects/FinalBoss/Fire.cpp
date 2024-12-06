@@ -14,7 +14,7 @@ Fire::~Fire()
 
 void Fire::Init()
 {
-	m_HitBox = new HitBox(sf::Vector2i(16, 16));
+	m_HitBox = new HitBox(sf::Vector2i(32, 32));
 	m_HitBox->Init(sf::Vector2f(240, 0));
 	m_HitBox->SetTag(DEMON_NA);
 	setStartPoint(sf::Vector2f(screenWidth + 100, groundY));
@@ -28,7 +28,7 @@ void Fire::Update(float deltaTime, sf::Vector2f offset)
 		if ( !m_left )
 		{
 			m_HitBox->move(m_HitBox->getVelocity() * deltaTime);
-			if ( m_HitBox->getPosition().x > m_startPoint.x + 50 ) {
+			if ( m_HitBox->getPosition().x > m_startPoint.x + 150 ) {
 				m_HitBox->setPosition(m_startPoint);
 				m_stop = true;
 				m_HitBox->setAlive(false);//kill bullet
@@ -37,7 +37,7 @@ void Fire::Update(float deltaTime, sf::Vector2f offset)
 		else
 		{
 			m_HitBox->move(-m_HitBox->getVelocity() * deltaTime);
-			if ( m_HitBox->getPosition().x < m_startPoint.x - 50 ) {
+			if ( m_HitBox->getPosition().x < m_startPoint.x - 150 ) {
 				m_HitBox->setPosition(m_startPoint);
 				m_stop = true;
 				m_HitBox->setAlive(false);//kill bullet

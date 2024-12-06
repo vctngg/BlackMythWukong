@@ -10,7 +10,7 @@ void FSIdle::Init()
 	m_Animation = new Animation(*DATA->getTexture("Characters/Frogger/frogger_idle"), sf::Vector2i(5, 1), 0.1f);
 }
 
-void FSIdle::Update(float deltaTime)
+void FSIdle::Update(float deltaTime, SkillManager& SM)
 {
 	m_currentTime += deltaTime;
 	m_Animation->Update(deltaTime);
@@ -23,16 +23,16 @@ void FSIdle::Update(float deltaTime)
 			}
 		}
 		else if ( m_Frog->ReturnDistanceFromPlayer() <= 48 ) {
-			if ( SM->IsUnlocked(FROG_SKILL_HEAL) && !SM->IsOnCD(FROG_SKILL_HEAL) ) {
-				SM->SetOnCD(FROG_SKILL_HEAL);
+			if ( SM.IsUnlocked(FROG_SKILL_HEAL) && !SM.IsOnCD(FROG_SKILL_HEAL) ) {
+				SM.SetOnCD(FROG_SKILL_HEAL);
 				m_Frog->changeNextState(HEAL);
 			}
-			else if ( SM->IsUnlocked(FROG_SKILL_SPIT) && !SM->IsOnCD(FROG_SKILL_SPIT) ) {
-				SM->SetOnCD(FROG_SKILL_SPIT);
+			else if ( SM.IsUnlocked(FROG_SKILL_SPIT) && !SM.IsOnCD(FROG_SKILL_SPIT) ) {
+				SM.SetOnCD(FROG_SKILL_SPIT);
 				m_Frog->changeNextState(SPIT);
 			}
-			else if ( SM->IsUnlocked(FROG_SKILL_LICK) && !SM->IsOnCD(FROG_SKILL_LICK) ) {
-				SM->SetOnCD(FROG_SKILL_LICK);
+			else if ( SM.IsUnlocked(FROG_SKILL_LICK) && !SM.IsOnCD(FROG_SKILL_LICK) ) {
+				SM.SetOnCD(FROG_SKILL_LICK);
 				m_Frog->changeNextState(ATTACK);
 			}
 			else if ( !m_Frog->getHitBox()->isVulnerable() ) {

@@ -8,13 +8,13 @@ public:
 	~Boss();
 	void changeNextState(IBState::STATE nextState);
 
-	void Init();
-	void Update(float deltaTime, sf::Vector2f offset);
+	void Init(CollisionManager& CM);
+	void Update(float deltaTime, sf::Vector2f offset, SkillManager& SM);
 	void Render(sf::RenderWindow* window);
 	void FacingCheck();
 	HitBox* getHitBox();
 
-	void GetDistanceFromPlayer(HitBox* player_hitbox);
+	void GetDistanceFromPlayer(HitBox* player_hitbox, CollisionManager& CM);
 	float ReturnDistanceFromPlayer();
 	void GetPlayerPosition(HitBox* player_hitbox);
 	sf::Vector2f ReturnPlayerPosition();

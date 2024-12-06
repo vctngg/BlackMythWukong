@@ -11,25 +11,20 @@ void DSHurtD::Init()
 	m_Animation->setModeEndFrame(true);
 }
 
-void DSHurtD::Update(float deltaTime)
+void DSHurtD::Update(float deltaTime, SkillManager& SM)
 {
+	
 	m_currentTime += deltaTime;
 	m_Animation->Update(deltaTime);
-	if ( m_Demon->getHitBox()->isAlive() )
-	{
-		if ( m_Animation->IsEndFrame() ) {
+	if ( m_Animation->IsEndFrame() ) {
 
-			if ( m_Demon->getHitBox()->isVulnerable() )
-			{
-				m_Demon->changeNextState(STATE::IDLE_DEMON);
-			}
+		if ( m_Demon->getHitBox()->isVulnerable() )
+		{
+			m_Demon->changeNextState(STATE::IDLE_DEMON);
 		}
 	}
-	else {
-		m_Demon->changeNextState(DEATH);
-		m_Demon->getHitBox()->setAlive(false);
-	}
-	m_Animation->setPosition(m_Demon->getHitBox()->getPosition().x + m_Demon->m_playerOffset.x, m_Demon->m_playerOffset.y - 64 + m_Demon->getHitBox()->getPosition().y);
+	if ( !m_Demon->getHitBox()->isAlive() ) m_Demon->changeNextState(IDState::DEATH);
+	m_Animation->setPosition(m_Demon->getHitBox()->getPosition().x + m_Demon->m_playerOffset.x, m_Demon->m_playerOffset.y - 48 + m_Demon->getHitBox()->getPosition().y);
 	m_Animation->flip(!(m_Demon->getHitBox()->getPosition().x > m_Demon->ReturnPlayerPosition().x));
 }
 

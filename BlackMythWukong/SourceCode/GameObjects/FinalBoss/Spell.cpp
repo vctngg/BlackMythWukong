@@ -21,8 +21,8 @@ Spell::~Spell()
 
 void Spell::Init()
 {
-	m_HitBox = new HitBox(sf::Vector2i(20, 20));
-	m_HitBox->Init(sf::Vector2f(240, 0));
+	m_HitBox = new HitBox(sf::Vector2i(32, 32));
+	m_HitBox->Init(sf::Vector2f(200, 0));
 	setStartPoint(sf::Vector2f(screenWidth + 100, groundY));
 	m_HitBox->setPosition(screenWidth, groundY);
 
@@ -39,8 +39,8 @@ void Spell::Update(float deltaTime, sf::Vector2f offset)
 	if ( m_HitBox->isAlive() ) {
 		if ( !m_left )
 		{
-			m_HitBox->move(m_HitBox->getVelocity() * deltaTime);
-			if ( m_HitBox->getPosition().x > m_startPoint.x + 100 ) {
+			m_HitBox->move(m_HitBox->getVelocity().x * deltaTime, m_HitBox->getVelocity().y * deltaTime + rand()%(8+8+1)-8);
+			if ( m_HitBox->getPosition().x > m_startPoint.x + 200 ) {
 				m_HitBox->setPosition(m_startPoint);
 				m_stop = true;
 				m_HitBox->setAlive(false);//kill bullet
@@ -48,8 +48,8 @@ void Spell::Update(float deltaTime, sf::Vector2f offset)
 		}
 		else
 		{
-			m_HitBox->move(-m_HitBox->getVelocity() * deltaTime);
-			if ( m_HitBox->getPosition().x < m_startPoint.x - 100 ) {
+			m_HitBox->move(-m_HitBox->getVelocity().x * deltaTime, m_HitBox->getVelocity().y * deltaTime + rand() % (8 + 8 + 1) - 8);
+			if ( m_HitBox->getPosition().x < m_startPoint.x - 200 ) {
 				m_HitBox->setPosition(m_startPoint);
 				m_stop = true;
 				m_HitBox->setAlive(false);//kill bullet

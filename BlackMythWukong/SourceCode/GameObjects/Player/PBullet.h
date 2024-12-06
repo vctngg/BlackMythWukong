@@ -6,9 +6,9 @@ class PBullet {
 public:
 	PBullet();
 	~PBullet();
-	virtual void Init();
-	virtual void Update(float deltaTime, sf::Vector2f offset);
-	virtual void Render(sf::RenderWindow* window);
+	void Init();
+	void Update(float deltaTime, sf::Vector2f offset);
+	void Render(sf::RenderWindow* window);
 
 	HitBox* getHitBox() {
 		return m_HitBox;

@@ -11,7 +11,7 @@ void FSHurt::Init()
 	m_Animation->setModeEndFrame(true);
 }
 
-void FSHurt::Update(float deltaTime)
+void FSHurt::Update(float deltaTime, SkillManager& CM)
 {
 	m_currentTime += deltaTime;
 	m_Animation->Update(deltaTime);

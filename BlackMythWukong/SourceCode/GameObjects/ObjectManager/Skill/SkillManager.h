@@ -1,8 +1,7 @@
 #pragma once
 #include "Skill.h"
-#include "../../../GameManager/Singleton.h"
-#define SM SkillManager::GetInstance()
-class SkillManager :public CSingleton<SkillManager>
+
+class SkillManager
 {
 public:
 	void AddSkill(Skill* skill);

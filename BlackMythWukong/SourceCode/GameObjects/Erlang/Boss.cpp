@@ -53,7 +53,7 @@ void Boss::changeNextState(IBState::STATE nextState)
 	m_nextState = nextState;
 }
 
-void Boss::Init()
+void Boss::Init(CollisionManager& CM)
 {
 	m_runState->Init();
 	m_idleState->Init();
@@ -67,19 +67,19 @@ void Boss::Init()
 	m_HitBox->Init(sf::Vector2f(100, 500));
 	m_HitBox->SetTag(BOSS);
 
-	CM->addObj(m_HitBox);
-	m_BossWeapon->Init();
+	CM.addObj(m_HitBox);
+	m_BossWeapon->Init(CM);
 }
 void Boss::FacingCheck() {
 
 }
 
-void Boss::Update(float deltaTime, sf::Vector2f offset)
+void Boss::Update(float deltaTime, sf::Vector2f offset, SkillManager& SM)
 {
 	performStateChange();
 	m_playerOffset = offset;
 	m_BossWeapon->Update(deltaTime, offset);
-	m_currentState->Update(deltaTime);
+	m_currentState->Update(deltaTime, SM);
 
 	if ( m_currentState == m_waitingState ) {
 		m_isWaiting = true;
@@ -102,9 +102,9 @@ HitBox* Boss::getHitBox()
 	return m_HitBox;
 }
 
-void Boss::GetDistanceFromPlayer(HitBox* player_hitbox)
+void Boss::GetDistanceFromPlayer(HitBox* player_hitbox, CollisionManager& CM)
 {
-	m_distanceFromPlayer = CM->GetDistance(m_HitBox, player_hitbox);
+	m_distanceFromPlayer = CM.GetDistance(m_HitBox, player_hitbox);
 }
 
 float Boss::ReturnDistanceFromPlayer()

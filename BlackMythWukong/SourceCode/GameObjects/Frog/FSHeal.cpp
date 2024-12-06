@@ -11,7 +11,7 @@ void FSHeal::Init()
 	m_Animation->setModeEndFrame(true);
 }
 
-void FSHeal::Update(float deltaTime)
+void FSHeal::Update(float deltaTime, SkillManager& CM)
 {
 	m_Animation->Update(deltaTime);
 	Animation2* ani = (Animation2*)m_Animation;

@@ -20,6 +20,7 @@ void HitBox::Init(sf::Vector2f velocity)
 }
 void HitBox::Update(float deltaTime)
 {
+	if ( !isAlive() ) return;
 	if ( m_isVulnerable == false ) {
 		m_vulnerability_timer += deltaTime;
 		if ( m_vulnerability_timer > 0.4f ) {

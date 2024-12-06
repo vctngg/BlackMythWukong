@@ -3,6 +3,7 @@
 BSHurt::BSHurt(IBoss* boss)
 {
 	m_Boss = boss;
+	printf("construct hurt\n");
 }
 
 void BSHurt::Init()
@@ -12,7 +13,7 @@ void BSHurt::Init()
 	m_Animation->setModeEndFrame(true);
 }
 
-void BSHurt::Update(float deltaTime)
+void BSHurt::Update(float deltaTime, SkillManager& SM)
 {
 	printf("hurt\n");
 	m_Animation->Update(deltaTime);

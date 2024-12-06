@@ -3,6 +3,7 @@
 BSIdle::BSIdle(IBoss* boss)
 {
 	m_Boss = boss;
+	printf("construct idle\n");
 }
 
 void BSIdle::Init()
@@ -10,7 +11,7 @@ void BSIdle::Init()
 	m_Animation = new Animation(*DATA->getTexture("Erlang/IDLE"), sf::Vector2i(5, 1), 0.1f);
 }
 
-void BSIdle::Update(float deltaTime)
+void BSIdle::Update(float deltaTime, SkillManager& SM)
 {
 	printf("idle\n");
 	m_currentTime += deltaTime;
@@ -31,7 +32,7 @@ void BSIdle::Update(float deltaTime)
 		}
 	}
 	else {
-		
+		m_Boss->changeNextState(FLEE);
 	}
 
 	m_Animation->setPosition(m_Boss->getHitBox()->getPosition().x + m_Boss->m_playerOffset.x, m_Boss->m_playerOffset.y+ m_Boss->getHitBox()->getPosition().y-16);

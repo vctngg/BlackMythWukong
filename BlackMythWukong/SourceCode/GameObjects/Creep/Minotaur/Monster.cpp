@@ -3,7 +3,7 @@
 Monster::~Monster()
 {
 }
-void Monster::Init()
+void Monster::Init(SkillManager& SM)
 {
 	m_HitBox = new HitBox(sf::Vector2i(42, 36));
 	m_HitBox->Init(sf::Vector2f(100, 0));
@@ -28,32 +28,35 @@ void Monster::Init()
 	m_skillChop->UnlockSkill();
 	m_skillStrike->UnlockSkill();
 	m_skillSwing->UnlockSkill();
-	SM->AddSkill(m_skillChop);
-	SM->AddSkill(m_skillStrike);
-	SM->AddSkill(m_skillSwing);
+	SM.AddSkill(m_skillChop);
+	SM.AddSkill(m_skillStrike);
+	SM.AddSkill(m_skillSwing);
+	//delete m_skillChop;
+	//delete m_skillStrike;
+	//delete m_skillSwing;
 
 	m_weapon = new MonsterWeapon();
 	m_attackTimer = 0;
 }
-void Monster::Update(float deltaTime, sf::Vector2f offset, HitBox* player_hitbox)
+void Monster::Update(float deltaTime, sf::Vector2f offset, HitBox* player_hitbox, SkillManager& SM, CollisionManager& CM)
 {
 	if ( m_stop == true ) return;
 	m_currentTime += deltaTime;
 	if ( m_HitBox->isAlive() ) {
-		CalculateDistanceFromPlayer(player_hitbox);
+		CalculateDistanceFromPlayer(player_hitbox,CM);
 		GetPlayerPosition(player_hitbox);
 		GetFacing();
 		if ( !m_isAttacking )
 		{
 			if ( m_distanceFromPlayer < 32 ) {
-				if ( SM->IsUnlocked(MONSTER_SWING) && !SM->IsOnCD(MONSTER_SWING)) {
-					Swing();
+				if ( SM.IsUnlocked(MONSTER_SWING) && !SM.IsOnCD(MONSTER_SWING)) {
+					Swing(SM);
 				}
-				else if ( SM->IsUnlocked(MONSTER_CHOP) && !SM->IsOnCD(MONSTER_CHOP) ) {
-					Chop();
+				else if ( SM.IsUnlocked(MONSTER_CHOP) && !SM.IsOnCD(MONSTER_CHOP) ) {
+					Chop(SM);
 				}
-				else if ( SM->IsUnlocked(MONSTER_STRIKE) && !SM->IsOnCD(MONSTER_STRIKE) ) {
-					Strike();
+				else if ( SM.IsUnlocked(MONSTER_STRIKE) && !SM.IsOnCD(MONSTER_STRIKE) ) {
+					Strike(SM);
 				}
 				else {
 					if ( m_currentAni != m_idleAni )
@@ -112,7 +115,7 @@ void Monster::Update(float deltaTime, sf::Vector2f offset, HitBox* player_hitbox
 	}
 }
 
-void Monster::Chop()
+void Monster::Chop(SkillManager& SM)
 { 
 	if (!m_isAttacking )
 	{
@@ -122,12 +125,12 @@ void Monster::Chop()
 		sf::Vector2f pos = getHitBox()->getPosition();
 		GetWeapon()->GetDirection(m_left);
 		GetWeapon()->NA(pos);
-		SM->SetOnCD(MONSTER_CHOP);
+		SM.SetOnCD(MONSTER_CHOP);
 	}
 
 }
 
-void Monster::Strike()
+void Monster::Strike(SkillManager& SM)
 {
 	if ( !m_isAttacking )
 	{
@@ -137,11 +140,11 @@ void Monster::Strike()
 		sf::Vector2f pos = getHitBox()->getPosition();
 		GetWeapon()->GetDirection(m_left);
 		GetWeapon()->NA(pos);
-		SM->SetOnCD(MONSTER_STRIKE);
+		SM.SetOnCD(MONSTER_STRIKE);
 	}
 }
 
-void Monster::Swing()
+void Monster::Swing(SkillManager& SM)
 {
 	if ( !m_isAttacking )
 	{
@@ -151,7 +154,7 @@ void Monster::Swing()
 		sf::Vector2f pos = getHitBox()->getPosition();
 		GetWeapon()->GetDirection(m_left);
 		GetWeapon()->Fire(pos);
-		SM->SetOnCD(MONSTER_SWING);
+		SM.SetOnCD(MONSTER_SWING);
 	}
 }
 

@@ -25,9 +25,10 @@ void GSPlay2::Resume()
 void GSPlay2::Init()
 {
 	m_Background.Init(FOREST);
-	m_Player.Init();
-	m_Frog.Init();
-	m_CreepManager.Init(2);
+	m_Player.Init(CM,SM);
+	LM.Init();
+	m_Frog.Init(CM,SM);
+	m_CreepManager.Init(2,CM, SM);
 
 	//UI
 	m_playerUI.Init(*DATA->getTexture("UI/HP/HP"), sf::Vector2i(9, 1), sf::Vector2f(171, 26), 9, sf::Vector2f(2.5, 2.5));
@@ -67,22 +68,23 @@ void GSPlay2::Update(float deltaTime)
 	}
 	else
 	{
-		LM->Update(deltaTime);
+		LM.Update(deltaTime,SM);
+		SM.Update(deltaTime);
 		if ( m_Player.getHitBox()->isAlive() ) {
 			m_currentTime += deltaTime;
-			m_currentScore = LM->GetCurrentExp();
+			m_currentScore = LM.GetCurrentExp();
 			m_Score.setString(std::to_string(m_currentScore));
 		}
 		else ScoreManager::GetInstance()->setCurrentScore(m_currentScore);
 		UpdateBackground(deltaTime);
-		m_Player.Update(deltaTime);
+		m_Player.Update(deltaTime,SM);
 		if ( m_Player.getHitBox()->isAlive() )
 		{
-			m_Frog.GetDistanceFromPlayer(m_Player.getHitBox());
+			m_Frog.GetDistanceFromPlayer(m_Player.getHitBox(),CM);
 			m_Frog.GetPlayerPosition(m_Player.getHitBox());
-			m_Frog.Update(deltaTime, m_Player.m_offset);
-			m_CreepManager.Update(deltaTime, m_Player.m_offset, m_Player.getHitBox());
-			CM->Update(deltaTime);
+			m_Frog.Update(deltaTime, m_Player.m_offset,SM);
+			m_CreepManager.Update(deltaTime, m_Player.m_offset, m_Player.getHitBox(),CM,SM);
+			CM.Update(deltaTime,LM);
 
 			ManagePlayerHP();
 			ManagePlayerEXP();
@@ -148,7 +150,7 @@ void GSPlay2::ManagePlayerEXP()
 		exp_gain = true;
 		LM->GetExp(!m_Frog.getHitBox()->isAlive());
 	}*/
-	float expperframe = LM->GetExpPerLevel() / 8;//EXP bar has 8 frames
-	int frame = (int)((LM->GetExpToLevelUp() - LM->GetCurrentExp()) / expperframe)+1;
+	float expperframe = LM.GetExpPerLevel() / 8;//EXP bar has 8 frames
+	int frame = (int)((LM.GetExpToLevelUp() - LM.GetCurrentExp()) / expperframe)+1;
 	m_playerUI3.ChangeFrame(frame);
 }

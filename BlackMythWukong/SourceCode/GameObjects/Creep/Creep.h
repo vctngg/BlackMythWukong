@@ -15,7 +15,7 @@ public:
 	HitBox* getHitBox() {
 		return m_HitBox;
 	}
-	void CalculateDistanceFromPlayer(HitBox* player_hitbox);
+	void CalculateDistanceFromPlayer(HitBox* player_hitbox, CollisionManager& CM);
 	void GetPlayerPosition(HitBox* player_hitbox);
 	void GetFacing();
 

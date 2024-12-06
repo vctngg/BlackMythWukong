@@ -3,6 +3,7 @@
 BSWaiting::BSWaiting(IBoss* boss)
 {
 	m_Boss = boss;
+	printf("construct waiting\n");
 }
 
 void BSWaiting::Init()
@@ -10,7 +11,7 @@ void BSWaiting::Init()
 	m_Animation = new Animation(*DATA->getTexture("Erlang/IDLE"), sf::Vector2i(5, 1), 0.1f);
 }
 
-void BSWaiting::Update(float deltaTime)
+void BSWaiting::Update(float deltaTime, SkillManager& SM)
 {
 	m_Boss->getHitBox()->setAlive(false);
 	m_Animation->Update(deltaTime);

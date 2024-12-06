@@ -6,7 +6,7 @@ class DSRun :public IDState {
 public:
 	DSRun(IDemon* demon);
 	void Init();
-	void Update(float deltaTime);
+	void Update(float deltaTime, SkillManager& SM);
 	void Render(sf::RenderWindow* window);
 	void Reset();
 

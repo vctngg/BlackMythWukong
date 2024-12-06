@@ -6,7 +6,7 @@ class PSAttack3 :public IPState {
 public:
 	PSAttack3(IPlayer* player);
 	void Init();
-	void Update(float deltaTime);
+	void Update(float deltaTime, SkillManager& SM);
 	void Render(sf::RenderWindow* window);
 	void Reset();
 

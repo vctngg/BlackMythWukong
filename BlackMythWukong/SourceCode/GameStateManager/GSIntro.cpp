@@ -35,7 +35,7 @@ void GSIntro::Init()
 
 void GSIntro::Update(float deltaTime)
 {
-	//GSM->ChangeState(StateTypes::PLAY);
+	/*GSM->ChangeState(StateTypes::FINAL);*/
 	m_currentTime += deltaTime;
 	if ( m_currentTime >= 1.5 ) {
 		if ( alpha <= 255 ) {

@@ -2,7 +2,7 @@
 
 PlayerWeapon::PlayerWeapon()
 {
-	m_Num = 1;
+	m_Num = 5;
 	m_currentTime = 0.f;
 }
 
@@ -22,7 +22,7 @@ PlayerWeapon::~PlayerWeapon()
 	m_ListNA.clear();
 }
 
-void PlayerWeapon::Init()
+void PlayerWeapon::Init(CollisionManager& collisionmanager)
 {
 
 	for ( int i = 0; i < m_Num; i++ ) {
@@ -30,13 +30,13 @@ void PlayerWeapon::Init()
 		bullet->Init();	
 		bullet->getHitBox()->setAlive(false);
 		m_ListBullet.push_back(bullet);
-		CM->addObj(bullet->getHitBox());
+		collisionmanager.addObj(bullet->getHitBox());
 
 		PNA* na = new PNA();
 		na->Init();
 		na->getHitBox()->setAlive(false);
 		m_ListNA.push_back(na);
-		CM->addObj(na->getHitBox());
+		collisionmanager.addObj(na->getHitBox());
 
 	}
 }
@@ -45,22 +45,10 @@ void PlayerWeapon::Update(float deltaTime, sf::Vector2f offset)
 {
 	m_currentTime += deltaTime;
 	for ( auto bullet : m_ListBullet ) {
-		if (bullet != nullptr )
-		{
-			bullet->Update(deltaTime, offset);
-		}
+		bullet->Update(deltaTime, offset);
 	}
 	for ( auto na : m_ListNA ) {
-		if (na != nullptr )
-		{
-			try
-			{
-				na->Update(deltaTime, offset);
-			}
-			catch ( const char* e ) {
-
-			}
-		}
+		na->Update(deltaTime, offset);
 	}
 }
 

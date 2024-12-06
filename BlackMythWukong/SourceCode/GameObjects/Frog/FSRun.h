@@ -6,7 +6,7 @@ class FSRun :public IFState {
 public:
 	FSRun(IFrog* frog);
 	void Init();
-	void Update(float deltaTime);
+	void Update(float deltaTime, SkillManager& SM);
 	void Render(sf::RenderWindow* window);
 	void Reset();
 

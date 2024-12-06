@@ -11,7 +11,7 @@ void FSDeath::Init()
 	m_Animation->setModeEndFrame(true);
 }
 
-void FSDeath::Update(float deltaTime)
+void FSDeath::Update(float deltaTime, SkillManager& CM)
 {
 	m_currentTime += deltaTime;
 	m_Animation->Update(deltaTime);

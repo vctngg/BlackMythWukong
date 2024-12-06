@@ -41,8 +41,11 @@ private:
 	UI m_playerUI3;
 	UI m_playerUI4;
 
-	std::list<GameButton*> m_listButton;
+	Level LM;
+	SkillManager SM;
+	CollisionManager CM;
 
+	//trigger stuff
 	bool m_bossTrigger = false;
 	bool m_bossPhase2 = false;
 	bool m_bossStateTrigger = false;
