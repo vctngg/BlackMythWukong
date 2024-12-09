@@ -1,9 +1,11 @@
 Project made by group no.6 class 156394.
+
 Instructor: Hoang Quang Huy
+
 Team members: Nguyen Viet Anh - 202413944, Trinh Duc Hieu 202414111
 
-#######################################################################################################
-                                **INSTRUCTION ON HOW TO USE THIS RESPIRATORY**
+
+                                      **INSTRUCTION ON HOW TO USE THIS RESPIRATORY**
 
 1. Download
    -Download the folders "Debug" and "Data" then put them into a separate folder.
@@ -12,4 +14,4 @@ Team members: Nguyen Viet Anh - 202413944, Trinh Duc Hieu 202414111
    -You can download my source code via "BlackMythWukong" folder. Feel free to use it as a reference for yourself.
 
 DISCLAIMER: This project is not for commercial purposes and only serve for education.
-########################################################################################################
+
