@@ -7,6 +7,7 @@ CreepManager::CreepManager()
 
 	m_TimeSpawnCreep = 2.f;
 	m_currentTime = 0.f;
+	m_kill_counter = 0;
 }
 
 CreepManager::~CreepManager()
@@ -87,7 +88,10 @@ void CreepManager::Update(float deltaTime,sf::Vector2f offset, HitBox* player_hi
 	}
 	case 2: {
 		if ( m_currentTime >= m_TimeSpawnCreep ) {
-			SpawnMonster();
+			if (m_kill_counter < 5 )
+			{
+				SpawnMonster();
+			}
 			m_currentTime -= m_TimeSpawnCreep;
 		}
 		for ( auto creep : m_listMonster ) {
@@ -165,6 +169,7 @@ void CreepManager::SpawnMonster()
 	for ( auto it : m_listMonster ) {
 		if ( it->getHitBox()->isAlive() == false && it->isStop() == true ) {
 			creep = it;
+			m_kill_counter++;
 			break;
 		}
 	}

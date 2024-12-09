@@ -58,7 +58,7 @@ void DNA::Update(float deltaTime, sf::Vector2f offset)
 void DNA::Render(sf::RenderWindow* window)
 {
 	if ( m_stop ) return;
-	window->draw(*m_HitBox);
+	//window->draw(*m_HitBox);
 }
 void DNA::Reset()
 {

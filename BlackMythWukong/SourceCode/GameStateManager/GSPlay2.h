@@ -49,7 +49,9 @@ private:
 	CollisionManager CM;
 
 	std::list<GameButton*> m_listButton;
-
+	float m_fadeTimer = 0;
+	sf::RectangleShape shape;
+	float alpha = 0;
 	//debug
 	sf::RectangleShape rect;
 };

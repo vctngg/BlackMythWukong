@@ -3,19 +3,16 @@
 BSHurt::BSHurt(IBoss* boss)
 {
 	m_Boss = boss;
-	printf("construct hurt\n");
 }
 
 void BSHurt::Init()
 {
-	printf("init!\n");
 	m_Animation = new Animation2(*DATA->getTexture("Erlang/HURT"), sf::Vector2i(4, 1), 0.1f, 4);
 	m_Animation->setModeEndFrame(true);
 }
 
 void BSHurt::Update(float deltaTime, SkillManager& SM)
 {
-	printf("hurt\n");
 	m_Animation->Update(deltaTime);
 	Animation2* ani = (Animation2*)m_Animation;
 	if ( (ani->getCurrentFrameCount() == ani->getFrameTotals() - 1) && m_Boss->getHitBox()->isVulnerable() ) {

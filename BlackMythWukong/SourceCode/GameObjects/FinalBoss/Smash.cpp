@@ -70,8 +70,8 @@ void Smash::Update(float deltaTime, sf::Vector2f offset)
 void Smash::Render(sf::RenderWindow* window)
 {
 	if ( m_stop ) return;
-	window->draw(*m_HitBox);
-	window->draw(*m_HitBox2);
+	//window->draw(*m_HitBox);
+	//window->draw(*m_HitBox2);
 }
 void Smash::Reset()
 {

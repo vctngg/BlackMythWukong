@@ -3,7 +3,6 @@
 BSIdle::BSIdle(IBoss* boss)
 {
 	m_Boss = boss;
-	printf("construct idle\n");
 }
 
 void BSIdle::Init()
@@ -13,7 +12,6 @@ void BSIdle::Init()
 
 void BSIdle::Update(float deltaTime, SkillManager& SM)
 {
-	printf("idle\n");
 	m_currentTime += deltaTime;
 	m_Animation->Update(deltaTime);
 	if (m_Boss->getHitBox()->isAlive() )

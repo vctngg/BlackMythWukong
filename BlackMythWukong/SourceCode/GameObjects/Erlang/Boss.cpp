@@ -93,7 +93,7 @@ void Boss::Render(sf::RenderWindow* window)
 {
 	m_BossWeapon->Render(window);
 	m_currentState->Render(window);
-	window->draw(*m_HitBox);
+	//window->draw(*m_HitBox);
 
 }
 

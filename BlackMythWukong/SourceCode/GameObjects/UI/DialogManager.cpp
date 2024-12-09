@@ -61,6 +61,31 @@ void DialogManager::Init(int scene_number)
 	case 2:
 	{
 		m_isDialog = false;
+		sf::Text text;
+		float box_size_x = m_dialogBox.getGlobalBounds().getSize().x;
+		float box_size_y = m_dialogBox.getGlobalBounds().getSize().y;
+		for ( int i = 0; i < 1; i++ ) {
+			text.setString(m_dialogList_Scene2[i]);
+			text.setFont(*DATA->getFont("ARCADE"));
+			float text_size_x = text.getLocalBounds().getSize().x;
+			float text_size_y = text.getLocalBounds().getSize().y;
+
+			text.setOrigin(text_size_x / 2, text_size_y / 2);
+			text.setLineSpacing(5);
+			text.setPosition(sf::Vector2f(screenWidth / 2, screenHeight / 2));
+			if ( box_size_x / text_size_x < 1 ) {
+				text.setScale(box_size_x / text_size_x * 0.9, 1);
+			}
+
+			m_currentDialog[i] = text;
+
+		}
+		//old monkey
+		text.setString("Old monkey");
+		text.setFont(*DATA->getFont("ARCADE"));
+		text.setOrigin(text.getLocalBounds().getSize().x / 2, text.getLocalBounds().getSize().y / 2);
+		text.setPosition(sf::Vector2f(screenWidth / 3 - 50, screenHeight / 3));
+		m_Char[2] = text;
 		break;
 	}
 	default: 
@@ -139,6 +164,9 @@ void DialogManager::Skip()
 		else m_DialogIndex = 52;
 	}
 	case 2: {
+		if ( m_DialogIndex < 1 ) {
+			m_DialogIndex = 1;
+		}
 		break;
 	}
 	default: break;
@@ -169,6 +197,11 @@ void DialogManager::NextDialog()
 				}
 				break;
 			}
+			case 2:
+				if ( m_DialogIndex == 1 ) {
+					EndDialog();
+				}
+				break;
 			default: {
 				break;
 			}

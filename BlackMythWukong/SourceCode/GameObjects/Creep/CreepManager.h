@@ -11,6 +11,9 @@ public:
 	void Init(int stage, CollisionManager& CM, SkillManager& SM);
 	void Update(float deltaTime, sf::Vector2f offset, HitBox* player_hitbox, CollisionManager& CM, SkillManager& SM);
 	void Render(sf::RenderWindow* window);
+	int GetKillCounter() {
+		return m_kill_counter;
+	}
 	std::list<Dog*> GetDog();
 	std::list<Monster*> GetMonster() {
 		return m_listMonster;
@@ -34,4 +37,5 @@ private:
 	int m_EntityCap;
 	float m_TimeSpawnCreep;
 	float m_currentTime;
+	int m_kill_counter;
 };

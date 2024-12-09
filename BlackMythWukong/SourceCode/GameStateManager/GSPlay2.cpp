@@ -55,10 +55,14 @@ void GSPlay2::Init()
 	m_title.setFillColor(sf::Color::White);
 	m_title.setScale(3, 3);
 	m_title.setPosition(screenWidth/2- m_title.getGlobalBounds().getSize().x/2, screenHeight / 2 - m_title.getGlobalBounds().getSize().y / 2);
+	//outro
+	shape.setSize(sf::Vector2f(screenWidth, screenHeight));
+	shape.setFillColor(sf::Color(0, 0, 0, alpha));
 }
 
 void GSPlay2::Update(float deltaTime)
 {
+	printf("%d\n", m_CreepManager.GetKillCounter());
 	m_currentTime += deltaTime;
 	srand(m_currentTime);
 	DM->Update(deltaTime);
@@ -94,6 +98,10 @@ void GSPlay2::Update(float deltaTime)
 	m_playerUI2.Update(deltaTime);
 	m_playerUI3.Update(deltaTime);
 	m_playerUI4.Update(deltaTime);
+
+	if ( DM->GetCurrentDialog() == 1 ) {
+		GSM->ChangeState(FINAL);
+	}
 }
 
 void GSPlay2::Render(sf::RenderWindow* window)
@@ -111,11 +119,19 @@ void GSPlay2::Render(sf::RenderWindow* window)
 	m_Frog.Render(window);
 	m_CreepManager.Render(window);
 
-	window->draw(rect);
+	//window->draw(rect);
 
 	if (m_currentTime < 2 )
 	{
 		window->draw(m_title);
+	}
+	if ( m_CreepManager.GetKillCounter() >= 4 && !m_Frog.getHitBox()->isAlive())
+	{
+		window->draw(shape);
+	}
+	if ( DM->IsDialog() )
+	{
+		DM->Render(window);
 	}
 }
 
@@ -128,6 +144,23 @@ void GSPlay2::UpdateBackground(float deltaTime)
 			{
 				m_Background.Update(deltaTime);
 			}
+
+		}
+		if (m_CreepManager.GetKillCounter() >= 4 && !m_Frog.getHitBox()->isAlive() )
+		{
+			m_fadeTimer += deltaTime;
+			if ( m_fadeTimer >= 3 ) {
+				if ( alpha <= 255 ) {
+					alpha += 2.4;
+				}
+				else {
+					alpha = 255;
+				}
+			}
+			if ( alpha == 255 ) {
+				DM->TriggerDialog();
+			}
+			shape.setFillColor(sf::Color(0, 0, 0, alpha));
 		}
 	}
 }
@@ -141,15 +174,6 @@ void GSPlay2::ManagePlayerHP()
 
 void GSPlay2::ManagePlayerEXP()
 {
-	/*for ( auto creep : m_CreepManager.GetMonster() )
-	{
-		LM->GetExp(!creep->getHitBox()->isAlive());
-	}
-	if (!exp_gain && !m_Frog.getHitBox()->isAlive() )
-	{
-		exp_gain = true;
-		LM->GetExp(!m_Frog.getHitBox()->isAlive());
-	}*/
 	float expperframe = LM.GetExpPerLevel() / 8;//EXP bar has 8 frames
 	int frame = (int)((LM.GetExpToLevelUp() - LM.GetCurrentExp()) / expperframe)+1;
 	m_playerUI3.ChangeFrame(frame);

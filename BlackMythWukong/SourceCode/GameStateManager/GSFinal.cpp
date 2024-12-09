@@ -111,7 +111,7 @@ void GSFinal::Render(sf::RenderWindow* window)
 	m_Player.Render(window);
 	m_Demon.Render(window);
 
-	window->draw(rect);
+	//window->draw(rect);
 
 	if ( m_currentTime < 2 )
 	{

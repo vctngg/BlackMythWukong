@@ -64,7 +64,7 @@ void Creep::Render(sf::RenderWindow* window)
 {
 	if ( m_stop ) return;
 	window->draw(*m_currentAni);
-	window->draw(*m_HitBox);
+	//window->draw(*m_HitBox);
 }
  
 void Creep::CalculateDistanceFromPlayer(HitBox* player_hitbox, CollisionManager& CM)

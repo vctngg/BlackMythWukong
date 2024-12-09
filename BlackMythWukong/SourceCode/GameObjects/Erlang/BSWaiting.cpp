@@ -3,7 +3,6 @@
 BSWaiting::BSWaiting(IBoss* boss)
 {
 	m_Boss = boss;
-	printf("construct waiting\n");
 }
 
 void BSWaiting::Init()

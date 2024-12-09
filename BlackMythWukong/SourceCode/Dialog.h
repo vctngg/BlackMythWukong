@@ -64,3 +64,5 @@
 #define OLDMONKEY_1_13 "Yet among you there might be one who is destined, "
 #define OLDMONKEY_1_14 "one that should recover all his scattered relics,"
 #define OLDMONKEY_1_15 "and upon the return of the relics to Mount Tuaguo, he may yet rise again."
+//scene 2
+#define OLDMONKEY_2_1 "After collected 5 relics, the destined one encountered an abnormal creature before he could reach out to the final piece of the puzzle."

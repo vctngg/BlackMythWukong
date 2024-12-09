@@ -85,7 +85,7 @@ void PBullet::Render(sf::RenderWindow* window)
 	{
 		window->draw(*m_currentAni);
 	}
-	window->draw(*m_HitBox);
+	//window->draw(*m_HitBox);
 }
 
 

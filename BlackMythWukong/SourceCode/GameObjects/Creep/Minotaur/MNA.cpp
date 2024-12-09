@@ -59,7 +59,7 @@ void MNA::Update(float deltaTime, sf::Vector2f offset)
 void MNA::Render(sf::RenderWindow* window)
 {
 	if ( m_stop ) return;
-	window->draw(*m_HitBox);
+	//window->draw(*m_HitBox);
 }
 
 

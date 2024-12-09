@@ -83,7 +83,7 @@ void Bullet::Render(sf::RenderWindow* window)
 {
 	if ( m_stop ) return;
 	window->draw(*m_currentAni);
-	window->draw(*m_HitBox);
+	//window->draw(*m_HitBox);
 }
 
 void Bullet::Reset()

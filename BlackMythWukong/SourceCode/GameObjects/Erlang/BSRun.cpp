@@ -3,7 +3,6 @@
 BSRun::BSRun(IBoss* boss)
 {
 	m_Boss = boss;
-	printf("construct run\n");
 }
 
 void BSRun::Init()
@@ -13,7 +12,7 @@ void BSRun::Init()
 
 void BSRun::Update(float deltaTime, SkillManager& SM)
 {
-	printf("run\n");
+	
 	m_currentTime += deltaTime;
 	m_Animation->Update(deltaTime);
 	if (m_Boss->getHitBox()->isAlive())

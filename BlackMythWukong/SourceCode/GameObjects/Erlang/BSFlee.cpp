@@ -3,7 +3,6 @@
 BSFlee::BSFlee(IBoss* boss)
 {
 	m_Boss = boss;
-	printf("construct flee\n");
 }
 
 void BSFlee::Init()

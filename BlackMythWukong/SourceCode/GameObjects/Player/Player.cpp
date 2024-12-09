@@ -92,7 +92,7 @@ void Player::Render(sf::RenderWindow* window)
 {
 	m_currentState->Render(window);
 	m_PlayerWeapon->Render(window);
-	window->draw(*m_HitBox);
+	//window->draw(*m_HitBox);
 }
 
 

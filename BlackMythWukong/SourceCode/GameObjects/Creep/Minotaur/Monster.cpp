@@ -31,10 +31,6 @@ void Monster::Init(SkillManager& SM)
 	SM.AddSkill(m_skillChop);
 	SM.AddSkill(m_skillStrike);
 	SM.AddSkill(m_skillSwing);
-	//delete m_skillChop;
-	//delete m_skillStrike;
-	//delete m_skillSwing;
-
 	m_weapon = new MonsterWeapon();
 	m_attackTimer = 0;
 }
@@ -119,7 +115,7 @@ void Monster::Chop(SkillManager& SM)
 { 
 	if (!m_isAttacking )
 	{
-		printf("chop\n");
+		
 		m_isAttacking = true;
 		m_currentAni = m_chopAni;
 		sf::Vector2f pos = getHitBox()->getPosition();
@@ -133,8 +129,7 @@ void Monster::Chop(SkillManager& SM)
 void Monster::Strike(SkillManager& SM)
 {
 	if ( !m_isAttacking )
-	{
-		printf("strike\n");
+	{		
 		m_isAttacking = true;
 		m_currentAni = m_strikeAni;
 		sf::Vector2f pos = getHitBox()->getPosition();
@@ -148,7 +143,6 @@ void Monster::Swing(SkillManager& SM)
 {
 	if ( !m_isAttacking )
 	{
-		printf("swing\n");
 		m_isAttacking = true;
 		m_currentAni = m_swingAni;
 		sf::Vector2f pos = getHitBox()->getPosition();
