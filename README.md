@@ -13,5 +13,5 @@ Team members: Nguyen Viet Anh - 202413944, Trinh Duc Hieu 202414111
 2. Source code
    -You can download my source code via "BlackMythWukong" folder. Feel free to use it as a reference for yourself.
 
-DISCLAIMER: This project is not for commercial purposes and only serve for education.
+DISCLAIMER: This project is not for commercial purposes and only serve for education. Any illegal use will violate Terms of Service of this game's assets and will be punished accordingly.
 
