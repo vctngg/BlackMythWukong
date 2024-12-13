@@ -13,8 +13,12 @@ Team members: Nguyen Viet Anh - 202413944, Trinh Duc Hieu 202414111
 2. Source code
    -You can download my source code via "BlackMythWukong" folder. Feel free to use it as a reference for yourself.
 3. How to play the game
+
+   
    -AD to move, SPACE to jump
+   
    -JKLO to attack with different skills
+   
    -Enter to go to the next dialog
    
    ENJOY!~
