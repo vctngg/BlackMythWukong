@@ -12,6 +12,16 @@ Team members: Nguyen Viet Anh - 202413944, Trinh Duc Hieu 202414111
    -Inside the debug folder, you will find a .exe file. Open it to play the game.
 2. Source code
    -You can download my source code via "BlackMythWukong" folder. Feel free to use it as a reference for yourself.
+3. How to play the game
 
-DISCLAIMER: This project is not for commercial purposes and only serve for education.
+   
+   -AD to move, SPACE to jump
+   
+   -JKLO to attack with different skills
+   
+   -Enter to go to the next dialog
+   
+   ENJOY!~
+   
+DISCLAIMER: This project is not for commercial purposes and only serve for education. Any illegal use will violate Terms of Service of this game's assets and will be punished accordingly.
 
