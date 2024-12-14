@@ -9,6 +9,7 @@ void DSHurt::Init()
 {
 	m_Animation = new Animation(*DATA->getTexture("Demon/03_take_hit/hurt"), sf::Vector2i(6, 1), 0.1f);
 	m_Animation->setModeEndFrame(true);
+	sound = false;
 }
 
 void DSHurt::Update(float deltaTime, SkillManager& SM)
@@ -16,6 +17,10 @@ void DSHurt::Update(float deltaTime, SkillManager& SM)
 	
 	m_currentTime += deltaTime;
 	m_Animation->Update(deltaTime);
+	if ( !sound ) {
+		sound = true;
+		DATA->playSound("monster-hurt");
+	}
 	if ( m_Animation->IsEndFrame() ) {
 
 		if ( m_Demon->getHitBox()->isVulnerable() )
@@ -40,4 +45,5 @@ void DSHurt::Reset()
 {
 	m_Animation->Reset();
 	m_currentTime = 0.f;
+	sound = false;
 }

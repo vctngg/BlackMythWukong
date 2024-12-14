@@ -8,6 +8,7 @@ PSAttack2::PSAttack2(IPlayer* player)
 void PSAttack2::Init()
 {
 	m_Animation = new Animation2(*DATA->getTexture("wukong/wukong_attack2"), sf::Vector2i(4, 1), 0.1f,4);
+	m_Animation->setScale(2, 2);
 	m_Animation->setModeEndFrame(true);
 }
 

@@ -14,7 +14,7 @@ void SkillManager::Update(float deltaTime)
 			a->SetOnCooldown(false);
 		}
 	}
-}
+} 
 
 bool SkillManager::IsOnCD(SKILL skill)
 {
@@ -60,4 +60,23 @@ bool SkillManager::IsUnlocked(SKILL skill)
 		}
 	}
 	return false;
+}
+
+float SkillManager::GetCD(SKILL skill)
+{
+	for ( auto a : m_listSkill ) {
+		if ( a->GetType() == skill ) {
+			return a->GetCD();
+		}
+	}
+	return 0.0f;
+}
+float SkillManager::GetTime(SKILL skill)
+{
+	for ( auto a : m_listSkill ) {
+		if ( a->GetType() == skill ) {
+			return a->GetCurrentTime();
+		}
+	}
+	return 0.0f;
 }

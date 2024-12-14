@@ -9,7 +9,7 @@ void Skill::SetCD()
 		break;
 		}
 	case (PLAYER_SKILL_SUMMON): {
-		m_cooldownDuration = 0.5;
+		m_cooldownDuration = 5;
 		break;
 		}
 	case (PLAYER_ATTACK_1): {

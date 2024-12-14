@@ -72,6 +72,30 @@ void CollisionManager::Update(float deltaTime, Level& LM)
                 b->setAlive(false);
                 continue;
             }
+            if ( a->getTag() == PLAYER && b->getTag() == DEMON_Fire ) {
+                a->TakeDamage(b->GetDamage());
+                a->setVulnerable(false);
+                b->setAlive(false);
+                continue;
+            }
+            if ( a->getTag() == PLAYER && b->getTag() == DEMON_NA ) {
+                a->TakeDamage(b->GetDamage());
+                a->setVulnerable(false);
+                b->setAlive(false);
+                continue;
+            }
+            if ( a->getTag() == PLAYER && b->getTag() == DEMON_Smash ) {
+                a->TakeDamage(b->GetDamage());
+                a->setVulnerable(false);
+                b->setAlive(false);
+                continue;
+            }
+            if ( a->getTag() == PLAYER && b->getTag() == DEMON_Spell ) {
+                a->TakeDamage(b->GetDamage());
+                a->setVulnerable(false);
+                b->setAlive(false);
+                continue;
+            }
             //collision with player skills
             if ( a->getTag() == BOSS && b->getTag() == PLAYER_Summon ) {
                 a->TakeDamage(b->GetDamage());

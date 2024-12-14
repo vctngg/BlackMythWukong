@@ -43,7 +43,7 @@ void HitBox::SetStats()
 	{
 		SetTotalHP(-1);
 		SetCurrentHP(-1);
-		SetDamage(PLAYER_SUMMON);
+		SetDamage(100);
 		break;
 	}
 	case PLAYER_Attack1:

@@ -10,7 +10,7 @@ void DialogManager::Init(int scene_number)
 	GameButton* button;
 	button = new GameButton();
 	button->Init("skip", sf::Vector2i(2, 1), sf::Vector2f(screenWidth / 2 + 250, screenHeight / 2 + screenHeight / 10 ), 2, sf::Vector2f(200, 200), sf::Vector2f(0.75, 0.5));
-	button->setOnClick([]() {DM->Skip(); printf("skip!\n"); });
+	button->setOnClick([]() {DM->Skip(); DATA->playSound("click"); });
 
 	m_ListBtn.push_back(button);
 	switch ( scene_number )

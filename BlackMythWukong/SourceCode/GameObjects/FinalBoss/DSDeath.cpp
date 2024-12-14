@@ -19,7 +19,8 @@ void DSDeath::Update(float deltaTime, SkillManager& SM)
 	m_currentTime += deltaTime;
 	if ( m_currentTime >= m_timeRemain ) {
 		GSM->ChangeState(StateTypes::END);
-		//DATA->getMusic("Uprising")->stop();
+		ScoreManager::GetInstance()->setCurrentScore(2800);
+		DATA->getMusic("summer")->stop();
 	}
 	m_Animation->Update(deltaTime);
 	m_Animation->setPosition(m_Demon->getHitBox()->getPosition().x + m_Demon->m_playerOffset.x, m_Demon->getHitBox()->getPosition().y - 48 + m_Demon->m_playerOffset.y);

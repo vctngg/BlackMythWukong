@@ -37,6 +37,13 @@ void GSPlay::Init()
 	m_playerUI2.SetAnimate(0.2f);
 	m_playerUI3.Init(*DATA->getTexture("UI/EXP/EXP"), sf::Vector2i(8, 1), sf::Vector2f(162, 42), 8, sf::Vector2f(2.5, 2.5));
 	m_playerUI4.Init(*DATA->getTexture("UI/PLAYER-UI"), sf::Vector2i(1, 1), sf::Vector2f(130, 50), 1, sf::Vector2f(4, 4));
+	skill1.Init(*DATA->getTexture("UI/ATK/1"),sf::Vector2i(4,1),sf::Vector2f(screenWidth-320,screenHeight-32),4,sf::Vector2f(4,4));
+	skill2.Init(*DATA->getTexture("UI/ATK/2"),sf::Vector2i(4,1),sf::Vector2f(screenWidth-250,screenHeight-32),4,sf::Vector2f(4,4));
+	skill3.Init(*DATA->getTexture("UI/ATK/3"),sf::Vector2i(4,1),sf::Vector2f(screenWidth-180,screenHeight-32),4,sf::Vector2f(4,4));
+	skill4.Init(*DATA->getTexture("UI/ATK/4"),sf::Vector2i(4,1),sf::Vector2f(screenWidth-90,screenHeight-32),4,sf::Vector2f(4,4));
+	ui.setTexture(*DATA->getTexture("UI/ui"));
+	ui.setScale(2, 2);
+	ui.setPosition(sf::Vector2f(0, screenHeight - 75));
 
 	//Dialog manager
 	DM->Init(1);
@@ -54,7 +61,7 @@ void GSPlay::Init()
 	m_Score.setPosition(screenWidth - 100, 50);
 	//music
 	DATA->playMusic("Uprising");
-	DATA->getMusic("Uprising")->setLoop(true);;
+	DATA->getMusic("Uprising")->setLoop(true);
 	DATA->getMusic("Uprising")->setVolume(30);
 	shape.setSize(sf::Vector2f(screenWidth, screenHeight));
 	shape.setFillColor(sf::Color(0, 0, 0, alpha));
@@ -64,12 +71,12 @@ void GSPlay::Update(float deltaTime)
 {
 	srand(m_currentTime);
 	DM->Update(deltaTime);
-	if ( sf::Keyboard::isKeyPressed(sf::Keyboard::G) ) {
+	/*if ( sf::Keyboard::isKeyPressed(sf::Keyboard::G) ) {
 		GSM->ChangeState(StateTypes::PLAY2);
 	}
 	if ( sf::Keyboard::isKeyPressed(sf::Keyboard::H) ) {
 		GSM->ChangeState(StateTypes::FINAL);
-	}
+	}*/
 	if ( DM->IsDialog() )
 	{
 		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) ) {
@@ -137,15 +144,15 @@ void GSPlay::Update(float deltaTime)
 			m_CreepManager.Update(deltaTime, m_Player.m_offset, m_Player.getHitBox(),CM,SM);
 			CM.Update(deltaTime,LM);
 
-			ManagePlayerHP();
-			ManagePlayerEXP();
+			ManageUI();
 		}
 
-		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::F) ) {
+		/*if ( sf::Keyboard::isKeyPressed(sf::Keyboard::F) ) {
 			DM->TriggerDialog();
-		}
+		}*/
 		if ( DM->GetCurrentDialog() == 52 ) {
 			GSM->ChangeState(StateTypes::PLAY2);
+			DATA->getMusic("Uprising")->stop();
 		}
 		
 	}
@@ -153,6 +160,11 @@ void GSPlay::Update(float deltaTime)
 	m_playerUI2.Update(deltaTime);
 	m_playerUI3.Update(deltaTime);
 	m_playerUI4.Update(deltaTime);
+
+	skill1.Update(deltaTime);
+	skill2.Update(deltaTime);
+	skill3.Update(deltaTime);
+	skill4.Update(deltaTime);
 	
 }
 
@@ -171,6 +183,11 @@ void GSPlay::Render(sf::RenderWindow* window)
 	window->draw(m_playerUI3);
 	window->draw(m_playerUI2);
 	window->draw(m_playerUI);
+	window->draw(ui);
+	window->draw(skill1);
+	window->draw(skill2);
+	window->draw(skill3);
+	window->draw(skill4);
 
 	if ( DM->IsDialog() )
 	{
@@ -178,7 +195,7 @@ void GSPlay::Render(sf::RenderWindow* window)
 	}
 
 
-	//window->draw(rect);
+	
 	if ( !m_Boss.getHitBox()->isAlive() && !m_Boss.m_isWaiting && DM->GetCurrentDialog() == 37 && !DM->IsDialog() )
 	{
 		window->draw(shape);
@@ -220,6 +237,13 @@ void GSPlay::UpdateBackground(float deltaTime)
 	}
 }
 
+void GSPlay::ManageUI()
+{
+	ManagePlayerEXP();
+	ManagePlayerHP();
+	ManagePlayerSkill();
+}
+
 void GSPlay::ManagePlayerHP()
 {
 	float hpperframe = m_Player.getHitBox()->GetTotalHP() / 9;//HP bar has 9 frames
@@ -231,4 +255,51 @@ void GSPlay::ManagePlayerEXP()
 	float expperframe = LM.GetExpPerLevel() / 8;//EXP bar has 8 frames
 	int frame = (int)((LM.GetExpToLevelUp() - LM.GetCurrentExp()) / expperframe) + 1;
 	m_playerUI3.ChangeFrame(frame);
+}
+
+void GSPlay::ManagePlayerSkill()
+{
+	float frametime1 = SM.GetCD(PLAYER_ATTACK_1)/3;
+	int frame1 = 1;
+	if ( !SM.IsOnCD(PLAYER_ATTACK_1) ) {
+		frame1 = 1;
+	}
+	else
+	{
+		frame1 = 4 - (int)(SM.GetTime(PLAYER_ATTACK_1) / frametime1);
+	}
+	skill1.ChangeFrame(frame1);
+
+	float frametime2 = SM.GetCD(PLAYER_ATTACK_2) / 3;
+	int frame2 = 1;
+	if ( !SM.IsOnCD(PLAYER_ATTACK_2) ) {
+		frame2 = 1;
+	}
+	else
+	{
+		frame2 = 4 - (int)(SM.GetTime(PLAYER_ATTACK_2) / frametime2);
+	}
+	skill2.ChangeFrame(frame2);
+
+	float frametime3 = SM.GetCD(PLAYER_ATTACK_3) / 3;
+	int frame3 = 1;
+	if ( !SM.IsOnCD(PLAYER_ATTACK_3) ) {
+		frame3 = 1;
+	}
+	else
+	{
+		frame3 = 4 - (int)(SM.GetTime(PLAYER_ATTACK_3) / frametime3);
+	}
+	skill3.ChangeFrame(frame3);
+
+	float frametime4 = SM.GetCD(PLAYER_SKILL_SUMMON) / 3;
+	int frame4 = 1;
+	if ( !SM.IsOnCD(PLAYER_SKILL_SUMMON) ) {
+		frame4 = 1;
+	}
+	else
+	{
+		frame4 = 4 - (int)(SM.GetTime(PLAYER_SKILL_SUMMON) / frametime4);
+	}
+	skill4.ChangeFrame(frame4);
 }

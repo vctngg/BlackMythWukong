@@ -36,7 +36,7 @@ void GSHighScore::Init()
 	//close Button
 	button = new GameButton();
 	button->Init("close", sf::Vector2i(2,1), sf::Vector2f(screenWidth - screenWidth / 20 - 50, screenHeight / 8 - 50), 2, sf::Vector2f(150, 150), sf::Vector2f(1, 1));
-	button->setOnClick([]() {GSM->PopState(); });
+	button->setOnClick([]() {GSM->PopState(); DATA->playSound("click"); });
 	m_ListBtn.push_back(button);
 
 	//Background

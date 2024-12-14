@@ -75,7 +75,7 @@ void Demon::Init(CollisionManager& CM, SkillManager& SM)
 	//delete m_skill;
 
 	m_HitBox = new HitBox(sf::Vector2i(64, 64));
-	m_HitBox->setPosition(800, groundY - m_HitBox->getSize().y / 2);
+	m_HitBox->setPosition(1800, groundY - m_HitBox->getSize().y / 2);
 	m_HitBox->Init(sf::Vector2f(100, 500));
 	m_HitBox->SetTag(DEMON);
 	m_HitBox->setAlive(true);

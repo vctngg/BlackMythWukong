@@ -31,6 +31,7 @@ void GSEnd::Init()
 		GSM->PopState();
 		ScoreManager::GetInstance()->UpdateHighScore();
 		ScoreManager::GetInstance()->writeFile();
+		DATA->playSound("click");
 		});
 	m_ListBtn.push_back(button);
 
@@ -42,6 +43,7 @@ void GSEnd::Init()
 		GSM->ChangeState(StateTypes::PLAY);
 		ScoreManager::GetInstance()->UpdateHighScore();
 		ScoreManager::GetInstance()->writeFile();
+		DATA->playSound("click");
 		});
 	m_ListBtn.push_back(button);
 

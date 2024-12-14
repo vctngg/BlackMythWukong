@@ -38,32 +38,32 @@ void GSMenu::Init()
 	//PlayButton
 	button = new GameButton();
 	button->Init("play", sf::Vector2i(2,1), sf::Vector2f(screenWidth / 2 - 50, screenHeight / 2 + screenHeight / 10 - 50), 2, sf::Vector2f(150, 150), sf::Vector2f(1,1));
-	button->setOnClick([]() {GSM->ChangeState(StateTypes::PLAY); });
+	button->setOnClick([]() {GSM->ChangeState(StateTypes::PLAY); DATA->getMusic("menu")->stop(); DATA->playSound("click"); });
 
 	m_ListBtn.push_back(button);
 
 	//Exit Button
 	button = new GameButton();
 	button->Init("close", sf::Vector2i(2, 1), sf::Vector2f(screenWidth / 2 + screenWidth / 4 - 50, screenHeight - screenHeight / 8 - 50), 2, sf::Vector2f(150, 150), sf::Vector2f(1, 1));
-	button->setOnClick([]() {WConnect->getWindow()->close(); });
+	button->setOnClick([]() {WConnect->getWindow()->close(); DATA->playSound("click"); });
 	m_ListBtn.push_back(button);
 
 	//Setting Button
 	button = new GameButton();
 	button->Init("settings", sf::Vector2i(2, 1), sf::Vector2f(screenWidth / 2 - screenWidth / 4 - 50, screenHeight - screenHeight / 8 - 50), 2, sf::Vector2f(150, 150), sf::Vector2f(1, 1));
-	button->setOnClick([]() {GSM->ChangeState(StateTypes::SETTING); });
+	button->setOnClick([]() {GSM->ChangeState(StateTypes::SETTING); DATA->playSound("click"); });
 	m_ListBtn.push_back(button);
 
 	//about Button
 	button = new GameButton();
 	button->Init("about", sf::Vector2i(2, 1), sf::Vector2f(screenWidth / 2 + screenWidth / 12 - 50, screenHeight - screenHeight / 8 - 50), 2, sf::Vector2f(150, 150), sf::Vector2f(1, 1));
-	button->setOnClick([]() {GSM->ChangeState(StateTypes::ABOUT); });
+	button->setOnClick([]() {GSM->ChangeState(StateTypes::ABOUT); DATA->playSound("click"); });
 	m_ListBtn.push_back(button);
 
 	//HighScore Button
 	button = new GameButton();
 	button->Init("achievements", sf::Vector2i(2, 1), sf::Vector2f(screenWidth / 2 - screenWidth / 12 - 50, screenHeight - screenHeight / 8 - 50), 2, sf::Vector2f(150, 150), sf::Vector2f(1, 1));
-	button->setOnClick([]() {GSM->ChangeState(StateTypes::HIGHSCORE); });
+	button->setOnClick([]() {GSM->ChangeState(StateTypes::HIGHSCORE); DATA->playSound("click"); });
 	m_ListBtn.push_back(button);
 
 
@@ -74,8 +74,10 @@ void GSMenu::Init()
 	m_Background.setPosition(screenWidth / 5, screenHeight);
 	m_Background.setScale(sf::Vector2f(0.5, 0.5));
 
-
 	ScoreManager::GetInstance()->readFile();
+	DATA->playMusic("menu");
+	DATA->getMusic("menu")->setLoop(true);
+	DATA->getMusic("menu")->setVolume(30);
 }
 
 void GSMenu::Update(float deltaTime)

@@ -23,8 +23,10 @@ public:
 	void Render(sf::RenderWindow* window);
 	void UpdateBackground(float deltaTime);
 
+	void ManageUI();
 	void ManagePlayerHP();
 	void ManagePlayerEXP();
+	void ManagePlayerSkill();
 private:
 	ParallexBackground m_Background;
 	Player m_Player;
@@ -40,6 +42,11 @@ private:
 	UI m_playerUI2;
 	UI m_playerUI3;
 	UI m_playerUI4;
+
+	UI skill1;
+	UI skill2;
+	UI skill3;
+	UI skill4;
 
 	Level LM;
 	SkillManager SM;
@@ -57,4 +64,5 @@ private:
 	float alpha = 255;
 	//debug
 	sf::RectangleShape rect;
+	sf::Sprite ui;
 };

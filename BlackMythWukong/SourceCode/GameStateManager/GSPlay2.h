@@ -25,6 +25,8 @@ public:
 
 	void ManagePlayerHP();
 	void ManagePlayerEXP();
+	void ManagePlayerSkill();
+	void ManageUI();
 private:
 	ParallexBackground m_Background;
 	Player m_Player;
@@ -43,6 +45,13 @@ private:
 	UI m_playerUI2;
 	UI m_playerUI3;
 	UI m_playerUI4;
+
+	UI skill1;
+	UI skill2;
+	UI skill3;
+	UI skill4;
+
+	sf::Sprite ui;
 
 	Level LM;
 	SkillManager SM;

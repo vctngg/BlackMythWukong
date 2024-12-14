@@ -34,12 +34,6 @@ void Creep::Update(float deltaTime, sf::Vector2f offset)
 	if ( m_stop == true ) return;
 	m_currentTime += deltaTime;
 	if ( m_HitBox->isAlive() ) {
-		//m_HitBox->move(-m_HitBox->getVelocity() * deltaTime);
-		/*if ( m_HitBox->getPosition().x <= -50 ) {
-			m_HitBox->setPosition(m_startPoint);
-			m_stop = true;
-			m_HitBox->setAlive(false);
-		}*/
 		m_currentAni->Update(deltaTime);
 		m_currentAni->setPosition(getHitBox()->getPosition().x + offset.x, getHitBox()->getPosition().y + offset.y);
 	}
@@ -57,7 +51,6 @@ void Creep::Update(float deltaTime, sf::Vector2f offset)
 		else m_stop = true;
 
 	}
-	//printf("creep");
 }
 
 void Creep::Render(sf::RenderWindow* window)

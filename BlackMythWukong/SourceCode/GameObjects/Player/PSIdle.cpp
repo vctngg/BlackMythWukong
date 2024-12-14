@@ -8,6 +8,7 @@ PSIdle::PSIdle(IPlayer* player)
 void PSIdle::Init()
 {
 	m_Animation = new Animation(*DATA->getTexture("wukong/wukong_stand"), sf::Vector2i(4, 1), 0.1f);
+	m_Animation->setScale(2, 2);
 }
 
 void PSIdle::Update(float deltaTime, SkillManager& SM)
@@ -17,11 +18,12 @@ void PSIdle::Update(float deltaTime, SkillManager& SM)
 	if ( m_Player->FacingLeft() )
 	{
 		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::O) ) {
-			if ( SM.IsUnlocked(PLAYER_SKILL_SUMMON) )
+			if ( SM.IsUnlocked(PLAYER_SKILL_SUMMON) && !SM.IsOnCD(PLAYER_SKILL_SUMMON) )
 			{
 				sf::Vector2f pos = m_Player->getHitBox()->getPosition();
 				m_Player->getWeapon()->GetDirection(m_Player->FacingLeft());
 				m_Player->getWeapon()->Summon(sf::Vector2f(pos.x, pos.y + 4));
+				SM.SetOnCD(PLAYER_SKILL_SUMMON);
 			}
 		}
 		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::Space) ) {
@@ -34,21 +36,24 @@ void PSIdle::Update(float deltaTime, SkillManager& SM)
 			m_Player->changeNextState(RUN);
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::J) ) {
-			if ( SM.IsUnlocked(PLAYER_ATTACK_1) )
+			if ( SM.IsUnlocked(PLAYER_ATTACK_1) && !SM.IsOnCD(PLAYER_ATTACK_1) )
 			{
 				m_Player->changeNextState(ATTACK1);
+				SM.SetOnCD(PLAYER_ATTACK_1);
 			}
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::K) ) {
-			if ( SM.IsUnlocked(PLAYER_ATTACK_2) )
+			if ( SM.IsUnlocked(PLAYER_ATTACK_2) && !SM.IsOnCD(PLAYER_ATTACK_2) )
 			{
 				m_Player->changeNextState(ATTACK2);
+				SM.SetOnCD(PLAYER_ATTACK_2);
 			}
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::L) ) {
-			if ( SM.IsUnlocked(PLAYER_ATTACK_3) )
+			if ( SM.IsUnlocked(PLAYER_ATTACK_3) && !SM.IsOnCD(PLAYER_ATTACK_3) )
 			{
 				m_Player->changeNextState(ATTACK3);
+				SM.SetOnCD(PLAYER_ATTACK_3);
 			}
 		}
 		if ( !m_Player->getHitBox()->isAlive() ) m_Player->changeNextState(IPState::DEATH);
@@ -57,11 +62,13 @@ void PSIdle::Update(float deltaTime, SkillManager& SM)
 	else
 	{
 		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::O) ) {
-			if ( SM.IsUnlocked(PLAYER_SKILL_SUMMON) )
+			if ( SM.IsUnlocked(PLAYER_SKILL_SUMMON) && !SM.IsOnCD(PLAYER_SKILL_SUMMON) )
 			{
 				sf::Vector2f pos = m_Player->getHitBox()->getPosition();
 				m_Player->getWeapon()->GetDirection(m_Player->FacingLeft());
 				m_Player->getWeapon()->Summon(sf::Vector2f(pos.x, pos.y + 4));
+				SM.SetOnCD(PLAYER_SKILL_SUMMON);
+
 			}
 			
 		}
@@ -75,21 +82,24 @@ void PSIdle::Update(float deltaTime, SkillManager& SM)
 			m_Player->changeNextState(RUN);
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::J) ) {
-			if ( SM.IsUnlocked(PLAYER_ATTACK_1) )
+			if ( SM.IsUnlocked(PLAYER_ATTACK_1) && !SM.IsOnCD(PLAYER_ATTACK_1) )
 			{
 				m_Player->changeNextState(ATTACK1);
+				SM.SetOnCD(PLAYER_ATTACK_1);
 			}
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::K) ) {
-			if ( SM.IsUnlocked(PLAYER_ATTACK_2) )
+			if ( SM.IsUnlocked(PLAYER_ATTACK_2) && !SM.IsOnCD(PLAYER_ATTACK_2) )
 			{
 				m_Player->changeNextState(ATTACK2);
+				SM.SetOnCD(PLAYER_ATTACK_2);
 			}
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::L) ) {
-			if ( SM.IsUnlocked(PLAYER_ATTACK_3) )
+			if ( SM.IsUnlocked(PLAYER_ATTACK_3) && !SM.IsOnCD(PLAYER_ATTACK_3) )
 			{
 				m_Player->changeNextState(ATTACK3);
+				SM.SetOnCD(PLAYER_ATTACK_3);
 			}
 		}
 		if ( !m_Player->getHitBox()->isAlive() ) m_Player->changeNextState(IPState::DEATH);

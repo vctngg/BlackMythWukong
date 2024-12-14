@@ -8,6 +8,7 @@ PSFall::PSFall(IPlayer* player)
 void PSFall::Init()
 {
 	m_Animation = new Animation(*DATA->getTexture("wukong/wukong_jump"), sf::Vector2i(4, 1), 0.1f);
+	m_Animation->setScale(2, 2);
 }
 
 void PSFall::Update(float deltaTime, SkillManager& SM)

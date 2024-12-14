@@ -14,10 +14,10 @@ void BSWaiting::Update(float deltaTime, SkillManager& SM)
 {
 	m_Boss->getHitBox()->setAlive(false);
 	m_Animation->Update(deltaTime);
-	if ( sf::Keyboard::isKeyPressed(sf::Keyboard::E) ) {
+	/*if ( sf::Keyboard::isKeyPressed(sf::Keyboard::E) ) {
 		m_Boss->changeNextState(IDLE);
 		m_Boss->getHitBox()->setAlive(true);
-	}
+	}*/
 
 	m_Animation->setPosition(m_Boss->getHitBox()->getPosition().x + m_Boss->m_playerOffset.x, m_Boss->m_playerOffset.y+ m_Boss->getHitBox()->getPosition().y - 16);
 	m_Animation->flip(m_Boss->getHitBox()->getPosition().x > m_Boss->ReturnPlayerPosition().x);

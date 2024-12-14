@@ -11,6 +11,8 @@ public:
 	void LockSkill(SKILL skill);
 	void UnlockSkill(SKILL skill);
 	bool IsUnlocked(SKILL skill);
+	float GetCD(SKILL skill);
+	float GetTime(SKILL skill);
 private:
 	std::list<Skill*> m_listSkill;
 	

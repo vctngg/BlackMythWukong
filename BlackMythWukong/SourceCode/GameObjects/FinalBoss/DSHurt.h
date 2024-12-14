@@ -16,5 +16,6 @@ private:
 
 	float m_currentTime;
 	float m_ChangeTime;
+	bool sound;
 
 };
