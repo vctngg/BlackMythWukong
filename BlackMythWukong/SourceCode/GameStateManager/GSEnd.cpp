@@ -29,6 +29,7 @@ void GSEnd::Init()
 	button->setOnClick([]() {
 		GSM->PopState();
 		GSM->PopState();
+		GSM->ChangeState(StateTypes::MENU);
 		ScoreManager::GetInstance()->UpdateHighScore();
 		ScoreManager::GetInstance()->writeFile();
 		DATA->playSound("click");

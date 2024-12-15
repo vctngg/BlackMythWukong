@@ -74,7 +74,7 @@ void GSPlay2::Init()
 
 void GSPlay2::Update(float deltaTime)
 {
-	printf("%d\n", m_CreepManager.GetKillCounter());
+	///*printf("%d\n", m_CreepManager.GetKillCounter());*/
 	m_currentTime += deltaTime;
 	srand(m_currentTime);
 	DM->Update(deltaTime);

@@ -58,7 +58,6 @@ void Monster::Update(float deltaTime, sf::Vector2f offset, HitBox* player_hitbox
 					if ( m_currentAni != m_idleAni )
 					{
 						m_currentAni = m_idleAni;
-						printf("idle\n");
 					}
 				}
 			}
