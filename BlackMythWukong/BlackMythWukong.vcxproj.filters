@@ -395,9 +395,6 @@
     <ClInclude Include="SourceCode\GameObjects\ObjectManager\Collision\MovementCheck.h">
       <Filter>Source Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SourceCode\GameObjects\Erlang\IBoss.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -593,14 +590,17 @@
     <ClInclude Include="SourceCode\GameObjects\FinalBoss\Smash.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Resource.rc">
+    <ResourceCompile Include="BlackMythWukong.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Data\Textures\icon.png">
+    <Image Include="..\Data\Textures\icon.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

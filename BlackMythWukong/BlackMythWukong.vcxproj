@@ -326,10 +326,10 @@
     <ClInclude Include="SourceCode\GameStateManager\GSSetting.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Resource.rc" />
+    <ResourceCompile Include="BlackMythWukong.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Data\Textures\icon.png" />
+    <Image Include="..\Data\Textures\icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
