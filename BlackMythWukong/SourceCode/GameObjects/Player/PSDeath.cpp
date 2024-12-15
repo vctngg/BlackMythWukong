@@ -22,6 +22,7 @@ void PSDeath::Update(float deltaTime, SkillManager& SM)
 		DATA->getMusic("Uprising")->stop();
 		DATA->getMusic("softspot")->stop();
 		DATA->getMusic("summer")->stop();
+		DATA->playSound("lose");
 	}
 	m_Animation->Update(deltaTime);
 	m_Animation->setPosition(m_Player->getHitBox()->getPosition().x + m_Player->m_offset.x, m_Player->getHitBox()->getPosition().y + 6 + m_Player->m_offset.y);

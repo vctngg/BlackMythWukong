@@ -23,6 +23,7 @@ void BSIdle::Update(float deltaTime, SkillManager& SM)
 			if ( m_currentTime > 1 )
 			{
 				m_Boss->changeNextState(ATTACK);
+				DATA->playSound("sword");
 			}
 		}
 		if ( !m_Boss->getHitBox()->isVulnerable() ) {

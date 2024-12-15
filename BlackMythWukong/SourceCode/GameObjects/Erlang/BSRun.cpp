@@ -21,6 +21,7 @@ void BSRun::Update(float deltaTime, SkillManager& SM)
 			if ( m_currentTime > 1 )
 			{
 				m_Boss->changeNextState(ATTACK);
+				DATA->playSound("sword");
 			}
 		}
 		else if ( m_Boss->ReturnDistanceFromPlayer() > 20 && m_Boss->ReturnDistanceFromPlayer() < screenWidth ) {

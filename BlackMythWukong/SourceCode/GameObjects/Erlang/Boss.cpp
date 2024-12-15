@@ -69,6 +69,7 @@ void Boss::Init(CollisionManager& CM)
 
 	CM.addObj(m_HitBox);
 	m_BossWeapon->Init(CM);
+	//DATA->getSound("sword")->setVolume(15);
 }
 void Boss::FacingCheck() {
 

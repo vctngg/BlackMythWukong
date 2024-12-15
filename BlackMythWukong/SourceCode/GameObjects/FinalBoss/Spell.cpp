@@ -27,7 +27,9 @@ void Spell::Init()
 	m_HitBox->setPosition(screenWidth, groundY);
 
 	m_runAni = new Animation2(*DATA->getTexture("Demon/13_projectile_idle/idle"), sf::Vector2i(3, 1), 0.1f, 3);
+	m_runAni->setScale(2, 2);
 	m_deathAni = new Animation2(*DATA->getTexture("Demon/14_projectile_explosion/explode"), sf::Vector2i(11, 1), 0.1f, 11);
+	m_deathAni->setScale(2, 2);
 	m_deathAni->setModeEndFrame(true);
 
 	m_currentAni = m_runAni;

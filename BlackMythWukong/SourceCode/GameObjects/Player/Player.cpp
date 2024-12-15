@@ -70,6 +70,8 @@ void Player::Init(CollisionManager& collisionmanager, SkillManager& skillmanager
 
 	collisionmanager.addObj(m_HitBox);
 	m_PlayerWeapon->Init(collisionmanager);
+	/*DATA->getSound("summon")->setVolume(15);
+	DATA->getSound("attack")->setVolume(15);*/
 }
 
 void Player::Update(float deltaTime, SkillManager& SM)

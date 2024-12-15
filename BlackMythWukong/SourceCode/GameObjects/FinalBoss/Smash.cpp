@@ -39,7 +39,6 @@ void Smash::Update(float deltaTime, sf::Vector2f offset)
 	else
 	{
 		if ( m_soundIsPlaying == false ) {
-			DATA->playSound("explosion");
 			m_soundIsPlaying = true;
 		}
 		m_stop = true;
@@ -48,7 +47,7 @@ void Smash::Update(float deltaTime, sf::Vector2f offset)
 	if ( m_HitBox2->isAlive() )
 	{
 		m_HitBox2->move(-m_HitBox2->getVelocity().x * deltaTime, m_HitBox2->getVelocity().y * deltaTime);
-		printf("(%f,%f)\n", m_HitBox2->getPosition().x, m_HitBox2->getPosition().y);
+		//printf("(%f,%f)\n", m_HitBox2->getPosition().x, m_HitBox2->getPosition().y);
 		if ( m_HitBox2->getPosition().x < m_startPoint.x - 100 ) {
 			m_HitBox2->setPosition(m_startPoint);
 			m_stop = true;

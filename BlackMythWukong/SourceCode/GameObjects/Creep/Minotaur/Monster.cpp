@@ -47,12 +47,15 @@ void Monster::Update(float deltaTime, sf::Vector2f offset, HitBox* player_hitbox
 			if ( m_distanceFromPlayer < 32 ) {
 				if ( SM.IsUnlocked(MONSTER_SWING) && !SM.IsOnCD(MONSTER_SWING)) {
 					Swing(SM);
+					DATA->playSound("sword");
 				}
 				else if ( SM.IsUnlocked(MONSTER_CHOP) && !SM.IsOnCD(MONSTER_CHOP) ) {
 					Chop(SM);
+					DATA->playSound("sword");
 				}
 				else if ( SM.IsUnlocked(MONSTER_STRIKE) && !SM.IsOnCD(MONSTER_STRIKE) ) {
 					Strike(SM);
+					DATA->playSound("sword");
 				}
 				else {
 					if ( m_currentAni != m_idleAni )

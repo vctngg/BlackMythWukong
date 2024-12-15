@@ -21,6 +21,7 @@ void DSDeath::Update(float deltaTime, SkillManager& SM)
 		GSM->ChangeState(StateTypes::END);
 		ScoreManager::GetInstance()->setCurrentScore(2800);
 		DATA->getMusic("summer")->stop();
+		DATA->playSound("win");
 	}
 	m_Animation->Update(deltaTime);
 	m_Animation->setPosition(m_Demon->getHitBox()->getPosition().x + m_Demon->m_playerOffset.x, m_Demon->getHitBox()->getPosition().y - 48 + m_Demon->m_playerOffset.y);

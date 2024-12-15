@@ -9,4 +9,5 @@ public:
 private:
 	Animation* m_barkAni;
 	float m_timer;
+	bool sound;
 };

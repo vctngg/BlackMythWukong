@@ -9,21 +9,19 @@ void FSHurt::Init()
 {
 	m_Animation = new Animation(*DATA->getTexture("Characters/Frogger/frogger_hurt"), sf::Vector2i(4, 1), 0.1f);
 	m_Animation->setModeEndFrame(true);
+	sound = false;
 }
 
 void FSHurt::Update(float deltaTime, SkillManager& CM)
 {
 	m_currentTime += deltaTime;
 	m_Animation->Update(deltaTime);
-	/*if ( m_Frog->getHitBox()->isVulnerable() ) {
-		printf("vulnerable\n");
-	}
-	else {
-		printf("invulnerable\n");
-	}*/
 	if ( m_Frog->getHitBox()->isAlive() )
 	{
-		//printf("(%f,%f)\n", float(ani->getCurrentFrameCount()), float(ani->getFrameTotals() - 1));
+		if ( !sound ) {
+			sound = true;
+			DATA->playSound("monster-hurt");
+		}
 		if ( m_Animation->IsEndFrame() ) {
 			
 			if ( m_Frog->getHitBox()->isVulnerable() )
@@ -49,4 +47,5 @@ void FSHurt::Reset()
 {
 	m_Animation->Reset();
 	m_currentTime = 0.f;
+	sound = false;
 }

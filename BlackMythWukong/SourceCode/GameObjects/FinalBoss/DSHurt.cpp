@@ -19,6 +19,7 @@ void DSHurt::Update(float deltaTime, SkillManager& SM)
 	m_Animation->Update(deltaTime);
 	if ( !sound ) {
 		sound = true;
+		
 		DATA->playSound("monster-hurt");
 	}
 	if ( m_Animation->IsEndFrame() ) {

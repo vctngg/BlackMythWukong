@@ -20,6 +20,7 @@ void DSSmash::Update(float deltaTime, SkillManager& SM)
 		sf::Vector2f pos = m_Demon->getHitBox()->getPosition();
 		m_Demon->getWeapon()->GetDirection(m_Demon->FacingLeft());
 		m_Demon->getWeapon()->CastSmash(sf::Vector2f(pos.x,pos.y+16));
+		DATA->playSound("explosion");
 	}
 	if ( ani->getCurrentFrameCount() == ani->getFrameTotals() - 1 ) {
 		m_Demon->changeNextState(IDLE_DEMON);

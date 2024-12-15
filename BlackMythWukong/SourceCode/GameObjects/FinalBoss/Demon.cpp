@@ -82,6 +82,7 @@ void Demon::Init(CollisionManager& CM, SkillManager& SM)
 
 	CM.addObj(m_HitBox);
 	m_DemonWeapon->Init(CM);
+	DATA->getSound("monster-hurt")->setVolume(15);
 }
 
 void Demon::Update(float deltaTime, sf::Vector2f offset, SkillManager& SM)

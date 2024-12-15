@@ -42,23 +42,23 @@ void DemonWeapon::Init(CollisionManager& CM)
 		na->getHitBox()->setAlive(false);
 		m_ListNA.push_back(na);
 		CM.addObj(na->getHitBox());
-		Spell* s = new Spell();
-		s->Init();
-		s->getHitBox()->setAlive(false);
-		m_ListSpell.push_back(s);
-		CM.addObj(s->getHitBox());
 		Smash* sm = new Smash();
 		sm->Init();
 		sm->getHitBox()->setAlive(false);
 		m_ListSmash.push_back(sm);
 		CM.addObj(sm->getHitBox());
-	}
-	for ( int i = 0; i < (m_Num + 4); i++ ) {
 		Fire* f = new Fire();
 		f->Init();
 		f->getHitBox()->setAlive(false);
 		m_ListFire.push_back(f);
 		CM.addObj(f->getHitBox());
+	}
+	for ( int i = 0; i < (m_Num + 4); i++ ) {
+		Spell* s = new Spell();
+		s->Init();
+		s->getHitBox()->setAlive(false);
+		m_ListSpell.push_back(s);
+		CM.addObj(s->getHitBox());
 	}
 }
 

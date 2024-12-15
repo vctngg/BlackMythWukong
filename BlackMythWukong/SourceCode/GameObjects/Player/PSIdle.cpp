@@ -24,6 +24,7 @@ void PSIdle::Update(float deltaTime, SkillManager& SM)
 				m_Player->getWeapon()->GetDirection(m_Player->FacingLeft());
 				m_Player->getWeapon()->Summon(sf::Vector2f(pos.x, pos.y + 4));
 				SM.SetOnCD(PLAYER_SKILL_SUMMON);
+				DATA->playSound("summon");
 			}
 		}
 		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::Space) ) {
@@ -40,6 +41,7 @@ void PSIdle::Update(float deltaTime, SkillManager& SM)
 			{
 				m_Player->changeNextState(ATTACK1);
 				SM.SetOnCD(PLAYER_ATTACK_1);
+				DATA->playSound("attack");
 			}
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::K) ) {
@@ -47,6 +49,7 @@ void PSIdle::Update(float deltaTime, SkillManager& SM)
 			{
 				m_Player->changeNextState(ATTACK2);
 				SM.SetOnCD(PLAYER_ATTACK_2);
+				DATA->playSound("attack");
 			}
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::L) ) {
@@ -54,6 +57,7 @@ void PSIdle::Update(float deltaTime, SkillManager& SM)
 			{
 				m_Player->changeNextState(ATTACK3);
 				SM.SetOnCD(PLAYER_ATTACK_3);
+				DATA->playSound("attack");
 			}
 		}
 		if ( !m_Player->getHitBox()->isAlive() ) m_Player->changeNextState(IPState::DEATH);
@@ -68,6 +72,7 @@ void PSIdle::Update(float deltaTime, SkillManager& SM)
 				m_Player->getWeapon()->GetDirection(m_Player->FacingLeft());
 				m_Player->getWeapon()->Summon(sf::Vector2f(pos.x, pos.y + 4));
 				SM.SetOnCD(PLAYER_SKILL_SUMMON);
+				DATA->playSound("summon");
 
 			}
 			
@@ -86,6 +91,7 @@ void PSIdle::Update(float deltaTime, SkillManager& SM)
 			{
 				m_Player->changeNextState(ATTACK1);
 				SM.SetOnCD(PLAYER_ATTACK_1);
+				DATA->playSound("attack");
 			}
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::K) ) {
@@ -93,6 +99,7 @@ void PSIdle::Update(float deltaTime, SkillManager& SM)
 			{
 				m_Player->changeNextState(ATTACK2);
 				SM.SetOnCD(PLAYER_ATTACK_2);
+				DATA->playSound("attack");
 			}
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::L) ) {
@@ -100,6 +107,7 @@ void PSIdle::Update(float deltaTime, SkillManager& SM)
 			{
 				m_Player->changeNextState(ATTACK3);
 				SM.SetOnCD(PLAYER_ATTACK_3);
+				DATA->playSound("attack");
 			}
 		}
 		if ( !m_Player->getHitBox()->isAlive() ) m_Player->changeNextState(IPState::DEATH);

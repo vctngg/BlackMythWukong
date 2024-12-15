@@ -25,6 +25,7 @@ void PSRun::Update(float deltaTime, SkillManager& SM)
 			{
 				m_Player->changeNextState(ATTACK1);
 				SM.SetOnCD(PLAYER_ATTACK_1);
+				DATA->playSound("attack");
 			}
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::K) ) {
@@ -32,6 +33,7 @@ void PSRun::Update(float deltaTime, SkillManager& SM)
 			{
 				m_Player->changeNextState(ATTACK2);
 				SM.SetOnCD(PLAYER_ATTACK_2);
+				DATA->playSound("attack");
 			}
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::L) ) {
@@ -39,6 +41,7 @@ void PSRun::Update(float deltaTime, SkillManager& SM)
 			{
 				m_Player->changeNextState(ATTACK3);
 				SM.SetOnCD(PLAYER_ATTACK_3);
+				DATA->playSound("attack");
 			}
 		}
 		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::A) ) {
@@ -64,6 +67,7 @@ void PSRun::Update(float deltaTime, SkillManager& SM)
 			{
 				m_Player->changeNextState(ATTACK1);
 				SM.SetOnCD(PLAYER_ATTACK_1);
+				DATA->playSound("attack");
 			}
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::K) ) {
@@ -71,6 +75,7 @@ void PSRun::Update(float deltaTime, SkillManager& SM)
 			{
 				m_Player->changeNextState(ATTACK2);
 				SM.SetOnCD(PLAYER_ATTACK_2);
+				DATA->playSound("attack");
 			}
 		}
 		else if ( sf::Keyboard::isKeyPressed(sf::Keyboard::L) ) {
@@ -78,6 +83,7 @@ void PSRun::Update(float deltaTime, SkillManager& SM)
 			{
 				m_Player->changeNextState(ATTACK3);
 				SM.SetOnCD(PLAYER_ATTACK_3);
+				DATA->playSound("attack");
 			}
 		}
 		if ( sf::Keyboard::isKeyPressed(sf::Keyboard::A) ) {

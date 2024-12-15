@@ -17,6 +17,7 @@ void Dog::Init()
 	m_barkAni->setScale(-0.5, 0.5);
 	m_currentAni = m_idleAni;
 	m_HitBox->SetTag(NON_INTERACTIVE);
+	sound = false;
 }
 
 void Dog::TriggerThreaten(float deltaTime)
@@ -28,6 +29,10 @@ void Dog::TriggerThreaten(float deltaTime)
 	}
 	if ( m_timer < 0 && m_timer > -2.5 ) {
 		m_currentAni = m_barkAni;
+		if ( !sound ) {
+			sound = true;
+			DATA->playSound("bark");
+		}
 	}
 	else if ( m_timer < -2.5 ) {
 		m_currentAni = m_idleAni;
