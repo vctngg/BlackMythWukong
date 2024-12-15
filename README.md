@@ -8,16 +8,19 @@ Team members: Nguyen Viet Anh - 202413944, Trinh Duc Hieu 202414111
                                       **INSTRUCTION ON HOW TO USE THIS RESPIRATORY**
 
 1. Download
-   -Download the folders "Debug" and "Data" then put them into a separate folder.
+
+    -Download the folders "Debug" and "Data" then put them into a separate folder.
+   
    -Inside the debug folder, you will find a .exe file. Open it to play the game.
-2. Source code
+3. Source code
+
    -You can download my source code via "BlackMythWukong" folder. Feel free to use it as a reference for yourself.
-3. How to play the game
+5. How to play the game
 
    
-   -AD to move, SPACE to jump
+   -A,D to move, SPACE to jump
    
-   -JKLO to attack with different skills
+   -J,K,L,O to attack with different skills
    
    -Enter to go to the next dialog
    
