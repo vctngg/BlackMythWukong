@@ -14,7 +14,7 @@ public:
 	bool IsEndFrame() {
 		return m_endframe;
 	}
-	void flip(bool do_flip);
+	void flip(bool do_flip,float scale = 1);
 
 	sf::Vector2i getFrameNum() {
 		return m_frameNum;

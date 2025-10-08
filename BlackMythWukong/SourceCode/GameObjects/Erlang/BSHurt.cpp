@@ -19,8 +19,8 @@ void BSHurt::Update(float deltaTime, SkillManager& SM)
 		m_Boss->changeNextState(STATE::IDLE);
 	}
 
-	m_Animation->setPosition(m_Boss->getHitBox()->getPosition().x+ m_Boss->m_playerOffset.x, m_Boss->m_playerOffset.y+ m_Boss->getHitBox()->getPosition().y - 16);
-	m_Animation->flip(m_Boss->getHitBox()->getPosition().x > m_Boss->ReturnPlayerPosition().x);
+	m_Animation->setPosition(m_Boss->getHitBox()->getPosition().x+ m_Boss->m_playerOffset.x, m_Boss->m_playerOffset.y+ m_Boss->getHitBox()->getPosition().y - 48);
+	m_Animation->flip(m_Boss->getHitBox()->getPosition().x > m_Boss->ReturnPlayerPosition().x,2);
 }
 
 void BSHurt::Render(sf::RenderWindow* window)

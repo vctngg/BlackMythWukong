@@ -47,8 +47,8 @@ void PSFall::Update(float deltaTime, SkillManager& SM)
 			}
 		}
 	}
-	m_Animation->setPosition(m_Player->getHitBox()->getPosition().x + m_Player->m_offset.x, m_Player->getHitBox()->getPosition().y + 6 + m_Player->m_offset.y);
-	m_Animation->flip(m_Player->FacingLeft());
+	m_Animation->setPosition(m_Player->getHitBox()->getPosition().x + m_Player->m_offset.x, m_Player->getHitBox()->getPosition().y - 32 + m_Player->m_offset.y);
+	m_Animation->flip(m_Player->FacingLeft(),2);
 }
 
 void PSFall::Render(sf::RenderWindow* window)

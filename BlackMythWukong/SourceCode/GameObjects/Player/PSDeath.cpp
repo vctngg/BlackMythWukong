@@ -25,8 +25,8 @@ void PSDeath::Update(float deltaTime, SkillManager& SM)
 		DATA->playSound("lose");
 	}
 	m_Animation->Update(deltaTime);
-	m_Animation->setPosition(m_Player->getHitBox()->getPosition().x + m_Player->m_offset.x, m_Player->getHitBox()->getPosition().y + 6 + m_Player->m_offset.y);
-	m_Animation->flip(m_Player->FacingLeft());
+	m_Animation->setPosition(m_Player->getHitBox()->getPosition().x + m_Player->m_offset.x, m_Player->getHitBox()->getPosition().y - 8 + m_Player->m_offset.y);
+	m_Animation->flip(m_Player->FacingLeft(),2);
 }
 
 void PSDeath::Render(sf::RenderWindow* window)

@@ -50,8 +50,8 @@ void PSJump::Update(float deltaTime, SkillManager& SM)
 		else m_Player->getHitBox()->move(0, -m_Player->getHitBox()->getVelocity().y * deltaTime + v);
 		if ( !m_Player->getHitBox()->isAlive() ) m_Player->changeNextState(IPState::DEATH);
 	}
-	m_Animation->setPosition(m_Player->getHitBox()->getPosition().x + m_Player->m_offset.x, m_Player->getHitBox()->getPosition().y + 6 + m_Player->m_offset.y);
-	m_Animation->flip(m_Player->FacingLeft());
+	m_Animation->setPosition(m_Player->getHitBox()->getPosition().x + m_Player->m_offset.x, m_Player->getHitBox()->getPosition().y - 8 + m_Player->m_offset.y);
+	m_Animation->flip(m_Player->FacingLeft(),2);
 }
 
 void PSJump::Render(sf::RenderWindow* window)

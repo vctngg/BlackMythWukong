@@ -62,14 +62,14 @@ void Animation::setModeEndFrame(bool stop)
 }
 
 
-void Animation::flip(bool do_flip)
+void Animation::flip(bool do_flip, float scale)
 {
 	if (do_flip )
 	{
-		this->setScale(-1.0f, 1.0f);
+		this->setScale(-scale, scale);
 	}
 	else
 	{
-		this->setScale(1.0f, 1.0f);
+		this->setScale(scale, scale);
 	}
 }
